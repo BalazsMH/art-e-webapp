@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ArtCard from './ArtCard';
+import styled from 'styled-components';
 
 
 export default function ArtBrowser() {
@@ -23,9 +24,15 @@ export default function ArtBrowser() {
     }
 
     return (
-        <div>{artData.map((artPiece, key) => (
+        <ArtBrowserContainer>{artData.map((artPiece, key) => (
         <ArtCard data={artPiece} key={key}></ArtCard>
         ))}
-        </div>
+        </ArtBrowserContainer>
     )
 }
+
+const ArtBrowserContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+`;

@@ -1,14 +1,29 @@
 import React, {useState} from 'react';
+import styled from 'styled-components';
 
 export default function ArtCard(props) {
 
     const [artDetails, setArtDetails] = useState(props.data);
     const [hasImage, setHasImage] = useState(props.data.hasImage);
+    const [imageUrl, setImageUrl] = useState(props.data.webImage.url)
 
     return (
-        <div>{artDetails.title}
+        <ArtContainer>
+            <ArtPicture src={imageUrl} alt={artDetails.title}></ArtPicture>
+            {artDetails.title}
             
-        </div>
+        </ArtContainer>
     )
 }
+
+const ArtPicture = styled.img`
+    object-fit: contain;
+    max-width: 300px;
+`;
+
+const ArtContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+`;
  

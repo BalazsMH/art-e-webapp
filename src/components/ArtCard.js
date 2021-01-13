@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react';
 
-export default function ArtCard() {
+export default function ArtCard(props) {
+
+    const [artDetails, setArtDetails] = useState(props.data);
+    const [hasImage, setHasImage] = useState(props.data.hasImage);
+
     return (
-        <div>I'm a card
+        <div>{artDetails.title}
             
         </div>
     )
 }
+ 

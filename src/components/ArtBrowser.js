@@ -9,7 +9,9 @@ export default function ArtBrowser() {
 
     useEffect(() => {
         axios.get("https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json")
-        .then(res => setArtData(res.data.artObjects), setIsloading(!isLoading))
+        .then(res => setArtData(res.data.artObjects))
+        .then(setIsloading(!isLoading))
+        .then(console.log("Load complete.."));
 
     }, [])
 
@@ -22,7 +24,7 @@ export default function ArtBrowser() {
 
     return (
         <div>{artData.map((artPiece, key) => (
-        <ArtCard data={artPiece}></ArtCard>
+        <ArtCard data={artPiece} key={key}></ArtCard>
         ))}
         </div>
     )

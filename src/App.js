@@ -1,5 +1,6 @@
 import './App.css';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
+import ArtBrowser from './components/ArtBrowser';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       </Route>
       <Route exact path="/browse">
         <h1>Browse</h1>
+        <ArtBrowser></ArtBrowser>
       </Route>
       <Route exact path="/quiz">
         <h1>Quizzes</h1>

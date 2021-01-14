@@ -8,11 +8,25 @@ export default function ArtBrowser() {
     const [artData, setArtData] = useState([]);
     const [isLoading, setIsloading] = useState(true);
 
+    let query = "";
+    let resultPage = 0;
+    let resultsPerPage = 10;
+
     useEffect(() => {
-        axios.get("https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json")
+        axios({
+            method: 'GET',
+            url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            params: {q: query, p: resultPage, ps: resultsPerPage}
+        })
         .then(res => setArtData(res.data.artObjects))
         .then(setIsloading(!isLoading))
-        .then(console.log("Load complete.."));
+        .then(console.log("Load complete.."))
+        .catch(e => {
+            console.log(e);
+        });
+
+
+        // axios.get("https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json")
 
     }, [])
 

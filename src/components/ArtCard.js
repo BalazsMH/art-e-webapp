@@ -24,6 +24,11 @@ const ArtPicture = styled.img`
 const ArtContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
+    margin: 1rem;
+    border: solid lightgray;
+    border-radius: 10px;
 `;
  

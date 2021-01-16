@@ -24,12 +24,15 @@ export default function ArtSearchBox(props) {
     }
 
     const handleEnterPressed = (e) => {
-        if (e.key === 'Enter') {
-            props.addQueryParam({term: inputTerm,
-                involvedMaker: inputInvolvedMaker,
-                technique: inputTechnique,
-                datingPeriod: inputDatingPeriod})
-        }
+        if (e.key === 'Enter') { startSearch() };
+    }
+    
+    const startSearch = () => {
+        props.addQueryParam({
+                            term: inputTerm,
+                            involvedMaker: inputInvolvedMaker,
+                            technique: inputTechnique,
+                            datingPeriod: inputDatingPeriod})
     }
 
 
@@ -43,11 +46,7 @@ export default function ArtSearchBox(props) {
                 {[...Array(centuryCount+1)].map((element, i) => <option key={i} value={i}>{i}</option>)}
             </select>
 
-            <button ref={searchButton} type="button" onClick={(e)=> {props.addQueryParam({term: inputTerm,
-                                                                        involvedMaker: inputInvolvedMaker,
-                                                                        technique: inputTechnique,
-                                                                        datingPeriod: inputDatingPeriod})}
-            }>Search!</button>
+            <button ref={searchButton} type="button" onClick={(e)=> {startSearch()}}>Search!</button>
         </SearchBox>
     )
 }
@@ -55,5 +54,4 @@ export default function ArtSearchBox(props) {
 const SearchBox = styled.div`
     display: flex;
     flex-direction: column;
-
 `;

@@ -5,7 +5,7 @@ export default function ArtSearchBox(props) {
     const [searchedQuery, setSearchedQuery] = useState("");
 
     let inputTerm, inputInvolvedMaker, inputTechnique, inputDatingPeriod;
-
+    const centuryCount = 21;
 
     const handleTermInput = (e) => {
         inputTerm = (e.target.value);
@@ -15,14 +15,25 @@ export default function ArtSearchBox(props) {
         inputInvolvedMaker = (e.target.value);
     }
 
+    const handleTechniqueInput = (e) => {
+        inputTechnique = (e.target.value);
+    }
+
 
     return (
         <SearchBox>
             <input type="text" placeholder="Search for term" onChange={handleTermInput}></input>
             <input type="text" placeholder="Search for artist" onChange={handleMakerInput}></input>
-            <button type="button" onClick={(e)=> {props.addQueryParam(inputTerm)}}>Search!</button>
+            <input type="text" placeholder="Search for technique" onChange={handleTechniqueInput}></input>
+            <select>
+                <option value="none" selected disabled>Search for century</option>
+                {[...Array(centuryCount+1)].map((element, i) => <option value={i}>{i}</option>
+                )
 
-            
+                }
+            </select>
+
+            <button type="button" onClick={(e)=> {props.addQueryParam(inputTerm)}}>Search!</button>
         </SearchBox>
     )
 }

@@ -52,6 +52,8 @@ export default function ArtBrowser() {
         )
     }
 
+    //TODO: Move data load to provider
+
     return (
         <div>
         <ArtBrowserSidebar>

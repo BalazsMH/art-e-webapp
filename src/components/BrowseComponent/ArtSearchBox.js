@@ -34,7 +34,7 @@ export default function ArtSearchBox(props) {
                             technique: inputTechnique,
                             datingPeriod: inputDatingPeriod})
     }
-
+    //TODO: Keep searched phrases
 
     return (
         <SearchBox onKeyDown={handleEnterPressed}>

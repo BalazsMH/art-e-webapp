@@ -1,6 +1,8 @@
 import './App.css';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
+import {ArtBrowserProvider} from './components/BrowseComponent/ArtBrowserContext';
+
 
 function App() {
   return (
@@ -10,8 +12,10 @@ function App() {
         <h1>Landing page</h1>
       </Route>
       <Route exact path="/browse">
-          <h1>Browse</h1>
-          <ArtBrowser></ArtBrowser>
+          <ArtBrowserProvider>
+            <h1>Browse</h1>
+            <ArtBrowser></ArtBrowser>
+          </ArtBrowserProvider>
       </Route>
       <Route exact path="/quiz">
         <h1>Quizzes</h1>

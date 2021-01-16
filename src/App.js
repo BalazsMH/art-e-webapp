@@ -1,6 +1,9 @@
 import './App.css';
-import {Route, BrowserRouter as Router} from 'react-router-dom';
+import {Route, BrowserRouter as Router, Redirect} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+import UserGeneral from './components/user/UserGeneral';
+import UserStats from './components/user/UserStats';
+// import UserSecurity from './components/user/UserSecurity';
 
 
 function App() {
@@ -32,6 +35,18 @@ function App() {
         <Route exact path="/scoreboard">
           <h1>Scoreboard</h1>
         </Route>
+        <Route exact path="/user">
+          <Redirect to="/user/general" />
+        </Route>
+        <Route exact path="/user/general">
+          <UserGeneral />
+        </Route>
+        <Route exact path="/user/game">
+          <UserStats />
+        </Route>
+        {/* <Route exact path="/user/security">
+          <UserSecurity />
+        </Route> */}
       </div>
     </Router>
   );

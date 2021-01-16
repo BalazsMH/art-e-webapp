@@ -9,6 +9,7 @@ export default function QueryTagContainer(props) {
         })}
         </div>
     )
+    //TODO:create functional component from QueryTag, with ability to remove it.
 }
 
 

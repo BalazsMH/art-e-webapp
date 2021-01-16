@@ -48,9 +48,9 @@ export default function ArtBrowser() {
         <ArtSearchBox addQueryParam={addQueryParam}></ArtSearchBox>
 
         <ArtBrowserContainer>
-            {artData.map((artPiece, key) => (
+            {artData.length !== 0? artData.map((artPiece, key) => (
             <ArtCard data={artPiece} key={key}></ArtCard>
-            ))}
+            )) : <div>No results found for the term "{query}".</div>}
         </ArtBrowserContainer>
         </div>
     )

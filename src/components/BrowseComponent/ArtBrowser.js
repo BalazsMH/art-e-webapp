@@ -45,8 +45,9 @@ export default function ArtBrowser() {
 
     return (
         <div>
-        <ArtSearchBox addQueryParam={addQueryParam}></ArtSearchBox>
-
+        <ArtBrowserSidebar>
+            <ArtSearchBox addQueryParam={addQueryParam}></ArtSearchBox>
+        </ArtBrowserSidebar>
         <ArtBrowserContainer>
             {artData.length !== 0? artData.map((artPiece, key) => (
             <ArtCard data={artPiece} key={key}></ArtCard>
@@ -60,4 +61,8 @@ const ArtBrowserContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     
+`;
+
+const ArtBrowserSidebar = styled.div`
+    float:left;
 `;

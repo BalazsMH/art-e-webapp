@@ -1,26 +1,34 @@
 import React, {useState} from 'react';
+import styled from 'styled-components';
 
 export default function ArtSearchBox(props) {
-    // const [inputValue, setInputValue] = useState("");
+    const [searchedQuery, setSearchedQuery] = useState("");
 
-    let inputValue;
+    let inputTerm, inputInvolvedMaker, inputTechnique, inputDatingPeriod;
 
-    const handleInput = (e) => {
-        inputValue = (e.target.value);
+
+    const handleTermInput = (e) => {
+        inputTerm = (e.target.value);
     }
 
-    // const addQueryParam = props.addQueryParam;
+    const handleMakerInput = (e) => {
+        inputInvolvedMaker = (e.target.value);
+    }
+
 
     return (
-        <div>
-            <form>
-                <input type="text" onChange={handleInput}></input>
-                {/* <button type="button" onClick={props.addQueryParam(inputValue)}>Search!</button> */}
-                <button type="button" onClick={(e)=> {console.log(inputValue);
-                                                     props.addQueryParam(inputValue)}}>Search!</button>
+        <SearchBox>
+            <input type="text" placeholder="Search for term" onChange={handleTermInput}></input>
+            <input type="text" placeholder="Search for artist" onChange={handleMakerInput}></input>
+            <button type="button" onClick={(e)=> {props.addQueryParam(inputTerm)}}>Search!</button>
 
-            </form>
             
-        </div>
+        </SearchBox>
     )
 }
+
+const SearchBox = styled.div`
+    display: flex;
+    flex-direction: column;
+
+`;

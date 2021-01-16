@@ -17,7 +17,7 @@ export default function ArtCard(props) {
     return (
         <ArtContainer>
             {hasImage ? <ArtPicture src={imageUrl} alt={artDetails.title}></ArtPicture> : <span>No picture available</span> } 
-            {artDetails.title}
+            {artDetails.longTitle}
             
         </ArtContainer>
     )

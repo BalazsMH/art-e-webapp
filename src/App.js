@@ -1,8 +1,6 @@
 import './App.css';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
-import ArtSearchBox from './components/BrowseComponent/ArtSearchBox';
-import { ArtBrowserContext } from './components/BrowseComponent/ArtBrowserContext';
 
 function App() {
   return (

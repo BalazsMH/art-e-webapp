@@ -28,7 +28,13 @@ export default function ArtBrowser() {
         axios({
             method: 'GET',
             url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
-            params: {...(query.term ? {q : query.term} : {}), p: resultPage, ps: resultsPerPage}
+            params: {...(query.term ? {q : query.term} : {}),
+                    p: resultPage,
+                    ps: resultsPerPage,
+                    ...(query.involvedMaker ? {q : query.involvedMaker} : {}),
+                    ...(query.technique ? {q : query.technique} : {}),
+                    ...(query.datingPeriod ? {q : query.datingPeriod} : {})
+                }
         })
         .then(res => { 
             setArtData(res.data.artObjects);

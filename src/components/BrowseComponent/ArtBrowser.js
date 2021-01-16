@@ -9,7 +9,11 @@ export default function ArtBrowser() {
     const [artData, setArtData] = useState([]);
     const [isLoading, setIsloading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
-    const [query, setQuery] = useState();
+    const [query, setQuery] = useState({term: null,
+                                        involvedMaker: null,
+                                        technique: null,
+                                        datingPeriod: null});
+
 
     const addQueryParam = (queryParam)=> {
         console.log(queryParam);
@@ -17,20 +21,19 @@ export default function ArtBrowser() {
     }
 
     let resultPage = 0;
-    let resultsPerPage = 5;
+    let resultsPerPage = 10;
 
     useEffect(() => {
         setIsloading(true);
         axios({
             method: 'GET',
             url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
-            params: {...(query ? {q : query} : {}), p: resultPage, ps: resultsPerPage}
+            params: {...(query.term ? {q : query.term} : {}), p: resultPage, ps: resultsPerPage}
         })
         .then(res => { 
             setArtData(res.data.artObjects);
             setIsloading(false);
             console.log("Load complete..");
-
         })
         .catch(e => {
             console.log(e);

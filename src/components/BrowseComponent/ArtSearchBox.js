@@ -33,7 +33,11 @@ export default function ArtSearchBox(props) {
                 {[...Array(centuryCount+1)].map((element, i) => <option value={i}>{i}</option>)}
             </select>
 
-            <button type="button" onClick={(e)=> {props.addQueryParam(inputTerm)}}>Search!</button>
+            <button type="button" onClick={(e)=> {props.addQueryParam({term: inputTerm,
+                                                                        involvedMaker: inputInvolvedMaker,
+                                                                        technique: inputTechnique,
+                                                                        datingPeriod: inputDatingPeriod})}
+            }>Search!</button>
         </SearchBox>
     )
 }

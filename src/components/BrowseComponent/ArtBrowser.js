@@ -3,6 +3,7 @@ import axios from 'axios';
 import ArtCard from './ArtCard';
 import styled from 'styled-components';
 import ArtSearchBox from './ArtSearchBox';
+import QueryTagContainer from './QueryTagContainer';
 
 
 export default function ArtBrowser() {
@@ -58,6 +59,7 @@ export default function ArtBrowser() {
         <div>
         <ArtBrowserSidebar>
             <ArtSearchBox addQueryParam={addQueryParam}></ArtSearchBox>
+            <QueryTagContainer query={query}></QueryTagContainer>
         </ArtBrowserSidebar>
         <ArtBrowserContainer>
             {artData.length !== 0? artData.map((artPiece, key) => (
@@ -71,7 +73,6 @@ export default function ArtBrowser() {
 const ArtBrowserContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    
 `;
 
 const ArtBrowserSidebar = styled.div`

@@ -8,6 +8,8 @@ export const ArtDataProvider = (props)=> {
     const [artData, setArtData] = useState([]);
     const [isLoading, setIsloading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
+    const [resultPage, setResultPage] = useState(0);
+    const [resultsPerPage, setResultsPerPage] = useState(10);
     const [query, setQuery] = useState({term: null,
                                         involvedMaker: null,
                                         technique: null,
@@ -20,8 +22,6 @@ export const ArtDataProvider = (props)=> {
         console.log("setquery callled");
     }
 
-    let resultPage = 0;
-    let resultsPerPage = 10;
 
     useEffect(() => {
         setIsloading(true);

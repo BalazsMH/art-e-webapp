@@ -11,6 +11,7 @@ export const ArtDataProvider = (props)=> {
     const [resultPage, setResultPage] = useState(0);
     const [resultsPerPage, setResultsPerPage] = useState(10);
     //TODO: move default results per page to config file.
+    const [isNewQuery, setIsNewQuery] = useState(false);
     const [query, setQuery] = useState({term: null,
                                         involvedMaker: null,
                                         technique: null,
@@ -20,6 +21,8 @@ export const ArtDataProvider = (props)=> {
     const setQueryParam = (queryParam)=> {
         console.log(queryParam);
         setQuery(queryParam);
+        setIsNewQuery(true);
+        setResultPage(0);
         console.log("setquery callled");
     }
 
@@ -38,7 +41,13 @@ export const ArtDataProvider = (props)=> {
                 }
         })
         .then(res => { 
-            setArtData(res.data.artObjects);
+            setArtData( prevData => {
+                if(isNewQuery) {
+                    setIsNewQuery(false);
+                    return res.data.artObjects;
+                }
+                return [...prevData, ...res.data.artObjects];
+            });
             setIsloading(false);
             console.log("Load complete..");
         })

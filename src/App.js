@@ -5,6 +5,7 @@ import UserGeneral from './components/user/UserGeneral';
 import UserStats from './components/user/UserStats';
 import UserSecurity from './components/user/UserSecurity';
 import UserLogin from './components/user/UserLogin';
+import UserRegistration from './components/user/UserRegistration';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
           <h1>Quizzes</h1>
         </Route>
         <Route exact path="/register-user">
-          <h1>User registration</h1>
+          <UserRegistration />
         </Route>
         <Route exact path="/login">
           <UserLogin />

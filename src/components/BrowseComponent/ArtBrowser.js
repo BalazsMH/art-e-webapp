@@ -25,11 +25,7 @@ export default function ArtBrowser() {
         </ArtBrowserSidebar>
         <ArtBrowserContainer>
             {artData.length !== 0? artData.map((artPiece, index) => {
-                if (artData.length === index+1) {
-                    return <ArtCard lastItem={true} data={artPiece} key={index}></ArtCard>
-                } else {
-                    return <ArtCard lastItem={false} data={artPiece} key={index}></ArtCard>
-                }
+                return <ArtCard lastItem={artData.length === index+1} data={artPiece} key={index}></ArtCard>
             }) : <div>No results found for the term "{query}".</div>}
         </ArtBrowserContainer>
         </div>

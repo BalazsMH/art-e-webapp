@@ -3,7 +3,7 @@ import React, {useState, createContext} from 'react';
 export const ArtBrowserContext = createContext();
 
 
-export const ArtBrowserProvider = (props)=> {
+export const ArtDataProvider = (props)=> {
 
     const proba = "heelloo";
 

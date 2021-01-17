@@ -6,6 +6,7 @@ export const ArtBrowserContext = createContext();
 
 export const ArtDataProvider = (props)=> {
     const [artData, setArtData] = useState([]);
+    const [artWorkCount, setArtWorkCount] = useState(100);
     const [isLoading, setIsloading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
     const [resultPage, setResultPage] = useState(0);
@@ -48,6 +49,8 @@ export const ArtDataProvider = (props)=> {
                 }
                 return [...prevData, ...res.data.artObjects];
             });
+            setArtWorkCount(res.data.count);
+            setHasMore(res.data.artObjects.length > 0);
             setIsloading(false);
             console.log("Load complete..");
         })

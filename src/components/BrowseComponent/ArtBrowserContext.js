@@ -12,7 +12,6 @@ export const ArtDataProvider = (props)=> {
     const [resultPage, setResultPage] = useState(0);
     const [resultsPerPage, setResultsPerPage] = useState(10);
     //TODO: move default results per page to config file.
-    const [isNewQuery, setIsNewQuery] = useState(false);
     const [query, setQuery] = useState({term: null,
                                         involvedMaker: null,
                                         technique: null,
@@ -22,7 +21,6 @@ export const ArtDataProvider = (props)=> {
     const setQueryParam = (queryParam)=> {
         console.log(queryParam);
         setQuery(queryParam);
-        setIsNewQuery(true);
         setResultPage(0);
         console.log("setquery callled");
     }
@@ -30,7 +28,6 @@ export const ArtDataProvider = (props)=> {
     const setPage = (page)=> {
         setResultPage(page);
     }
-
 
     useEffect(() => {
         setIsloading(true);
@@ -47,10 +44,6 @@ export const ArtDataProvider = (props)=> {
         })
         .then(res => { 
             setArtData( prevData => {
-                if(isNewQuery) {
-                    setIsNewQuery(false);
-                    return res.data.artObjects;
-                }
                 return [...prevData, ...res.data.artObjects];
             });
             setArtWorkCount(res.data.count);
@@ -61,7 +54,34 @@ export const ArtDataProvider = (props)=> {
         .catch(e => {
             console.log(e);
         });
-    }, [query, resultPage])
+    }, [resultPage])
+
+    useEffect(() => {
+        setIsloading(true);
+        axios({
+            method: 'GET',
+            url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            params: {...(query.term ? {q : query.term} : {}),
+                    p: resultPage,
+                    ps: resultsPerPage,
+                    ...(query.involvedMaker ? {q : query.involvedMaker} : {}),
+                    ...(query.technique ? {q : query.technique} : {}),
+                    ...(query.datingPeriod ? {q : query.datingPeriod} : {})
+                }
+        })
+        .then(res => { 
+            setArtData( prevData => {
+                return res.data.artObjects;
+            });
+            setArtWorkCount(res.data.count);
+            setHasMore(res.data.artObjects.length > 0);
+            setIsloading(false);
+            console.log("Load complete..");
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }, [query])
 
 
     return (

@@ -24,7 +24,7 @@ export default function ArtCard(props) {
 
     useEffect(() => {
         if (hasImage) {
-            setImageUrl(props.data.webImage.url);
+            setImageUrl(props.data.headerImage.url);
         }
 
     }, [])
@@ -41,6 +41,7 @@ export default function ArtCard(props) {
 const ArtPicture = styled.img`
     object-fit: contain;
     max-width: 300px;
+    max-height: 800px;
 `;
 
 const ArtContainer = styled.div`

@@ -19,8 +19,8 @@ export default function ArtBrowser() {
     return (
         <div>
         <ArtBrowserSidebar>
-            <ArtSearchBox addQueryParam={addQueryParam}></ArtSearchBox>
-            <QueryTagContainer query={query}></QueryTagContainer>
+            <ArtSearchBox></ArtSearchBox>
+            <QueryTagContainer></QueryTagContainer>
         </ArtBrowserSidebar>
         <ArtBrowserContainer>
             {artData.length !== 0? artData.map((artPiece, key) => (

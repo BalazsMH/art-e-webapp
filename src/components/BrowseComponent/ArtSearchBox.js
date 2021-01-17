@@ -1,8 +1,12 @@
-import React, {useState, createRef} from 'react';
+import React, {useState, createRef, useContext} from 'react';
 import styled from 'styled-components';
+import {ArtBrowserContext} from './ArtBrowserContext';
 
-export default function ArtSearchBox(props) {
+
+export default function ArtSearchBox() {
     const searchedQuery = {};
+    const [artData, isLoading, addQueryParam, query] = useContext(ArtBrowserContext);
+
 
     let inputTerm, inputInvolvedMaker, inputTechnique, inputDatingPeriod;
     const centuryCount = 21;
@@ -28,11 +32,11 @@ export default function ArtSearchBox(props) {
     }
     
     const startSearch = () => {
-        props.addQueryParam({
-                            term: inputTerm,
-                            involvedMaker: inputInvolvedMaker,
-                            technique: inputTechnique,
-                            datingPeriod: inputDatingPeriod})
+        addQueryParam({
+                        term: inputTerm,
+                        involvedMaker: inputInvolvedMaker,
+                        technique: inputTechnique,
+                        datingPeriod: inputDatingPeriod})
     }
     //TODO: Keep searched phrases
 

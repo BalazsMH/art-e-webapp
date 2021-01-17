@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import UserGeneral from './components/user/UserGeneral';
 import UserStats from './components/user/UserStats';
 import UserSecurity from './components/user/UserSecurity';
+import UserLogin from './components/user/UserLogin';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
           <h1>User registration</h1>
         </Route>
         <Route exact path="/login">
-          <h1>Login</h1>
+          <UserLogin />
         </Route>
         <Route exact path="/logout">
           <h1>Logout</h1>

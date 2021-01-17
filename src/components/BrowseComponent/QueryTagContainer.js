@@ -12,7 +12,7 @@ export default function QueryTagContainer() {
     return (
         <div>
             {Object.entries(query).map(([key, value]) => {
-            if(value) return <QueryTag data={[key, value]}></QueryTag> 
+            if(value) return <QueryTag key={key} data={[key, value]}></QueryTag> 
         })}
         </div>
     )

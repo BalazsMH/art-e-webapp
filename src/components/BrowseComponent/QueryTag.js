@@ -6,12 +6,17 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 export default function QueryTag(props) {
 
     const [key, value] = props.data;
-    const [artData, isLoading, addQueryParam, query] = useContext(ArtBrowserContext);
+    const [artData, isLoading, setQueryParam, query] = useContext(ArtBrowserContext);
+
+    const removeTag = (e, key) => {
+        console.log(key);
+        setQueryParam({...query, ...{[key]: undefined}});
+    }
 
     return (
         <Tag key={key}>
             {value}
-            <span>X</span>
+            <RemoveButton onClick={(e)=> {removeTag(e, key)}}>X</RemoveButton>
         </Tag>
     )
 }
@@ -21,4 +26,8 @@ export default function QueryTag(props) {
 const Tag = styled.div`
     border-radius: 20px;
     border:solid;
+`;
+
+const RemoveButton = styled.span`
+    cursor: pointer;
 `;

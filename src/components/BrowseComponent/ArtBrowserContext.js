@@ -14,9 +14,10 @@ export const ArtDataProvider = (props)=> {
                                         datingPeriod: null});
 
 
-    const addQueryParam = (queryParam)=> {
+    const setQueryParam = (queryParam)=> {
         console.log(queryParam);
         setQuery(queryParam);
+        console.log("setquery callled");
     }
 
     let resultPage = 0;
@@ -47,7 +48,7 @@ export const ArtDataProvider = (props)=> {
 
 
     return (
-        <ArtBrowserContext.Provider value={[artData, isLoading, addQueryParam, query]}>
+        <ArtBrowserContext.Provider value={[artData, isLoading, setQueryParam, query]}>
             {props.children}
         </ArtBrowserContext.Provider>
     )

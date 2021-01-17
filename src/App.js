@@ -41,5 +41,6 @@ function App() {
     </Router>
   );
 }
+//TODO: Handle non-existing endpoint access attempts
 
 export default App;

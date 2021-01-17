@@ -9,8 +9,7 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 export default function ArtBrowser() {
 
     const [artData, isLoading, addQueryParam, query] = useContext(ArtBrowserContext);
-    const observer = useRef();
-    const lastArtworkRef = useCallback();
+
 
     if (isLoading) {
         return (
@@ -27,9 +26,9 @@ export default function ArtBrowser() {
         <ArtBrowserContainer>
             {artData.length !== 0? artData.map((artPiece, index) => {
                 if (artData.length === index+1) {
-                    return <ArtCard ref={lastArtworkRef} data={artPiece} key={index}></ArtCard>
+                    return <ArtCard lastItem={true} data={artPiece} key={index}></ArtCard>
                 } else {
-                    return <ArtCard data={artPiece} key={index}></ArtCard>
+                    return <ArtCard lastItem={false} data={artPiece} key={index}></ArtCard>
                 }
             }) : <div>No results found for the term "{query}".</div>}
         </ArtBrowserContainer>

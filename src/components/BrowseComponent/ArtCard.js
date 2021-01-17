@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import styled from 'styled-components';
 
 export default function ArtCard(props) {
@@ -6,6 +6,11 @@ export default function ArtCard(props) {
     const [artDetails, setArtDetails] = useState(props.data);
     const [hasImage, setHasImage] = useState(props.data.hasImage);
     const [imageUrl, setImageUrl] = useState();
+
+    const observer = useRef();
+    const lastArtworkRef = useCallback(node => {
+        console.log(node);
+    });
 
     useEffect(() => {
         if (hasImage) {
@@ -18,6 +23,7 @@ export default function ArtCard(props) {
         <ArtContainer>
             {hasImage ? <ArtPicture src={imageUrl} alt={artDetails.title}></ArtPicture> : <span>No picture available</span> } 
             {artDetails.longTitle}
+            {props.lastItem && <div ref={lastArtworkRef}></div>}
         </ArtContainer>
     )
 }

@@ -18,7 +18,7 @@ const UserGeneral = () => {
             <UserSidebar />
             <p>Username: { userData.userName }</p>
             <p>Registration date: { userData.registrationDate }</p>
-            <p>Username: { userData.email }</p>
+            <p>E-mail: { userData.email }</p>
         </div>
     )
 }

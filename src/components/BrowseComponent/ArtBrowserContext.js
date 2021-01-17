@@ -27,6 +27,10 @@ export const ArtDataProvider = (props)=> {
         console.log("setquery callled");
     }
 
+    const setPage = (page)=> {
+        setResultPage(page);
+    }
+
 
     useEffect(() => {
         setIsloading(true);
@@ -57,11 +61,11 @@ export const ArtDataProvider = (props)=> {
         .catch(e => {
             console.log(e);
         });
-    }, [query])
+    }, [query, resultPage])
 
 
     return (
-        <ArtBrowserContext.Provider value={[artData, isLoading, setQueryParam, query]}>
+        <ArtBrowserContext.Provider value={[artData, isLoading, setQueryParam, query, hasMore, setPage, resultPage]}>
             {props.children}
         </ArtBrowserContext.Provider>
     )

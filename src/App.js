@@ -6,6 +6,8 @@ import UserStats from './components/user/UserStats';
 import UserSecurity from './components/user/UserSecurity';
 import UserLogin from './components/user/UserLogin';
 import UserRegistration from './components/user/UserRegistration';
+import ArtBrowser from './components/BrowseComponent/ArtBrowser';
+import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 
 
 function App() {
@@ -17,7 +19,10 @@ function App() {
           <h1>Landing page</h1>
         </Route>
         <Route exact path="/browse">
-          <h1>Browse</h1>
+          <ArtDataProvider>
+            <h1>Browse</h1>
+            <ArtBrowser></ArtBrowser>
+          </ArtDataProvider>
         </Route>
         <Route exact path="/quiz">
           <h1>Quizzes</h1>

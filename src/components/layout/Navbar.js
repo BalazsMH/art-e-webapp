@@ -24,10 +24,11 @@ const NavContainer = styled.header`
     top: 0;
     z-index: 100;
     background-color: #231F20;
+    padding:0.2rem;
 `;
 
 const SiteLogo = styled.img`
-    max-width: 150px;
+    max-width: 6rem;
 `;
 
 export default Navbar;

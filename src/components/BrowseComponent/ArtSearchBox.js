@@ -45,7 +45,7 @@ export default function ArtSearchBox() {
             <SearchInput type="text" placeholder="Search for term" onChange={handleTermInput}></SearchInput>
             <SearchInput type="text" placeholder="Search for artist" onChange={handleMakerInput}></SearchInput>
             <SearchInput type="text" placeholder="Search for technique" onChange={handleTechniqueInput}></SearchInput>
-            <SearchSelect onChange={handleDatingPeriodInput}>
+            <SearchSelect onChange={handleDatingPeriodInput} value={"none"}>
                 <option value="none" defaultValue disabled>Search for century</option>
                 {[...Array(centuryCount+1)].map((element, i) => <option key={i} value={i}>{i}</option>)}
             </SearchSelect>
@@ -61,10 +61,8 @@ const SearchBox = styled.div`
 `;
 
 const SearchInput = styled.input`
-    size: 20;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    font-size: 1rem;
     padding: 0.2rem;
 
 `;
@@ -72,13 +70,11 @@ const SearchInput = styled.input`
 const SearchSelect = styled.select `
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    font-size: 1rem;
     padding: 0.2rem;
 `;
 
 const SearchButton = styled.button`
     margin-top: 1rem;
     margin-bottom: 1rem;
-    font-size: 1rem;
     padding: 0.2rem;
 `;

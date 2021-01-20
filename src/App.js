@@ -20,7 +20,6 @@ function App() {
         </Route>
         <Route exact path="/browse">
           <ArtDataProvider>
-            <h1>Browse</h1>
             <ArtBrowser></ArtBrowser>
           </ArtDataProvider>
         </Route>

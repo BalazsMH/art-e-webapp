@@ -42,15 +42,15 @@ export default function ArtSearchBox() {
 
     return (
         <SearchBox onKeyDown={handleEnterPressed}>
-            <input type="text" placeholder="focusSearch for term" onChange={handleTermInput}></input>
-            <input type="text" placeholder="Search for artist" onChange={handleMakerInput}></input>
-            <input type="text" placeholder="Search for technique" onChange={handleTechniqueInput}></input>
-            <select onChange={handleDatingPeriodInput}>
+            <SearchInput type="text" placeholder="Search for term" onChange={handleTermInput}></SearchInput>
+            <SearchInput type="text" placeholder="Search for artist" onChange={handleMakerInput}></SearchInput>
+            <SearchInput type="text" placeholder="Search for technique" onChange={handleTechniqueInput}></SearchInput>
+            <SearchSelect onChange={handleDatingPeriodInput}>
                 <option value="none" defaultValue disabled>Search for century</option>
                 {[...Array(centuryCount+1)].map((element, i) => <option key={i} value={i}>{i}</option>)}
-            </select>
+            </SearchSelect>
 
-            <button ref={searchButton} type="button" onClick={(e)=> {startSearch()}}>Search!</button>
+            <SearchButton ref={searchButton} type="button" onClick={(e)=> {startSearch()}}>Search!</SearchButton>
         </SearchBox>
     )
 }
@@ -58,4 +58,27 @@ export default function ArtSearchBox() {
 const SearchBox = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+const SearchInput = styled.input`
+    size: 20;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.2rem;
+
+`;
+
+const SearchSelect = styled.select `
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    padding: 0.2rem;
+`;
+
+const SearchButton = styled.button`
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 0.2rem;
 `;

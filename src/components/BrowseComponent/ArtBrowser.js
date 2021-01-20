@@ -44,4 +44,6 @@ const PictureBrowser = styled.div`
 
 const ArtBrowserSidebar = styled.div`
     float:left;
+    padding: 0.5rem;
+    margin-top: 1rem;
 `;

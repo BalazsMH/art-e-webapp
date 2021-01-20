@@ -1,4 +1,7 @@
+/* Montserrat font */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+/* Nothing you could do font */
+@import url("https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap");
 
 body {
   font-family: "Montserrat", sans-serif;

@@ -42,10 +42,15 @@ export default function ArtSearchBox() {
 
     return (
         <SearchBox onKeyDown={handleEnterPressed}>
-            <SearchInput type="text" placeholder="Search for term" onChange={handleTermInput}></SearchInput>
-            <SearchInput type="text" placeholder="Search for artist" onChange={handleMakerInput}></SearchInput>
-            <SearchInput type="text" placeholder="Search for technique" onChange={handleTechniqueInput}></SearchInput>
-            <SearchSelect onChange={handleDatingPeriodInput} value={"none"}>
+            <SearchTitle>Search</SearchTitle>
+            <label htmlFor="term">Term:</label>
+            <SearchInput id="term" type="text" placeholder="Search for term" onChange={handleTermInput}></SearchInput>
+            <label htmlFor="artist">Artist:</label>
+            <SearchInput id="artist" type="text" placeholder="Search for artist" onChange={handleMakerInput}></SearchInput>
+            <label htmlFor="technique">Technique:</label>
+            <SearchInput type="technique" placeholder="Search for technique" onChange={handleTechniqueInput}></SearchInput>
+            <label htmlFor="century">Century:</label>
+            <SearchSelect id="century" onChange={handleDatingPeriodInput} value={"none"}>
                 <option value="none" defaultValue disabled>Search for century</option>
                 {[...Array(centuryCount+1)].map((element, i) => <option key={i} value={i}>{i}</option>)}
             </SearchSelect>
@@ -54,6 +59,11 @@ export default function ArtSearchBox() {
         </SearchBox>
     )
 }
+
+const SearchTitle = styled.h2`
+    padding-bottom:0.7rem;
+    
+`;
 
 const SearchBox = styled.div`
     display: flex;

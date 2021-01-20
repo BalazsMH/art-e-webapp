@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../images/Site-logo.png';
+import logo from '../../images/arte.png';
 
 const Navbar = () => {
     return (
         <NavContainer>
-            <img src={logo} alt="Site Logo" /><br/>
+            <a href="/"><SiteLogo src={logo} alt="Art-E" /></a>
             <div>
                 <a href="/browse">Browse</a>
                 <a href="/quiz">Quiz</a>
@@ -23,6 +23,11 @@ const NavContainer = styled.header`
     position: -webkit-sticky;
     top: 0;
     z-index: 100;
+    background-color: #231F20;
+`;
+
+const SiteLogo = styled.img`
+    max-width: 150px;
 `;
 
 export default Navbar;

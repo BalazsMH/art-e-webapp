@@ -18,21 +18,26 @@ export default function ArtBrowser() {
     }
 
     return (
-        <div>
-        <ArtBrowserSidebar>
-            <ArtSearchBox></ArtSearchBox>
-            <QueryTagContainer></QueryTagContainer>
-        </ArtBrowserSidebar>
-        <ArtBrowserContainer>
-            {artData.length !== 0? artData.map((artPiece, index) => {
-                return <ArtCard lastItem={artData.length === index+1} data={artPiece} key={index}></ArtCard>
-            }) : <div>No results found for the term "{query}".</div>}
-        </ArtBrowserContainer>
-        </div>
+        <BrowserContainer>
+            <ArtBrowserSidebar>
+                <ArtSearchBox></ArtSearchBox>
+                <QueryTagContainer></QueryTagContainer>
+            </ArtBrowserSidebar>
+            <PictureBrowser>
+                {artData.length !== 0? artData.map((artPiece, index) => {
+                    return <ArtCard lastItem={artData.length === index+1} data={artPiece} key={index}></ArtCard>
+                }) : <div>No results found for the term "{query}".</div>}
+            </PictureBrowser>
+        </BrowserContainer>
     )
 }
 
-const ArtBrowserContainer = styled.div`
+const BrowserContainer = styled.div`
+    width:auto;
+`;
+
+
+const PictureBrowser = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 `;

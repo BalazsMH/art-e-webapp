@@ -49,8 +49,13 @@ const NavLink = styled.a`
     padding: 0.5rem;
     margin: 0 0.5rem 0 0.5rem;
     color:inherit;
+    &:hover{
+        text-decoration: underline;
+    }
 
 `;
+
+
 
 const SiteLogo = styled.img`
     max-width: 6rem;

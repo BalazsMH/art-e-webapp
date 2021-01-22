@@ -6,14 +6,8 @@ import UserStats from './components/user/UserStats';
 import UserSecurity from './components/user/UserSecurity';
 import UserLogin from './components/user/UserLogin';
 import UserRegistration from './components/user/UserRegistration';
-
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
-import UserGeneral from './components/user/UserGeneral';
-import UserStats from './components/user/UserStats';
-import UserSecurity from './components/user/UserSecurity';
-import UserLogin from './components/user/UserLogin';
-import UserRegistration from './components/user/UserRegistration';
 import Scoreboard from './components/quiz/Scoreboard';
 
 

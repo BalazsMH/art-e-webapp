@@ -13,8 +13,8 @@ import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 function App() {
   return (
     <>
-      <Navbar />
       <Router>
+      <Navbar />
         <Switch>
         {/* <div className="App"> */}
           <Route exact path="/">

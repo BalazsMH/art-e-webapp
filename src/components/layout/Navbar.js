@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import logo from '../../images/arte.png';
 
 const Navbar = () => {
     return (
         <NavContainer>
-            <a href="/"><SiteLogo src={logo} alt="Art-E" /></a>
+            <Link to="/"><SiteLogo src={logo} alt="Art-E" /></Link>
             <NavRoutes>
-                <NavLink href="/browse">Browse</NavLink>
-                <NavLink href="/quiz">Quiz</NavLink>
-                <NavLink href="/about">About</NavLink>
+                <NavLink to="/browse">Browse</NavLink>
+                <NavLink to="/quiz">Quiz</NavLink>
+                <NavLink to="/about">About</NavLink>
                 <UserFunctionsContainer>
-                    <NavLink href="/register-user">Registration</NavLink>
-                    <NavLink href="/login">Login</NavLink>
+                    <NavLink to="/register-user">Registration</NavLink>
+                    <NavLink to="/login">Login</NavLink>
                 </UserFunctionsContainer>
             </NavRoutes>
         </NavContainer>
@@ -43,7 +44,7 @@ const UserFunctionsContainer = styled.div`
     margin-left: auto;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
     text-decoration: none;
     font-size: 1rem;
     padding: 0.5rem;

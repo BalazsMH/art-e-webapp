@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, BrowserRouter as Router, Redirect} from 'react-router-dom';
+import {Route, Switch, BrowserRouter as Router, Redirect} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import UserGeneral from './components/user/UserGeneral';
 import UserStats from './components/user/UserStats';
@@ -15,7 +15,8 @@ function App() {
     <>
       <Navbar />
       <Router>
-        <div className="App">
+        <Switch>
+        {/* <div className="App"> */}
           <Route exact path="/">
             <h1>Landing page</h1>
           </Route>
@@ -54,7 +55,8 @@ function App() {
           <Route exact path="/user/security">
             <UserSecurity />
           </Route>
-        </div>
+        {/* </div> */}
+        </Switch>
       </Router>
     </>
   );

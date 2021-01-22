@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import styled from 'styled-components';
 
 const UserRegistration = () => {
     const [birthDate, setBirthDate] = useState(new Date());
@@ -16,7 +17,7 @@ const UserRegistration = () => {
     }
 
     return (
-        <div>
+        <RegistrationContainer>
             <form>
                 <label>Username: </label>
                 <input onChange={(e) => handleChange(e, userName)} type="text" name="userName" placeholder="Enter your username here" />
@@ -33,10 +34,18 @@ const UserRegistration = () => {
                 <label>Date of birth: </label>
                 <DatePicker selected={birthDate} onChange={(date) => setBirthDate(date)} />
                 <br />
-                <button onClick={() => handleRegistrationSubmit}>Registration</button>
+                <button onClick={() => handleRegistrationSubmit}>Register</button>
             </form>
-        </div>
+        </RegistrationContainer>
     )
 }
+
+
+const RegistrationContainer = styled.div`
+    display: flex;
+    padding: 5rem;
+    line-height: 3rem;
+
+`;
 
 export default UserRegistration;

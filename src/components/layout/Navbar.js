@@ -53,9 +53,7 @@ const NavLink = styled(Link)`
     &:hover{
         text-decoration: underline;
     }
-
 `;
-
 
 
 const SiteLogo = styled.img`

@@ -41,6 +41,7 @@ export const ArtDataProvider = (props)=> {
             params: {...(query.term ? {q : query.term} : {}),
                     p: resultPage,
                     ps: resultsPerPage,
+                    imgonly: true,
                     ...(query.involvedMaker ? {q : query.involvedMaker} : {}),
                     ...(query.technique ? {q : query.technique} : {}),
                     ...(query.datingPeriod ? {q : query.datingPeriod} : {})

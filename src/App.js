@@ -8,6 +8,7 @@ import UserLogin from './components/user/UserLogin';
 import UserRegistration from './components/user/UserRegistration';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
+import Scoreboard from './components/quiz/Scoreboard';
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
             <h1>About</h1>
           </Route>
           <Route exact path="/scoreboard">
-            <h1>Scoreboard</h1>
+            <Scoreboard />
           </Route>
           <Route exact path="/user">
             <Redirect to="/user/general" />

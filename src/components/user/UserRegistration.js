@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import styled from 'styled-components';
 
+
 const UserRegistration = () => {
     const [birthDate, setBirthDate] = useState(new Date());
 
@@ -45,7 +46,7 @@ const RegistrationContainer = styled.div`
     display: flex;
     padding: 5rem;
     line-height: 3rem;
-
 `;
+
 
 export default UserRegistration;

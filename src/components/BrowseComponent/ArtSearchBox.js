@@ -42,20 +42,49 @@ export default function ArtSearchBox() {
 
     return (
         <SearchBox onKeyDown={handleEnterPressed}>
-            <input type="text" placeholder="focusSearch for term" onChange={handleTermInput}></input>
-            <input type="text" placeholder="Search for artist" onChange={handleMakerInput}></input>
-            <input type="text" placeholder="Search for technique" onChange={handleTechniqueInput}></input>
-            <select onChange={handleDatingPeriodInput}>
+            <SearchTitle>Search</SearchTitle>
+            <label htmlFor="term">Term:</label>
+            <SearchInput id="term" type="text" placeholder="Search for term" onChange={handleTermInput}></SearchInput>
+            <label htmlFor="artist">Artist:</label>
+            <SearchInput id="artist" type="text" placeholder="Search for artist" onChange={handleMakerInput}></SearchInput>
+            <label htmlFor="technique">Technique:</label>
+            <SearchInput type="technique" placeholder="Search for technique" onChange={handleTechniqueInput}></SearchInput>
+            <label htmlFor="century">Century:</label>
+            <SearchSelect id="century" onChange={handleDatingPeriodInput} value={"none"}>
                 <option value="none" defaultValue disabled>Search for century</option>
                 {[...Array(centuryCount+1)].map((element, i) => <option key={i} value={i}>{i}</option>)}
-            </select>
+            </SearchSelect>
 
-            <button ref={searchButton} type="button" onClick={(e)=> {startSearch()}}>Search!</button>
+            <SearchButton ref={searchButton} type="button" onClick={(e)=> {startSearch()}}>Search!</SearchButton>
         </SearchBox>
     )
 }
 
+const SearchTitle = styled.h2`
+    padding-bottom:0.7rem;
+    
+`;
+
 const SearchBox = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+const SearchInput = styled.input`
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem;
+
+`;
+
+const SearchSelect = styled.select `
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem;
+`;
+
+const SearchButton = styled.button`
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.2rem;
 `;

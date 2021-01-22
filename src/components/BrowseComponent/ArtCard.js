@@ -31,8 +31,13 @@ export default function ArtCard(props) {
 
     return (
         <ArtContainer>
+            <CardHeader>
             {hasImage ? <ArtPicture src={imageUrl} alt={artDetails.title}></ArtPicture> : <span>No picture available</span> } 
-            {artDetails.longTitle}
+            </CardHeader>
+            <CardBody>
+                {artDetails.longTitle}
+            </CardBody>
+            
             {props.lastItem && <div ref={lastArtworkRef}></div>}
         </ArtContainer>
     )
@@ -40,8 +45,17 @@ export default function ArtCard(props) {
 
 const ArtPicture = styled.img`
     object-fit: contain;
-    max-width: 300px;
-    max-height: 800px;
+    height: auto;
+    max-width: 35rem;
+
+`;
+
+const CardHeader = styled.div`
+
+`;
+
+const CardBody = styled.div`
+
 `;
 
 const ArtContainer = styled.div`

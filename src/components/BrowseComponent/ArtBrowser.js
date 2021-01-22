@@ -34,6 +34,7 @@ export default function ArtBrowser() {
 
 const BrowserContainer = styled.div`
     width:auto;
+    max-width: 100%;
 `;
 
 

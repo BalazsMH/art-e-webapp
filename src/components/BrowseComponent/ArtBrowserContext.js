@@ -10,7 +10,7 @@ export const ArtDataProvider = (props)=> {
     const [isLoading, setIsloading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
     const [resultPage, setResultPage] = useState(0);
-    const [resultsPerPage, setResultsPerPage] = useState(20);
+    const resultsPerPage = 20;
     //TODO: move default results per page to config file.
     const [query, setQuery] = useState({term: null,
                                         involvedMaker: null,

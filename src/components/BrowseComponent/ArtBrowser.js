@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useCallback} from 'react';
+import React, {useContext} from 'react';
 import ArtCard from './ArtCard';
 import styled from 'styled-components';
 import ArtSearchBox from './ArtSearchBox';

@@ -44,9 +44,9 @@ export default function ArtCard(props) {
 }
 
 const ArtPicture = styled.img`
-    object-fit: contain;
-    height: auto;
-    max-width: 35rem;
+    object-fit: cover;
+    height: 20rem;
+    width: 25rem;
 
 `;
 

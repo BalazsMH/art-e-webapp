@@ -5,7 +5,7 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 
 export default function ArtSearchBox() {
     const searchedQuery = {};
-    const [artData, isLoading, setQueryParam, query] = useContext(ArtBrowserContext);
+    const {setQueryParam} = useContext(ArtBrowserContext);
 
 
     let inputTerm, inputInvolvedMaker, inputTechnique, inputDatingPeriod;

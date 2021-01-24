@@ -6,7 +6,7 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 export default function QueryTag(props) {
 
     const [key, value] = props.data;
-    const [artData, isLoading, setQueryParam, query] = useContext(ArtBrowserContext);
+    const {setQueryParam, query} = useContext(ArtBrowserContext);
 
     const removeTag = (e, key) => {
         console.log(key);

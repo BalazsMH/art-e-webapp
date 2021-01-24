@@ -6,7 +6,7 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 
 
 export default function QueryTagContainer() {
-    const [artData, isLoading, addQueryParam, query] = useContext(ArtBrowserContext);
+    const {query} = useContext(ArtBrowserContext);
 
 
     return (

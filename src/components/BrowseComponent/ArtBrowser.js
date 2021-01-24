@@ -8,7 +8,7 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 
 export default function ArtBrowser() {
 
-    const [artData, isLoading, addQueryParam, query] = useContext(ArtBrowserContext);
+    const {artData, isLoading, query} = useContext(ArtBrowserContext);
 
 
     if (isLoading) {
@@ -36,7 +36,6 @@ const BrowserContainer = styled.div`
     width:auto;
     max-width: 100%;
 `;
-
 
 const PictureBrowser = styled.div`
     display: grid;

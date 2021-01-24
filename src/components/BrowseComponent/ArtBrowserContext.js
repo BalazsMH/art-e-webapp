@@ -65,7 +65,7 @@ export const ArtDataProvider = (props)=> {
 
 
     return (
-        <ArtBrowserContext.Provider value={[artData, isLoading, setQueryParam, query, hasMore, setPage, resultPage]}>
+        <ArtBrowserContext.Provider value={{artData, isLoading, setQueryParam, query, hasMore, setPage, resultPage}}>
             {props.children}
         </ArtBrowserContext.Provider>
     )

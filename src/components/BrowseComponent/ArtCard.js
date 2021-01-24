@@ -7,7 +7,7 @@ export default function ArtCard(props) {
     const artDetails = props.data;
     const [hasImage, setHasImage] = useState(props.data.hasImage);
     const [imageUrl, setImageUrl] = useState();
-    const [artData, isLoading, addQueryParam, query, hasMore, setPage, resultPage] = useContext(ArtBrowserContext);
+    const {isLoading, hasMore, setPage, resultPage} = useContext(ArtBrowserContext);
 
     const observer = useRef();
     const lastArtworkRef = useCallback(node => {

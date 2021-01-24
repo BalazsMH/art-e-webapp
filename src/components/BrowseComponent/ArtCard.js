@@ -5,20 +5,20 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 export default function ArtCard(props) {
     const artDetails = props.data;
     const imageUrl = props.data.headerImage.url;
-    const {isLoading, hasMore, setPage, resultPage} = useContext(ArtBrowserContext);
+    const {isLoading, setPageNumber, pageNumber} = useContext(ArtBrowserContext);
 
     const observer = useRef();
     const lastArtworkRef = useCallback(node => {
         if (isLoading) return;
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && hasMore) {
+            if (entries[0].isIntersecting && props.hasMore) {
                 console.log("visible");
-                setPage(resultPage+1);
+                setPageNumber(pageNumber + 1);
             }
         });
         if (node) observer.current.observe(node);
-    }, [isLoading, hasMore]);
+    }, [isLoading, props.hasMore]);
 
     return (
         <ArtContainer>

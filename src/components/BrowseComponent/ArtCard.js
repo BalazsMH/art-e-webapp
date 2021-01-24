@@ -4,7 +4,7 @@ import {ArtBrowserContext} from './ArtBrowserContext';
 
 export default function ArtCard(props) {
 
-    const [artDetails, setArtDetails] = useState(props.data);
+    const artDetails = props.data;
     const [hasImage, setHasImage] = useState(props.data.hasImage);
     const [imageUrl, setImageUrl] = useState();
     const [artData, isLoading, addQueryParam, query, hasMore, setPage, resultPage] = useContext(ArtBrowserContext);

@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import {ArtBrowserContext} from './ArtBrowserContext';
 
 export default function ArtCard(props) {
-
     const artDetails = props.data;
-    const [hasImage, setHasImage] = useState(props.data.hasImage);
-    const [imageUrl, setImageUrl] = useState();
+    const imageUrl = props.data.headerImage.url;
     const {isLoading, hasMore, setPage, resultPage} = useContext(ArtBrowserContext);
 
     const observer = useRef();
@@ -22,17 +20,10 @@ export default function ArtCard(props) {
         if (node) observer.current.observe(node);
     }, [isLoading, hasMore]);
 
-    useEffect(() => {
-        if (hasImage) {
-            setImageUrl(props.data.headerImage.url);
-        }
-
-    }, [])
-
     return (
         <ArtContainer>
             <CardHeader>
-            {hasImage ? <ArtPicture src={imageUrl} alt={artDetails.title}></ArtPicture> : <span>No picture available</span> } 
+            <ArtPicture src={imageUrl} alt={artDetails.title}></ArtPicture>
             </CardHeader>
             <CardBody>
                 {artDetails.longTitle}
@@ -68,4 +59,3 @@ const ArtContainer = styled.div`
     border: solid lightgray;
     border-radius: 10px;
 `;
- 

@@ -24,7 +24,7 @@ export default function ArtBrowser() {
                 <QueryTagContainer></QueryTagContainer>
             </ArtBrowserSidebar>
             <PictureBrowser>
-                {artData.length !== 0? artData.map((artPiece, index) => {
+                {artData.length !== 0? artData.filter((artPiece) => artPiece.hasImage).map((artPiece, index) => {
                     return <ArtCard lastItem={artData.length === index+1} data={artPiece} key={index}></ArtCard>
                 }) : <div>No results found for the term "{query}".</div>}
             </PictureBrowser>

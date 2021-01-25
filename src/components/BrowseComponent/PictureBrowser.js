@@ -1,26 +1,64 @@
-import React, { useContext } from 'react';
-import useArtLoader from '../../hooks/useArtLoader';
+import React, { useContext, useState, useEffect } from 'react';
 import { ArtBrowserContext } from './ArtBrowserContext';
 import ArtCard from './ArtCard';
 import styled from 'styled-components';
-
+import InfiniteScroll from 'react-infinite-scroll-component';
+import axios from 'axios';
 
 const PictureBrowser = () => {
-    const {query, pageNumber} = useContext(ArtBrowserContext);
-    const {artData, isLoading, hasMore} = useArtLoader(query, pageNumber);
+    const {query, pageNumber, setPageNumber} = useContext(ArtBrowserContext);
+    const [artData, setArtData] = useState([]);
+    const [hasMore, setHasMore] = useState(true);
+    const resultsPerPage = 20;
 
-    if (isLoading) {
-        return (
-            <div>Please wait..</div>
-        )
+    useEffect(() => {
+        setArtData([]);
+        fetchMoreData()
+    }, [query])
+
+    const fetchMoreData = () => {
+        axios({
+            method: 'GET',
+            url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            params: {p: pageNumber,
+                    ps: resultsPerPage,
+                    imgonly: true,
+                    ...(query.term ? {q : query.term} : {}),
+                    ...(query.involvedMaker ? {involvedMaker : query.involvedMaker} : {}),
+                    ...(query.technique ? {technique : query.technique} : {}),
+                    ...(query.datingPeriod ? {"f.dating.period" : query.datingPeriod} : {})
+                }
+        }).then(res => {
+            console.log(res);
+            setArtData( () => {
+                return [...artData, ...res.data.artObjects];
+            });
+            setHasMore(res.data.artObjects.length > 0);
+            setPageNumber(pageNumber + 1);
+            console.log("Load complete..");
+        })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
     return (
         <BrowserDiv>
-        {artData.length !== 0 ? artData
-                .filter((artPiece) => artPiece.hasImage)
-                .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
-            : <div>No results found for the term.</div>}
+            <InfiniteScroll
+                dataLength={artData.length} //This is important field to render the next data
+                next={fetchMoreData}
+                hasMore={hasMore}
+                loader={<div>Please wait..</div>}
+                endMessage={
+                    <p style={{ textAlign: 'center' }}>
+                    <b>No more results.</b>
+                    </p>
+                }>
+                {artData.length !== 0 ? artData
+                    .filter((artPiece) => artPiece.hasImage)
+                    .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
+                : <div>No results found for the term.</div>}
+            </InfiniteScroll>
         </BrowserDiv>
     )
 }
@@ -29,4 +67,5 @@ const BrowserDiv = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 `;
+
 export default PictureBrowser;

@@ -1,25 +1,10 @@
-import React, {useState, useEffect, useRef, useCallback, useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {ArtBrowserContext} from './ArtBrowserContext';
 
 export default function ArtCard(props) {
     const artDetails = props.data;
     const imageUrl = props.data.headerImage.url;
-    const {isLoading, setPageNumber, pageNumber} = useContext(ArtBrowserContext);
-
-    const observer = useRef();
-    const lastArtworkRef = useCallback(node => {
-        if (isLoading) return;
-        if (observer.current) observer.current.disconnect();
-        observer.current = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && props.hasMore) {
-                console.log("visible");
-                setPageNumber(pageNumber + 1);
-            }
-        });
-        if (node) observer.current.observe(node);
-    }, [isLoading, props.hasMore]);
-
+    
     return (
         <ArtContainer>
             <CardHeader>
@@ -28,8 +13,6 @@ export default function ArtCard(props) {
             <CardBody>
                 {artDetails.longTitle}
             </CardBody>
-            
-            {props.lastItem && <div ref={lastArtworkRef}></div>}
         </ArtContainer>
     )
 }

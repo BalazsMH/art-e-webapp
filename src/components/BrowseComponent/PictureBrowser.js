@@ -12,8 +12,10 @@ const PictureBrowser = () => {
     const resultsPerPage = 20;
 
     useEffect(() => {
-        setArtData([]);
-        fetchMoreData()
+        artData.length = 0;
+        setArtData(artData);
+        console.log("Artadata supposed to be empty:" + artData);
+        fetchMoreData();
     }, [query])
 
     const fetchMoreData = () => {
@@ -23,6 +25,7 @@ const PictureBrowser = () => {
             params: {p: pageNumber,
                     ps: resultsPerPage,
                     imgonly: true,
+                    culture: "en",
                     ...(query.term ? {q : query.term} : {}),
                     ...(query.involvedMaker ? {involvedMaker : query.involvedMaker} : {}),
                     ...(query.technique ? {technique : query.technique} : {}),

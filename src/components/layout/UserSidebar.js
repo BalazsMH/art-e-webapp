@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const UserSidebar = () => {
     return (
         <div>
-            <a href="/user/general">General</a>
-            <a href="/user/game">Scores</a>
-            <a href="/user/security">Security</a>
+            <Link to="/user/game">Scores</Link>
+            <Link to="/user/general">General</Link>
+            <Link to="/user/security">Security</Link>
         </div>
     )
 }

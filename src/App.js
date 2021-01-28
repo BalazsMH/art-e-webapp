@@ -9,6 +9,7 @@ import UserRegistration from './components/user/UserRegistration';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
+import Quiz from './components/quiz/Quiz';
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">
-            <h1>Quizzes</h1>
+            <Quiz />
           </Route>
           <Route exact path="/register-user">
             <UserRegistration />

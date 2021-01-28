@@ -9,6 +9,7 @@ const DUMMY_API_URL = 'https://opentdb.com/api.php?amount=5&category=25&difficul
 const Quiz = () => {
     
     const [questions, setQuestions] = useState([])
+    const [currentIndex, setCurrentIndex] = useState(0)
     
     useEffect(() => {
         axios({
@@ -21,10 +22,19 @@ const Quiz = () => {
             console.log(e);
         })
     }, [])
+
+    const handleAnswer = (answer) => {
+        setCurrentIndex(currentIndex + 1);
+
+        if(answer === questions[currentIndex].correct_answer) {
+            
+        }
+    }
+
     return (
         questions.length > 0 ? (
         <QuizContainer>            
-            <Question data={questions[0]} />
+            <Question data={questions[currentIndex]} handleAnswer={handleAnswer} />
         </QuizContainer>
         ) : <h1>Loading...</h1>
         )

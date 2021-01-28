@@ -5,21 +5,25 @@ import {AnswerButton} from './AnswerButton'
 const DUMMY_IMAGE_URL = 'https://blog.studentlifenetwork.com/wp-content/uploads/2018/04/AppLogo-Quizlet-670x670.png'
 
 export const Question = ({
+    handleAnswer,
     data: { question, correct_answer, incorrect_answers },
-}) => (
+}) => {
+
+    const shuffledAnswers = [correct_answer, ...incorrect_answers].sort(() => Math.random() - 0.5);
+
+    return (
     <div>
     <QuestionContainer>
         <h2 className="text-2xl">{question}</h2>
         <img src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></img>
     </QuestionContainer>
     <AnswerContainer>
-        <AnswerButton answer={correct_answer}/>
-        <AnswerButton answer={incorrect_answers[0]}/>
-        <AnswerButton answer={incorrect_answers[1]}/>
-        <AnswerButton answer={incorrect_answers[2]}/>
+        {shuffledAnswers.map(answer => 
+            <AnswerButton handleAnswer={handleAnswer} answer={answer}/>
+        )}
     </AnswerContainer>
     </div>
-)
+    )}
 
 const QuestionContainer = styled.div`
     background: #DAD299;

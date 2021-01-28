@@ -2,9 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 
-export const AnswerButton = ({ answer }) => (
+export const AnswerButton = ({ handleAnswer, answer }) => (
     <div>
-        <Button>{answer}</Button>
+        <Button onClick={() => handleAnswer(answer)}>{answer}</Button>
     </div>
 )
 

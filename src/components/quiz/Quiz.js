@@ -2,16 +2,20 @@ import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+const DUMMY_API_URL = 'https://opentdb.com/api.php?amount=5&category=25&difficulty=medium&type=multiple'; 
+const DUMMY_IMAGE_URL = 'https://blog.studentlifenetwork.com/wp-content/uploads/2018/04/AppLogo-Quizlet-670x670.png'
+
 const Quiz = () => {
-
-    const dummyApiUrl = 'https://opentdb.com/api.php?amount=5&category=25&difficulty=medium&type=multiple'; 
-
+    
+    const [questions, setQuestions] = useState([])
+    
     useEffect(() => {
         axios({
             method: 'GET',
-            url: dummyApiUrl,
+            url: DUMMY_API_URL,
         }).then(res => {
             console.log(res.data.results);
+            setQuestions(res.data.results)
             console.log("Load complete..");
         })
         .catch(e => {
@@ -19,18 +23,21 @@ const Quiz = () => {
         })
     }, [])
     return (
-        <QuizContainer>
+        questions.length > 0 ? (
+        <QuizContainer>            
             <QuestionContainer>
-                <h2 className="text-2xl">Question for the Quiz App</h2>
+                <h2 className="text-2xl">{questions[1].question}</h2>
+                <img src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></img>
             </QuestionContainer>
             <AnswerContainer>
-                <AnswerButton>A</AnswerButton>
-                <AnswerButton>B</AnswerButton>
-                <AnswerButton>C</AnswerButton>
-                <AnswerButton>D</AnswerButton>
+                <AnswerButton>{questions[1].correct_answer}</AnswerButton>
+                <AnswerButton>{questions[1].incorrect_answers[0]}</AnswerButton>
+                <AnswerButton>{questions[1].incorrect_answers[1]}</AnswerButton>
+                <AnswerButton>{questions[1].incorrect_answers[2]}</AnswerButton>
             </AnswerContainer>
         </QuizContainer>
-    )
+        ) : <h1>Loading...</h1>
+        )
 }
 
 const QuizContainer = styled.div`

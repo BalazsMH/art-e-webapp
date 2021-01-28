@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import {AnswerButton} from './AnswerButton'
 
 const DUMMY_IMAGE_URL = 'https://blog.studentlifenetwork.com/wp-content/uploads/2018/04/AppLogo-Quizlet-670x670.png'
 
@@ -12,10 +13,10 @@ export const Question = ({
         <img src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></img>
     </QuestionContainer>
     <AnswerContainer>
-        <AnswerButton>{correct_answer}</AnswerButton>
-        <AnswerButton>{incorrect_answers[0]}</AnswerButton>
-        <AnswerButton>{incorrect_answers[1]}</AnswerButton>
-        <AnswerButton>{incorrect_answers[2]}</AnswerButton>
+        <AnswerButton answer={correct_answer}/>
+        <AnswerButton answer={incorrect_answers[0]}/>
+        <AnswerButton answer={incorrect_answers[1]}/>
+        <AnswerButton answer={incorrect_answers[2]}/>
     </AnswerContainer>
     </div>
 )
@@ -35,18 +36,4 @@ const AnswerContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 0.5rem;
-`;
-
-const AnswerButton = styled.button`
-    background: #DAD299;
-    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
-    background: linear-gradient(to right, #B0DAB9, #DAD299);
-    color: white;
-    padding: 10px;
-    border-radius: 0.5rem;
-    width: 90%;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
 `;

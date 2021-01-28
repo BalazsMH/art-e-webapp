@@ -10,6 +10,8 @@ const Quiz = () => {
     
     const [questions, setQuestions] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [score, setScore] = useState(0)
+    const [gameEnded, setGameEnded] = useState(false)
     
     useEffect(() => {
         axios({
@@ -24,19 +26,24 @@ const Quiz = () => {
     }, [])
 
     const handleAnswer = (answer) => {
-        setCurrentIndex(currentIndex + 1);
+        const newIndex = currentIndex + 1;
+        setCurrentIndex(newIndex);
 
         if(answer === questions[currentIndex].correct_answer) {
-            
+            setScore(score + 100)
+        }
+
+        if(newIndex >= questions.length) {
+            setGameEnded(true);
         }
     }
 
     return (
-        questions.length > 0 ? (
+        gameEnded ? (<h1>Your score: {score}</h1>) : questions.length > 0 ? (
         <QuizContainer>            
             <Question data={questions[currentIndex]} handleAnswer={handleAnswer} />
         </QuizContainer>
-        ) : <h1>Loading...</h1>
+        ) : (<h1>Loading...</h1>)
         )
 }
 

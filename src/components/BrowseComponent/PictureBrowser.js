@@ -21,7 +21,8 @@ const PictureBrowser = () => {
     const fetchMoreData = () => {
         axios({
             method: 'GET',
-            url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            // url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            url:'http://localhost:8080/api/getArtData',
             params: {p: pageNumber,
                     ps: resultsPerPage,
                     imgonly: true,

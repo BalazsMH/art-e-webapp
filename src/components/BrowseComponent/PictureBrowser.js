@@ -21,15 +21,16 @@ const PictureBrowser = () => {
     const fetchMoreData = () => {
         axios({
             method: 'GET',
-            url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            // url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            url:'http://localhost:8080/api/getArtData',
             params: {p: pageNumber,
                     ps: resultsPerPage,
                     imgonly: true,
                     culture: "en",
                     ...(query.term ? {q : query.term} : {}),
-                    ...(query.involvedMaker ? {q : query.involvedMaker} : {}),
-                    ...(query.technique ? {q : query.technique} : {}),
-                    ...(query.datingPeriod ? {q : query.datingPeriod} : {})
+                    ...(query.involvedMaker ? {involvedMaker : query.involvedMaker} : {}),
+                    ...(query.technique ? {technique : query.technique} : {}),
+                    ...(query.datingPeriod ? {"f.dating.period" : query.datingPeriod} : {})
                     //TODO:Allow users to select artist from a drop-down list only by using the facets.
                 }
         }).then(res => {

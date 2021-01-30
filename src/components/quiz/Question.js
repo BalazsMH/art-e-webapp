@@ -8,11 +8,8 @@ export const Question = ({
     showAnswers,
     handleAnswer,
     handleNextQuestion,
-    data: { question, correct_answer, incorrect_answers },
+    data: { question, correct_answer, answers },
 }) => {
-
-    const shuffledAnswers = [correct_answer, ...incorrect_answers].sort();
-
     return (
     <div>
     <QuestionContainer>
@@ -20,18 +17,16 @@ export const Question = ({
         <ImgContainer src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></ImgContainer>
     </QuestionContainer>
     <AnswerContainer>
-        {shuffledAnswers.map((answer, idx) =>{
+        {answers.map((answer, idx) =>{
         const bgColor = showAnswers ? answer === correct_answer ? '#008000' : '#FF0000' : '#DAD299';
         return (
         <AnswerButton key={idx} bgColor={bgColor} handleAnswer={handleAnswer} answer={answer}/>
         );
     })}
     </AnswerContainer>
-    {showAnswers && (
-        <NextButton onClick={handleNextQuestion}>
+        <NextButton disabled={ !showAnswers } onClick={handleNextQuestion}>
             Next
         </NextButton>
-    )}
     </div>
     )}
 
@@ -69,9 +64,9 @@ const NextButton = styled.button`
     color: white;
     padding: 10px;
     border-radius: 0.5rem;
-    width: 40%;
+    width: 20%;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    margin-left: 30%;
+    margin-left: 40%;
     margin-right: auto;
 `;

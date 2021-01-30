@@ -19,8 +19,14 @@ const Quiz = () => {
             method: 'GET',
             url: DUMMY_API_URL,
         }).then(res => {
-            setQuestions(res.data.results)
-            console.log(res.data.results)
+            const questions = res.data.results.map((question) => ({
+                ...question,
+                answers: [
+                    question.correct_answer,
+                    ...question.incorrect_answers
+                ].sort(),
+            }));
+            setQuestions(questions)
         })
         .catch(e => {
             console.log(e);
@@ -37,10 +43,10 @@ const Quiz = () => {
     }
 
     const handleNextQuestion = () => {
-        const newIndex = currentIndex + 1;
         setShowAnswers(false);
-        setCurrentIndex(newIndex);
-        if(newIndex >= questions.length) {
+        setCurrentIndex(currentIndex + 1);
+
+        if(currentIndex + 1 >= questions.length) {
             setGameEnded(true);
         }
     }
@@ -53,6 +59,7 @@ const Quiz = () => {
                         handleAnswer={handleAnswer}
                         handleNextQuestion={handleNextQuestion} />
         </QuizContainer>
+        
         ) : (<h1>Loading...</h1>)
         )
 }

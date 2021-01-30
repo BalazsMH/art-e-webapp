@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {AnswerButton} from './AnswerButton'
 
@@ -20,10 +20,10 @@ export const Question = ({
         <ImgContainer src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></ImgContainer>
     </QuestionContainer>
     <AnswerContainer>
-        {shuffledAnswers.map(answer =>{
+        {shuffledAnswers.map((answer, idx) =>{
         const bgColor = showAnswers ? answer === correct_answer ? '#008000' : '#FF0000' : '#DAD299';
         return (
-        <AnswerButton bgColor={bgColor} handleAnswer={handleAnswer} answer={answer}/>
+        <AnswerButton key={idx} bgColor={bgColor} handleAnswer={handleAnswer} answer={answer}/>
         );
     })}
     </AnswerContainer>

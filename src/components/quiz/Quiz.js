@@ -8,10 +8,11 @@ const DUMMY_API_URL = 'https://opentdb.com/api.php?amount=5&category=25&difficul
 
 const Quiz = () => {
     
-    const [questions, setQuestions] = useState([])
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [score, setScore] = useState(0)
-    const [gameEnded, setGameEnded] = useState(false)
+    const [questions, setQuestions] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [gameEnded, setGameEnded] = useState(false);
+    const [showAnswers, setShowAnswers] = useState(false);
     
     useEffect(() => {
         axios({
@@ -19,6 +20,7 @@ const Quiz = () => {
             url: DUMMY_API_URL,
         }).then(res => {
             setQuestions(res.data.results)
+            console.log(res.data.results)
         })
         .catch(e => {
             console.log(e);
@@ -26,13 +28,18 @@ const Quiz = () => {
     }, [])
 
     const handleAnswer = (answer) => {
+        if(!showAnswers) {
+            if(answer === questions[currentIndex].correct_answer) {
+                setScore(score + 100)
+                }
+            }
+        setShowAnswers(true);
+    }
+
+    const handleNextQuestion = () => {
         const newIndex = currentIndex + 1;
+        setShowAnswers(false);
         setCurrentIndex(newIndex);
-
-        if(answer === questions[currentIndex].correct_answer) {
-            setScore(score + 100)
-        }
-
         if(newIndex >= questions.length) {
             setGameEnded(true);
         }
@@ -41,7 +48,10 @@ const Quiz = () => {
     return (
         gameEnded ? (<h1>Your score: {score}</h1>) : questions.length > 0 ? (
         <QuizContainer>            
-            <Question data={questions[currentIndex]} handleAnswer={handleAnswer} />
+            <Question data={questions[currentIndex]}
+                        showAnswers={showAnswers}
+                        handleAnswer={handleAnswer}
+                        handleNextQuestion={handleNextQuestion} />
         </QuizContainer>
         ) : (<h1>Loading...</h1>)
         )

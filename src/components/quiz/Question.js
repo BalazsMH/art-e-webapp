@@ -5,23 +5,33 @@ import {AnswerButton} from './AnswerButton'
 const DUMMY_IMAGE_URL = 'https://blog.studentlifenetwork.com/wp-content/uploads/2018/04/AppLogo-Quizlet-670x670.png'
 
 export const Question = ({
+    showAnswers,
     handleAnswer,
+    handleNextQuestion,
     data: { question, correct_answer, incorrect_answers },
 }) => {
 
-    const shuffledAnswers = [correct_answer, ...incorrect_answers].sort(() => Math.random() - 0.5);
+    const shuffledAnswers = [correct_answer, ...incorrect_answers].sort();
 
     return (
     <div>
     <QuestionContainer>
-        <h2 className="text-2xl">{question}</h2>
-        <img src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></img>
+        <QuestionH2 className="text-2xl" dangerouslySetInnerHTML={{__html: question}}></QuestionH2>
+        <ImgContainer src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></ImgContainer>
     </QuestionContainer>
     <AnswerContainer>
-        {shuffledAnswers.map(answer => 
-            <AnswerButton handleAnswer={handleAnswer} answer={answer}/>
-        )}
+        {shuffledAnswers.map(answer =>{
+        const bgColor = showAnswers ? answer === correct_answer ? '#008000' : '#FF0000' : '#DAD299';
+        return (
+        <AnswerButton bgColor={bgColor} handleAnswer={handleAnswer} answer={answer}/>
+        );
+    })}
     </AnswerContainer>
+    {showAnswers && (
+        <NextButton onClick={handleNextQuestion}>
+            Next
+        </NextButton>
+    )}
     </div>
     )}
 
@@ -36,8 +46,32 @@ const QuestionContainer = styled.div`
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     `;
 
+const ImgContainer = styled.img`
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+`;
+
+const QuestionH2 = styled.h2`
+    text-align: center;
+    width: 100%;
+`;
+
 const AnswerContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 0.5rem;
+`;
+
+const NextButton = styled.button`
+    background: #DAD299;
+    color: white;
+    padding: 10px;
+    border-radius: 0.5rem;
+    width: 40%;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-left: 30%;
+    margin-right: auto;
 `;

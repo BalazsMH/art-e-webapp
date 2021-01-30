@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 export const AnswerButton = ({ bgColor, handleAnswer, answer }) => (
     <div>
-        <Button style={{backgroundColor: bgColor}} onClick={() => handleAnswer(answer)} dangerouslySetInnerHTML={{__html: answer}}></Button>
+        <Button style={{backgroundColor: bgColor}} onClick={() => handleAnswer(answer)}
+        dangerouslySetInnerHTML={{__html: answer}}></Button>
     </div>
 )
 

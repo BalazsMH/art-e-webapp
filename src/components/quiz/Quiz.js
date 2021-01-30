@@ -65,7 +65,8 @@ const Quiz = () => {
 }
 
 const QuizContainer = styled.div`
-    position: fixed;
+    position: absolute;
+    margin-top: 10%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

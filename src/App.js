@@ -27,7 +27,7 @@ function App() {
               <ArtBrowser></ArtBrowser>
             </ArtDataProvider>
           </Route>
-          <Route exact path="/browse/:id">
+          <Route exact path="/details/:objectNumber">
             <ArtDataProvider>
               <ArtDetails/>
             </ArtDataProvider>

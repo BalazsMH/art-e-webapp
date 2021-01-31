@@ -7,6 +7,7 @@ import UserSecurity from './components/user/UserSecurity';
 import UserLogin from './components/user/UserLogin';
 import UserRegistration from './components/user/UserRegistration';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
+import ArtDetails from './components/BrowseComponent/ArtDetails';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
 
@@ -24,6 +25,11 @@ function App() {
           <Route exact path="/browse">
             <ArtDataProvider>
               <ArtBrowser></ArtBrowser>
+            </ArtDataProvider>
+          </Route>
+          <Route exact path="/browse/:id">
+            <ArtDataProvider>
+              <ArtDetails/>
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">

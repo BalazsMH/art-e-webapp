@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Card, CardHeader, CardBody, CardFooter, Button} from 'grommet';
+import {Card, CardHeader, CardBody, CardFooter, Button, Image} from 'grommet';
 import {Favorite, ShareOption} from 'grommet-icons';
 import { Link } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ export default function ArtCard(props) {
             <CardHeader pad="medium">{artDetails.longTitle}</CardHeader>
                 <CardBody pad="medium">
                     <DetailsLink to={`/details/${artDetails.objectNumber}`}>
-                        <ArtPicture></ArtPicture>
+                            <ArtPicture></ArtPicture>
                         {/* <ArtPicture src={imageUrl} alt={artDetails.title}/> */}
                     </DetailsLink>
                 </CardBody>

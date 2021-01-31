@@ -6,11 +6,17 @@ import {Favorite, ShareOption} from 'grommet-icons';
 export default function ArtCard(props) {
     const artDetails = props.data;
     const imageUrl = props.data.headerImage.url;
+
+    const goToDetailsPage = () => {
+        console.log("yes");
+    }
     
 
 
     return (
-        <Card height="medium" width="medium" background="light-1">
+        <Card height="medium" width="medium" background="light-1" 
+              onClick={goToDetailsPage} focusIndicator="true"
+              hoverIndicator={true}>
             <CardHeader pad="medium">{artDetails.longTitle}</CardHeader>
             <CardBody pad="medium"><ArtPicture src={imageUrl} alt={artDetails.title}/></CardBody>
             <CardFooter pad={{horizontal: "small"}} background="light-2">   

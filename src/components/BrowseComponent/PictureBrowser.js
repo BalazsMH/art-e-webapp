@@ -73,14 +73,11 @@ const PictureBrowser = () => {
 const GridContainer = styled.div`
     display: grid;
     padding: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 1rem;
-
 `;
 
 const BrowserDiv = styled.div`
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr); */
 `;
 
 export default PictureBrowser;

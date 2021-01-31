@@ -4,7 +4,7 @@ import axios from 'axios';
 import {Question} from './Question';
 
 
-const DUMMY_API_URL = 'https://opentdb.com/api.php?amount=5&category=25&difficulty=medium&type=multiple'; 
+const API_URL = 'http://localhost:8080/api/quiz'; 
 
 const Quiz = () => {
     
@@ -16,15 +16,17 @@ const Quiz = () => {
     
     useEffect(() => {
         axios({
-            method: 'GET',
-            url: DUMMY_API_URL,
+            method: 'POST',
+            url: API_URL,
         }).then(res => {
+            console.log(res.data.results)
             const questions = res.data.results.map((question) => ({
                 ...question,
                 answers: [
                     question.correct_answer,
                     ...question.incorrect_answers
                 ].sort(),
+                ...question.url,
             }));
             setQuestions(questions)
         })

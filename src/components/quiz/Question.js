@@ -2,19 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import {AnswerButton} from './AnswerButton'
 
-const DUMMY_IMAGE_URL = 'https://blog.studentlifenetwork.com/wp-content/uploads/2018/04/AppLogo-Quizlet-670x670.png'
 
 export const Question = ({
     showAnswers,
     handleAnswer,
     handleNextQuestion,
-    data: { question, correct_answer, answers },
+    data: { question, correct_answer, answers, url },
 }) => {
     return (
     <div>
     <QuestionContainer>
         <QuestionH2 className="text-2xl" dangerouslySetInnerHTML={{__html: question}}></QuestionH2>
-        <ImgContainer src={DUMMY_IMAGE_URL} alt="Dali" width="500" height="600"></ImgContainer>
+        <ImgContainer src={url} alt="Dali" width="500" height="600"></ImgContainer>
     </QuestionContainer>
     <AnswerContainer>
         {answers.map((answer, idx) =>{

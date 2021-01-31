@@ -59,18 +59,28 @@ const PictureBrowser = () => {
                     <b>No more results.</b>
                     </p>
                 }>
-                {artData.length !== 0 ? artData
-                    .filter((artPiece) => artPiece.hasImage)
-                    .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
-                : <div>No results found for the term.</div>}
+                    <GridContainer>   
+                    {artData.length !== 0 ? artData
+                        .filter((artPiece) => artPiece.hasImage)
+                        .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
+                    : <div>No results found for the term.</div>}
+                    </GridContainer>
             </InfiniteScroll>
         </BrowserDiv>
     )
 }
 
-const BrowserDiv = styled.div`
+const GridContainer = styled.div`
     display: grid;
+    padding: 0.5rem;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+`;
+
+const BrowserDiv = styled.div`
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
 `;
 
 export default PictureBrowser;

@@ -9,6 +9,7 @@ import UserRegistration from './components/user/UserRegistration';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
+import AboutComponent from './components/about/AboutComponent';
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
             <h1>Logout</h1>
           </Route>
           <Route exact path="/about">
-            <h1>About</h1>
+            <AboutComponent />
           </Route>
           <Route exact path="/scoreboard">
             <Scoreboard />

@@ -12,15 +12,6 @@ export default function ArtCard(props) {
         console.log("yes");
     }
            
-    const ArtPicture = styled.div`
-        background-image: url(${imageUrl});
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: 100%;
-        width: 100%;
-    `;
-
 
     return (
         <Card height="large" width="large" background="light-1" 
@@ -29,7 +20,7 @@ export default function ArtCard(props) {
             <CardHeader pad="medium">{artDetails.longTitle}</CardHeader>
                 <CardBody pad="medium">
                     <DetailsLink to={`/details/${artDetails.objectNumber}`}>
-                            <ArtPicture></ArtPicture>
+                        <ArtPicture imageUrl={imageUrl}></ArtPicture>
                         {/* <ArtPicture src={imageUrl} alt={artDetails.title}/> */}
                     </DetailsLink>
                 </CardBody>
@@ -53,4 +44,13 @@ export default function ArtCard(props) {
 const DetailsLink = styled(Link)`
     width:100%;
     height:100%;
+`;
+
+const ArtPicture = styled.div`
+    background-image: url(${props=> props.imageUrl});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
 `;

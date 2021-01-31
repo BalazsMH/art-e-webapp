@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Card, CardHeader, CardBody, CardFooter, Button} from 'grommet';
+import {Card, CardHeader, CardBody, CardFooter, Button, Image} from 'grommet';
 import {Favorite, ShareOption} from 'grommet-icons';
+import { Link } from 'react-router-dom';
 
 export default function ArtCard(props) {
     const artDetails = props.data;
@@ -10,15 +11,28 @@ export default function ArtCard(props) {
     const goToDetailsPage = () => {
         console.log("yes");
     }
-    
+           
+    const ArtPicture = styled.div`
+        background-image: url(${imageUrl});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+    `;
 
 
     return (
-        <Card height="medium" width="medium" background="light-1" 
-              onClick={goToDetailsPage} focusIndicator="true"
+        <Card height="large" width="large" background="light-1" 
+              onClick={goToDetailsPage} focusIndicator={true}
               hoverIndicator={true}>
             <CardHeader pad="medium">{artDetails.longTitle}</CardHeader>
-            <CardBody pad="medium"><ArtPicture src={imageUrl} alt={artDetails.title}/></CardBody>
+                <CardBody pad="medium">
+                    <DetailsLink to={`/details/${artDetails.objectNumber}`}>
+                            <ArtPicture></ArtPicture>
+                        {/* <ArtPicture src={imageUrl} alt={artDetails.title}/> */}
+                    </DetailsLink>
+                </CardBody>
             <CardFooter pad={{horizontal: "small"}} background="light-2">   
                 <Button icon={<Favorite color="red" />}
                         hoverIndicator
@@ -32,10 +46,11 @@ export default function ArtCard(props) {
             </CardFooter>
         </Card>
     )
+    
 }
 
-const ArtPicture = styled.img`
-    object-fit: cover;
-    height: 100%;
 
+const DetailsLink = styled(Link)`
+    width:100%;
+    height:100%;
 `;

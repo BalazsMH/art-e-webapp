@@ -14,11 +14,11 @@ export default function ArtDetails() {
     useEffect(() => {
         axios({
             method: 'GET',
-            url:`https://www.rijksmuseum.nl/api/en/collection/${objectNumber}?key=Gz1ZRsyI&format=json`
-            // url:'http://localhost:8080/api/getArtData',
-            // params: {culture: "en",
-            //         "object-number": id
-            //         }
+            // url:`https://www.rijksmuseum.nl/api/en/collection/${objectNumber}?key=Gz1ZRsyI&format=json`
+            url:'http://localhost:8080/api/getArtDetails',
+            params: {
+                    "objectNumber": objectNumber
+                    }
         }).then(res => {
             console.log(res);
             setPictureData(res.data.artObject);

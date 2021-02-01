@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ArtSearchBox from './ArtSearchBox';
+import ArtSearchBox from './ArtSearchBox2';
 import QueryTagContainer from './QueryTagContainer';
 import PictureBrowser from './PictureBrowser';
 

@@ -54,7 +54,6 @@ export default function ArtSearchBox() {
                 <option value="none" defaultValue disabled>Search for century</option>
                 {[...Array(centuryCount + 1)].map((element, i) => <option key={i} value={i}>{i}</option>)}
             </SearchSelect>
-
             <SearchButton type="button" onClick={() => startSearch()}>Search!</SearchButton>
         </SearchBox>
     )

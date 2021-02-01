@@ -4,6 +4,7 @@ import ArtCard from './ArtCard';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
+import LoadingSpinner from '../loader/LoadingSpinner';
 
 const PictureBrowser = () => {
     const {query, pageNumber, setPageNumber} = useContext(ArtBrowserContext);
@@ -53,7 +54,7 @@ const PictureBrowser = () => {
                 dataLength={artData.length} //This is important field to render the next data
                 next={fetchMoreData}
                 hasMore={hasMore}
-                loader={<div>Please wait..</div>}
+                loader={<LoadingSpinner/>}
                 endMessage={
                     <p style={{ textAlign: 'center' }}>
                     <b>No more results.</b>
@@ -69,6 +70,7 @@ const PictureBrowser = () => {
         </BrowserDiv>
     )
 }
+
 
 const GridContainer = styled.div`
     display: grid;

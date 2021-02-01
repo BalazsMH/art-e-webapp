@@ -42,7 +42,7 @@ export default function ArtDetails() {
                     </CardBody>
                 </CardBody>
             </Card>
-            <Box pad="medium">
+            <InfoBox pad="medium">
                 <Text size="xlarge" weight="bold">{pictureData.title}</Text>
                 <Text size="medium">by</Text>
                 <Text size="large">{pictureData.principalOrFirstMaker}, {pictureData.dating.presentingDate}</Text>
@@ -50,7 +50,7 @@ export default function ArtDetails() {
                     <AboutText size="medium">About the artwork</AboutText>
                     <Text size="small" wordBreak="break-word">{pictureData.plaqueDescriptionEnglish}</Text>
                 </AboutContainer>
-            </Box>
+            </InfoBox>
         </DetailsContainer>
 
         

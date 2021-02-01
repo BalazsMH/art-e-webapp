@@ -7,9 +7,12 @@ import UserSecurity from './components/user/UserSecurity';
 import UserLogin from './components/user/UserLogin';
 import UserRegistration from './components/user/UserRegistration';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
+import ArtDetails from './components/BrowseComponent/ArtDetails';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
 import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
+import AboutComponent from './components/about/AboutComponent';
+
 
 
 function App() {
@@ -26,6 +29,11 @@ function App() {
               <ArtBrowser></ArtBrowser>
             </ArtDataProvider>
           </Route>
+          <Route exact path="/details/:objectNumber">
+            <ArtDataProvider>
+              <ArtDetails/>
+            </ArtDataProvider>
+          </Route>
           <Route exact path="/quiz">
             <h1>Quizzes</h1>
           </Route>
@@ -39,7 +47,7 @@ function App() {
             <h1>Logout</h1>
           </Route>
           <Route exact path="/about">
-            <h1>About</h1>
+            <AboutComponent />
           </Route>
           <Route exact path="/scoreboard">
             <Scoreboard />

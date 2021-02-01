@@ -21,15 +21,16 @@ const PictureBrowser = () => {
     const fetchMoreData = () => {
         axios({
             method: 'GET',
-            url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            // url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
+            url:'http://localhost:8080/api/getArtData',
             params: {p: pageNumber,
                     ps: resultsPerPage,
                     imgonly: true,
                     culture: "en",
                     ...(query.term ? {q : query.term} : {}),
-                    ...(query.involvedMaker ? {q : query.involvedMaker} : {}),
-                    ...(query.technique ? {q : query.technique} : {}),
-                    ...(query.datingPeriod ? {q : query.datingPeriod} : {})
+                    ...(query.involvedMaker ? {involvedMaker : query.involvedMaker} : {}),
+                    ...(query.technique ? {technique : query.technique} : {}),
+                    ...(query.datingPeriod ? {"f.dating.period" : query.datingPeriod} : {})
                     //TODO:Allow users to select artist from a drop-down list only by using the facets.
                 }
         }).then(res => {
@@ -58,18 +59,25 @@ const PictureBrowser = () => {
                     <b>No more results.</b>
                     </p>
                 }>
-                {artData.length !== 0 ? artData
-                    .filter((artPiece) => artPiece.hasImage)
-                    .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
-                : <div>No results found for the term.</div>}
+                    <GridContainer>   
+                    {artData.length !== 0 ? artData
+                        .filter((artPiece) => artPiece.hasImage)
+                        .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
+                    : <div>No results found for the term.</div>}
+                    </GridContainer>
             </InfiniteScroll>
         </BrowserDiv>
     )
 }
 
-const BrowserDiv = styled.div`
+const GridContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    padding: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 1rem;
+`;
+
+const BrowserDiv = styled.div`
 `;
 
 export default PictureBrowser;

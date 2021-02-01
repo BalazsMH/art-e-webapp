@@ -9,6 +9,7 @@ import UserRegistration from './components/user/UserRegistration';
 import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
+import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
       <Router>
       <Navbar />
         <Switch>
-        {/* <div className="App"> */}
           <Route exact path="/">
             <h1>Landing page</h1>
           </Route>
@@ -56,12 +56,11 @@ function App() {
           <Route exact path="/user/security">
             <UserSecurity />
           </Route>
-        {/* </div> */}
+          <Route component={PageNotFound}/>
         </Switch>
       </Router>
     </>
   );
 }
-//TODO: Handle non-existing endpoint access attempts
 
 export default App;

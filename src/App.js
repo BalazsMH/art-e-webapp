@@ -13,6 +13,7 @@ import Scoreboard from './components/quiz/Scoreboard';
 import Quiz from './components/quiz/Quiz';
 import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 import AboutComponent from './components/about/AboutComponent';
+import QuizPage from './components/quiz/QuizPage';
 
 
 
@@ -36,7 +37,8 @@ function App() {
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">
-            <Quiz />
+            {/* <Quiz /> */}
+            <QuizPage />
           </Route>
           <Route exact path="/register-user">
             <UserRegistration />

@@ -1,50 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Quiz from './Quiz'
 
 
 const QuizPage = () => {
+
+    const [showGivenQuiz, setShowGivenQuiz] = useState('');
+
+    const showQuiz = (number) => {
+        setShowGivenQuiz(number)
+        
+        }
     
     return (
-            <div>
-                <QuizH1>Welcome to the Art-e Quizzes!</QuizH1>
+            <Container>
+                {showGivenQuiz === '' && ( <QuizH1>Welcome to the Art-e Quizzes!</QuizH1>)}
+                {showGivenQuiz === '' && (
                 <QuizzesContainer>
                     <QuizSelector>
                         <QuizH2>Quiz 1</QuizH2>
-                        <QuizDetails>Your objective is to guess the title of the given picture. </QuizDetails>
-                        <NextButton>Let's go!</NextButton>
+                        <QuizDetails>Your objective is to guess the title of the given picture.</QuizDetails>
+                        <NextButton onClick={() => showQuiz('1')}>Let's go!</NextButton>
                     </QuizSelector>
                     <QuizSelector>
                         <QuizH2>Quiz 2</QuizH2>
-                        <QuizDetails>Your objective is to guess the maker of the given picture. </QuizDetails>
-                        <NextButton>Let's go!</NextButton>
+                        <QuizDetails>Your objective is to guess the maker of the given picture.</QuizDetails>
+                        <NextButton onClick={() => showQuiz('2')}>Let's go!</NextButton>
                     </QuizSelector>
                     <QuizSelector>
                         <QuizH2>Quiz 3</QuizH2>
-                        <QuizDetails>Your objective is to guess the title based on the detail of the picture. </QuizDetails>
-                        <NextButton>Let's go!</NextButton>
+                        <QuizDetails>Your objective is to guess the title based on the detail of the picture.</QuizDetails>
+                        <NextButton onClick={() => showQuiz('3')}>Let's go!</NextButton>
                     </QuizSelector>
-                </QuizzesContainer>
-            </div>
+                </QuizzesContainer>)}
+                {showGivenQuiz === '1' && (
+                <Quiz number={'1'}/>)}
+                {showGivenQuiz === '2' && (
+                <Quiz number={showGivenQuiz}/>)}
+                {showGivenQuiz === '3' && (
+                <Quiz number={showGivenQuiz}/>)}
+                <BackButton onClick={() => showQuiz('')}>Back</BackButton>
+            </Container>
         )
 }
+
+const Container = styled.h2`
+    
+`;
 
 const QuizH1 = styled.h2`
     text-align: center;
     font-weight: 600;
     font-size: 3rem;
     width: 100%;
-    margin-top: 10%;
-    top: 50%;
-    left: 50%;
-    padding: 5rem;
 `;
 
 const QuizzesContainer = styled.div`
-    position: absolute;
-    margin-top: 10%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 0.5rem;
@@ -81,6 +92,7 @@ const QuizDetails = styled.div`
 `;
 
 const NextButton = styled.button`
+    bottom:0;
     background: #ffffff;
     color: black;
     border: 1px;
@@ -91,6 +103,26 @@ const NextButton = styled.button`
     font-weight: 600;
     margin-bottom: 0.5rem;
     margin-left: 25%;
+    margin-right: auto;
+    margin-top: 2rem;
+    &:hover {
+        background: #000000;
+        color: white;
+        }
+`;
+
+const BackButton = styled.button`
+    position: relative;
+    background: #ffffff;
+    color: black;
+    border: 1px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #000000;
+    width: 10%;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-left: 45%;
     margin-right: auto;
     margin-top: 2rem;
     &:hover {

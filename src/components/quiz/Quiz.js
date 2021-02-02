@@ -6,7 +6,7 @@ import {Question} from './Question';
 
 const API_URL = 'http://localhost:8080/api/quiz'; 
 
-const Quiz = () => {
+const Quiz = ({number}) => {
     
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,11 +67,14 @@ const Quiz = () => {
 }
 
 const QuizContainer = styled.div`
-    position: absolute;
-    margin-top: 10%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: block;
+    margin-left: auto;
+    margin-right: 60%;
+    width: 40%;
 `;
 
 export default Quiz;

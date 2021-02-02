@@ -12,6 +12,7 @@ import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
 import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 import AboutComponent from './components/about/AboutComponent';
+import FavoritesBrowser from './components/favorites/FavoritesBrowser';
 
 
 
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route exact path="/user/security">
             <UserSecurity />
+          </Route>
+          <Route exact path="/favorites/:userId">
+            <FavoritesBrowser />
           </Route>
           <Route component={PageNotFound}/>
         </Switch>

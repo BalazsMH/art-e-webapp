@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useParams } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ArtCard from '../BrowseComponent/ArtCard';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -11,9 +12,9 @@ const FavoritesBrowser = () => {
     useEffect(() => {
         axios({
             method: 'GET',
-            url:`http://localhost:8080/api/favorites${userId}`
+            url:`http://localhost:8080/api/favorites/${userId}`
         }).then(res => {
-            setArtData(res.data.artObjects);
+            setArtData(res.data);
             setIsLoading(false);
             console.log("Load complete..");
         })
@@ -30,8 +31,10 @@ const FavoritesBrowser = () => {
     return (
         <BrowserDiv>
             <GridContainer>   
-            {artData.length !== 0 ? artData
-                .map((artPiece, index) => <ArtCard data={artPiece} key={index}></ArtCard>)
+            {artData !== undefined ? artData
+                .map((artPiece, index) => {
+                    return <ArtCard data={artPiece} key={index}></ArtCard>
+                })
             : <div>No favorites found.</div>}
             </GridContainer>
         </BrowserDiv>

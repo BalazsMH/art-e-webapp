@@ -18,6 +18,9 @@ const Quiz = ({type}) => {
         axios({
             method: 'POST',
             url: API_URL,
+            data: {
+                quizType: type
+                }
         }).then(res => {
             console.log(res.data.results)
             const questions = res.data.results.map((question) => ({

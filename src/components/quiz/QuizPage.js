@@ -38,7 +38,7 @@ const QuizPage = () => {
                 <Quiz type={{showGivenQuiz}}/>)}
                 {showGivenQuiz === 'detail' && (
                 <Quiz type={{showGivenQuiz}}/>)}
-                <BackButton onClick={() => showQuiz('')}>Back</BackButton>
+                {showGivenQuiz !== '' && (  <BackButton onClick={() => showQuiz('')}>Back</BackButton>)}
             </Container>
         )
 }

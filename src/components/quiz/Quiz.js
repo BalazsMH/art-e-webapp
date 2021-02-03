@@ -6,7 +6,7 @@ import {Question} from './Question';
 
 const API_URL = 'http://localhost:8080/api/quiz'; 
 
-const Quiz = ({number}) => {
+const Quiz = ({type}) => {
     
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);

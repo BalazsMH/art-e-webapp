@@ -7,9 +7,8 @@ const QuizPage = () => {
 
     const [showGivenQuiz, setShowGivenQuiz] = useState('');
 
-    const showQuiz = (number) => {
-        setShowGivenQuiz(number)
-        
+    const showQuiz = (type) => {
+        setShowGivenQuiz(type)
         }
     
     return (
@@ -20,32 +19,31 @@ const QuizPage = () => {
                     <QuizSelector>
                         <QuizH2>Quiz 1</QuizH2>
                         <QuizDetails>Your objective is to guess the title of the given picture.</QuizDetails>
-                        <NextButton onClick={() => showQuiz('1')}>Let's go!</NextButton>
+                        <NextButton onClick={() => showQuiz('title')}>Let's go!</NextButton>
                     </QuizSelector>
                     <QuizSelector>
                         <QuizH2>Quiz 2</QuizH2>
                         <QuizDetails>Your objective is to guess the maker of the given picture.</QuizDetails>
-                        <NextButton onClick={() => showQuiz('2')}>Let's go!</NextButton>
+                        <NextButton onClick={() => showQuiz('maker')}>Let's go!</NextButton>
                     </QuizSelector>
                     <QuizSelector>
                         <QuizH2>Quiz 3</QuizH2>
                         <QuizDetails>Your objective is to guess the title based on the detail of the picture.</QuizDetails>
-                        <NextButton onClick={() => showQuiz('3')}>Let's go!</NextButton>
+                        <NextButton onClick={() => showQuiz('detail')}>Let's go!</NextButton>
                     </QuizSelector>
                 </QuizzesContainer>)}
-                {showGivenQuiz === '1' && (
-                <Quiz number={'1'}/>)}
-                {showGivenQuiz === '2' && (
-                <Quiz number={showGivenQuiz}/>)}
-                {showGivenQuiz === '3' && (
-                <Quiz number={showGivenQuiz}/>)}
+                {showGivenQuiz === 'title' && (
+                <Quiz type={{showGivenQuiz}}/>)}
+                {showGivenQuiz === 'maker' && (
+                <Quiz type={{showGivenQuiz}}/>)}
+                {showGivenQuiz === 'detail' && (
+                <Quiz type={{showGivenQuiz}}/>)}
                 <BackButton onClick={() => showQuiz('')}>Back</BackButton>
             </Container>
         )
 }
 
-const Container = styled.h2`
-    
+const Container = styled.div`
 `;
 
 const QuizH1 = styled.h2`
@@ -56,7 +54,11 @@ const QuizH1 = styled.h2`
 `;
 
 const QuizzesContainer = styled.div`
-    display: grid;
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between !important;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 0.5rem;
 `;
@@ -72,9 +74,10 @@ const QuizSelector = styled.div`
     border-style: solid;
     border-color: #000000;
     border-radius: 20px;
-    margin-left: 3px;
-    margin-right: 3px;
+    margin-left: 3%;
+    margin-right: 3%;
     padding: 10px;
+    width: 70%;
     &:hover {
         -moz-box-shadow: 0 0 20px #999;
         -webkit-box-shadow: 0 0 20px #999;
@@ -92,7 +95,6 @@ const QuizDetails = styled.div`
 `;
 
 const NextButton = styled.button`
-    bottom:0;
     background: #ffffff;
     color: black;
     border: 1px;

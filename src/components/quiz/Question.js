@@ -54,7 +54,7 @@ const QuestionH2 = styled.h2`
 
 const AnswerContainer = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     margin-top: 0.5rem;
 `;
 

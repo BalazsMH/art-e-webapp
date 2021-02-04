@@ -61,6 +61,9 @@ const QuizzesContainer = styled.div`
     justify-content: space-between !important;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 0.5rem;
+    @media (max-width: 768px) {
+        flex-direction: column;
+}
 `;
 
 const QuizH2 = styled.h2`
@@ -70,14 +73,18 @@ const QuizH2 = styled.h2`
 `;
 
 const QuizSelector = styled.div`
+    position: relative;
+    padding: 3%;
+    padding-bottom: 6rem;
     border: 2px;
     border-style: solid;
     border-color: #000000;
     border-radius: 20px;
     margin-left: 3%;
     margin-right: 3%;
-    padding: 10px;
     width: 70%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     &:hover {
         -moz-box-shadow: 0 0 20px #999;
         -webkit-box-shadow: 0 0 20px #999;
@@ -95,6 +102,9 @@ const QuizDetails = styled.div`
 `;
 
 const NextButton = styled.button`
+    display: block;
+    position: absolute;
+    bottom: 1rem;
     background: #ffffff;
     color: black;
     border: 1px;
@@ -104,9 +114,10 @@ const NextButton = styled.button`
     width: 50%;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    margin-left: 25%;
+    left: 25%;
     margin-right: auto;
     margin-top: 2rem;
+    padding: 0.25rem;
     &:hover {
         background: #000000;
         color: white;

@@ -8,12 +8,18 @@ export const Question = ({
     handleAnswer,
     handleNextQuestion,
     data: { question, correct_answer, answers, url },
+    type
 }) => {
     return (
     <div>
     <QuestionContainer>
         <QuestionH2 className="text-2xl" dangerouslySetInnerHTML={{__html: question}}></QuestionH2>
-        <ImgContainer src={url} alt="Dali" width="500" height="600"></ImgContainer>
+        {type === "detail" ? 
+            <ImgContainer>
+            <ImgDetail src={url} alt="Dali" width="500" height="600"></ImgDetail>
+            </ImgContainer> :
+            <Img src={url} alt="Dali" width="500" height="600"></Img>
+        } 
     </QuestionContainer>
     <AnswerContainer>
         {answers.map((answer, idx) =>{
@@ -40,11 +46,22 @@ const QuestionContainer = styled.div`
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     `;
 
-const ImgContainer = styled.img`
+const ImgDetail = styled.img`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    max-width: initial;
+`;
+
+const Img = styled.img`
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
+const ImgContainer = styled.div`
+    max-width: 50%;
+    overflow: hidden;
 `;
 
 const QuestionH2 = styled.h2`

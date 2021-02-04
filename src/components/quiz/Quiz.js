@@ -19,10 +19,9 @@ const Quiz = ({type}) => {
             method: 'POST',
             url: API_URL,
             data: {
-                quizType: type
+                quizType: type.showGivenQuiz
                 }
         }).then(res => {
-            console.log(res.data.results)
             const questions = res.data.results.map((question) => ({
                 ...question,
                 answers: [
@@ -62,7 +61,9 @@ const Quiz = ({type}) => {
             <Question data={questions[currentIndex]}
                         showAnswers={showAnswers}
                         handleAnswer={handleAnswer}
-                        handleNextQuestion={handleNextQuestion} />
+                        handleNextQuestion={handleNextQuestion}
+                        type={type.showGivenQuiz}
+                        />
         </QuizContainer>
         
         ) : (<h1>Loading...</h1>)

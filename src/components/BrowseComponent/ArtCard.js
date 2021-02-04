@@ -7,15 +7,11 @@ import { Link } from 'react-router-dom';
 export default function ArtCard(props) {
     const artDetails = props.data;
     const imageUrl = props.data.headerImage.url;
-
-    const goToDetailsPage = () => {
-        console.log("yes");
-    }
            
 
     return (
         <Card height="large" width="large" background="light-1" 
-              onClick={goToDetailsPage} focusIndicator={true}
+              focusIndicator={true}
               hoverIndicator={true}>
             <CardHeader pad="medium">{artDetails.longTitle}</CardHeader>
                 <CardBody pad="medium">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import styled from 'styled-components';
+import { RegistrationContainer } from '../Styles.js';
 
 
 const UserRegistration = () => {
@@ -40,13 +40,5 @@ const UserRegistration = () => {
         </RegistrationContainer>
     )
 }
-
-
-const RegistrationContainer = styled.div`
-    display: flex;
-    padding: 5rem;
-    line-height: 3rem;
-`;
-
 
 export default UserRegistration;

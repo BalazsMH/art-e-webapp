@@ -10,7 +10,6 @@ import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import ArtDetails from './components/BrowseComponent/ArtDetails';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
-import Quiz from './components/quiz/Quiz';
 import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 import AboutComponent from './components/about/AboutComponent';
 import FavoritesBrowser from './components/favorites/FavoritesBrowser';
@@ -37,7 +36,6 @@ function App() {
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">
-            {/* <Quiz /> */}
             <QuizPage />
           </Route>
           <Route exact path="/register-user">

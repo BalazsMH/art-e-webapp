@@ -39,7 +39,6 @@ const AboutComponent = () => {
             {Object.keys(aboutContent.licenses).map((component, key) => (
                 <p key={key}>{component}: <a href={aboutContent.licenses[component]}>{aboutContent.licenses[component]}</a></p>
             ))}
-                {/* {Object.keys(aboutContent.components).length !== 0 ? Object.keys(aboutContent.components).map((component, license, key) => <li key={key}>{component}: {license}</li>) : <li>No entry found</li>} */}
         </div>
     );
 }

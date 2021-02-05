@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import {Box, Text, Card, Image, CardFooter, CardBody} from 'grommet';
-import styled from 'styled-components';
-
+import {Box, Text, Card, Image, CardBody} from 'grommet';
+import { DetailsContainer, AboutContainer, AboutText } from '../Styles.js';
 
 export default function ArtDetails() {
     let {objectNumber} = useParams();
@@ -14,21 +13,20 @@ export default function ArtDetails() {
     useEffect(() => {
         axios({
             method: 'GET',
-            // url:`https://www.rijksmuseum.nl/api/en/collection/${objectNumber}?key=Gz1ZRsyI&format=json`
             url:'http://localhost:8080/api/getArtDetails',
             params: {
                     "objectNumber": objectNumber
                     }
         }).then(res => {
-            console.log(res);
             setPictureData(res.data.artObject);
             setIsLoading(false);
         })
         .catch(e => {
+            setIsLoading(false);
             console.log(e);
         })
+    }, [objectNumber])
 
-    }, [])
 
     if (isLoading) {
         return <div>Please wait</div>
@@ -43,7 +41,7 @@ export default function ArtDetails() {
                 </CardBody>
             </Card>
             <Box pad="medium">
-                <Text size="xlarge" weight="bold">{pictureData.title}</Text>
+                <Text size="large" weight="bold">{pictureData.title}</Text>
                 <Text size="medium">by</Text>
                 <Text size="large">{pictureData.principalOrFirstMaker}, {pictureData.dating.presentingDate}</Text>
                 <AboutContainer>
@@ -52,26 +50,5 @@ export default function ArtDetails() {
                 </AboutContainer>
             </Box>
         </DetailsContainer>
-
-        
     )
 }
-
-const InfoBox = styled(Box)`
-    max-width: 40vw;
-`;
-
-const AboutContainer = styled(Box)`
-    margin-top: 1rem;
-`;
-
-const DetailsContainer = styled.div`
-    display:flex;
-    flex-direction: row;
-    margin: 1rem;
-`;
-
-const AboutText = styled(Text)`
-    hyphens: auto;
-    text-align: justify;
-`;

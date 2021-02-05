@@ -13,8 +13,8 @@ import Scoreboard from './components/quiz/Scoreboard';
 import Quiz from './components/quiz/Quiz';
 import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 import AboutComponent from './components/about/AboutComponent';
+import FavoritesBrowser from './components/favorites/FavoritesBrowser';
 import QuizPage from './components/quiz/QuizPage';
-
 
 
 function App() {
@@ -66,6 +66,9 @@ function App() {
           </Route>
           <Route exact path="/user/security">
             <UserSecurity />
+          </Route>
+          <Route exact path="/favorites/:userId">
+            <FavoritesBrowser />
           </Route>
           <Route component={PageNotFound}/>
         </Switch>

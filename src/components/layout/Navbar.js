@@ -11,6 +11,7 @@ const Navbar = () => {
                 <NavLink to="/browse">Browse</NavLink>
                 <NavLink to="/quiz">Quiz</NavLink>
                 <NavLink to="/about">About</NavLink>
+                <NavLink to="/favorites/0">Favorites</NavLink>
                 <UserFunctionsContainer>
                     <NavLink to="/register-user">Registration</NavLink>
                     <NavLink to="/login">Login</NavLink>

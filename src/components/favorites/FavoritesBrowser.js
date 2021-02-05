@@ -31,7 +31,7 @@ const FavoritesBrowser = () => {
     return (
         <BrowserDiv>
             <GridContainer>   
-            {artData !== undefined ? artData
+            {artData.length !== 0 ? artData
                 .map((artPiece, index) => {
                     return <ArtCard data={artPiece} key={index}></ArtCard>
                 })

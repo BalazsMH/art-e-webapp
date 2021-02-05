@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import {Card, CardHeader, CardBody, CardFooter, Button} from 'grommet';
 import {ShareOption} from 'grommet-icons';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import FavoriteButton from '../favorites/FavoriteButton';
+import { DetailsLink, ArtPicture } from '../Styles.js';
+
 
 export default function ArtCard(props) {
     let { userId } = useParams();
@@ -61,18 +62,3 @@ export default function ArtCard(props) {
         </Card>
     )
 }
-
-
-const DetailsLink = styled(Link)`
-    width:100%;
-    height:100%;
-`;
-
-const ArtPicture = styled.div`
-    background-image: url(${props=> props.imageUrl});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-`;

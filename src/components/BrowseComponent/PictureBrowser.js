@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ArtBrowserContext } from './ArtBrowserContext';
 import ArtCard from './ArtCard';
-import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
+import { GridContainer } from '../Styles.js';
 
 const PictureBrowser = () => {
     const {query, pageNumber, setPageNumber} = useContext(ArtBrowserContext);
@@ -14,14 +14,12 @@ const PictureBrowser = () => {
     useEffect(() => {
         artData.length = 0;
         setArtData(artData);
-        console.log("Artadata supposed to be empty:" + artData);
         fetchMoreData();
     }, [query])
 
     const fetchMoreData = () => {
         axios({
             method: 'GET',
-            // url:'https://www.rijksmuseum.nl/api/en/collection?key=Gz1ZRsyI&format=json',
             url:'http://localhost:8080/api/getArtData',
             params: {p: pageNumber,
                     ps: resultsPerPage,
@@ -34,13 +32,11 @@ const PictureBrowser = () => {
                     //TODO:Allow users to select artist from a drop-down list only by using the facets.
                 }
         }).then(res => {
-            console.log(res);
             setArtData( () => {
                 return [...artData, ...res.data.artObjects];
             });
             setHasMore(res.data.artObjects.length > 0);
             setPageNumber(pageNumber + 1);
-            console.log("Load complete..");
         })
         .catch(e => {
             console.log(e);
@@ -48,7 +44,7 @@ const PictureBrowser = () => {
     }
 
     return (
-        <BrowserDiv>
+        <div>
             <InfiniteScroll
                 dataLength={artData.length} //This is important field to render the next data
                 next={fetchMoreData}
@@ -66,18 +62,8 @@ const PictureBrowser = () => {
                     : <div>No results found for the term.</div>}
                     </GridContainer>
             </InfiniteScroll>
-        </BrowserDiv>
+        </div>
     )
 }
-
-const GridContainer = styled.div`
-    display: grid;
-    padding: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 1rem;
-`;
-
-const BrowserDiv = styled.div`
-`;
 
 export default PictureBrowser;

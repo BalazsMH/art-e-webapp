@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import ArtSearchBox from './ArtSearchBox';
 import QueryTagContainer from './QueryTagContainer';
 import PictureBrowser from './PictureBrowser';
+import { BrowserContainer, ArtBrowserSidebar } from '../Styles.js';
 
 
 export default function ArtBrowser() {
@@ -17,15 +17,3 @@ export default function ArtBrowser() {
         </BrowserContainer>
     )
 }
-
-const BrowserContainer = styled.div`
-    width:auto;
-    max-width: 100%;
-`;
-
-
-const ArtBrowserSidebar = styled.div`
-    float:left;
-    padding: 0.5rem;
-    margin-top: 1rem;
-`;

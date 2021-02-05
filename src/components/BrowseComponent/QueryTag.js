@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
-import styled from 'styled-components';
 import {ArtBrowserContext} from './ArtBrowserContext';
-
+import { Tag, RemoveButton } from '../Styles.js';
 
 export default function QueryTag(props) {
 
@@ -20,14 +19,3 @@ export default function QueryTag(props) {
         </Tag>
     )
 }
-//TODO:create functional component from QueryTag, with ability to remove it.
-
-
-const Tag = styled.div`
-    border-radius: 20px;
-    border:solid;
-`;
-
-const RemoveButton = styled.span`
-    cursor: pointer;
-`;

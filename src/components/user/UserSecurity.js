@@ -14,6 +14,7 @@ const UserSecurity = () => {
     const handleEmailSubmit = () => {
         if (modEmail === modEmailConf) {
             newEmail = modEmail;
+            console.log(newEmail);
         }
     }
 
@@ -21,6 +22,7 @@ const UserSecurity = () => {
     const handlePasswordSubmit = () => {
         if (modPwd === modPwdConf) {
             newPwd = modPwd;
+            console.log(newPwd);
         }
     }
 

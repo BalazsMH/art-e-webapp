@@ -31,12 +31,18 @@ const Navbar = () => {
                     dropContent={
                         <>
                         <Box pad="large" background="light-2" />
-                        <NavLink to="/register-user">Registration</NavLink>
-                        <NavLink to="/login">Login</NavLink>
+                        {isLoggedIn ?
+                        <>
+                            <NavLink to="/user">My Account</NavLink>
+                        </> : 
+                        <>
+                            <NavLink to="/register-user">Registration</NavLink>
+                            <NavLink to="/login">Login</NavLink>
+                        </>
+                        }
                         </>    
                     }
                     />
-
                 </UserFunctionsContainer>
             </NavRoutes>
         </NavContainer>

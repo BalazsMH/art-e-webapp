@@ -14,9 +14,10 @@ const UserRegistration = () => {
     const [email, setEmail] = useState("");
     
     const handleRegistrationSubmit = (e) => {
+        e.preventDefault();
         sendNewUserData();
     }
-    
+
     const sendNewUserData = () => {
         axios({
             method: 'POST',
@@ -38,26 +39,26 @@ const UserRegistration = () => {
 
     return (
         <RegistrationContainer>
-            <form>
+            <form onSubmit={(e)=> handleRegistrationSubmit(e)}>
                 <label>Username: </label>
-                <input onChange={(e) => setUsername(e.target.value)} value={userName} type="text" name="userName" placeholder="Enter your username here" />
+                <input onChange={(e) => setUsername(e.target.value)} value={userName} type="text" name="userName" placeholder="Enter your username here" required/>
                 <br />
                 <label>Password: </label>
-                <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" name="pwd" placeholder="Enter your password here" />
+                <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" name="pwd" placeholder="Enter your password here" required/>
                 <br />
                 <label>First name: </label>
-                <input onChange={(e) => setFirstName(e.target.value)} value={firstName} type="text" name="firstName" placeholder="Enter your first name here" />
+                <input onChange={(e) => setFirstName(e.target.value)} value={firstName} type="text" name="firstName" placeholder="Enter your first name here" required/>
                 <br />
                 <label>Last name: </label>
-                <input onChange={(e) => setLastName(e.target.value)} value={lastName} type="text" name="lastName" placeholder="Enter your last name here" />
+                <input onChange={(e) => setLastName(e.target.value)} value={lastName} type="text" name="lastName" placeholder="Enter your last name here" required/>
                 <br />
                 <label>Date of birth: </label>
                 <DatePicker selected={birthDate} onChange={(date) => setBirthDate(date)} />
                 <br />
                 <label>Email: </label>
-                <input onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" placeholder="Enter your email here" />
+                <input onChange={(e) => setEmail(e.target.value)} value={email} type="text" name="email" placeholder="Enter your email here" required/>
                 <br />
-                <button type="button" onClick={(e) => handleRegistrationSubmit()}>Register</button>
+                <button type="submit">Register</button>
             </form>
         </RegistrationContainer>
     )

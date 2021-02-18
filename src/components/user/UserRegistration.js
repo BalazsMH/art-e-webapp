@@ -27,10 +27,13 @@ const UserRegistration = () => {
                     lastName: lastName,
                     email: email,
                     password: password,
-                    birthDate: birthDate
+                    birthDate: birthDate.toISOString().split("T")[0]
                 }
         }).then(res => {
             console.log(res);
+            if (res.data.emailNotAvailable) {
+                alert("Email address already in use!");
+            }
         })
         .catch(e => {
             console.log(e);

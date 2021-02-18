@@ -13,16 +13,10 @@ const UserRegistration = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     
-    const handleChange = (e, targetVar) => {
-        targetVar = e.target.value;
-    }
-
     const handleRegistrationSubmit = (e) => {
-        // e.preventDefault();
-        console.log(userName, password, firstName, lastName, email);
         sendNewUserData();
-        console.log("Sent new user request");
     }
+    
     const sendNewUserData = () => {
         axios({
             method: 'POST',

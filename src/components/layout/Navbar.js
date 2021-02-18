@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/arte.png';
+import {Avatar, Box, DropButton} from 'grommet';
+import {UserFemale} from 'grommet-icons';
 import { NavContainer, SiteLogo, NavRoutes, NavLink, UserFunctionsContainer } from '../Styles.js';
 
 const Navbar = () => {
@@ -13,8 +15,27 @@ const Navbar = () => {
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/favorites/0">Favorites</NavLink>
                 <UserFunctionsContainer>
-                    <NavLink to="/register-user">Registration</NavLink>
-                    <NavLink to="/login">Login</NavLink>
+                <DropButton
+                    label={
+                    <>
+                        <Box direction="row"  gap="small">
+                        <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />   
+                        <Avatar background="accent-2">
+                            <UserFemale color="accent-1" />
+                        </Avatar>
+                        </Box>
+                    </>
+                        }
+                    dropAlign={{ top: 'bottom', right: 'right' }}
+                    dropContent={
+                        <>
+                        <Box pad="large" background="light-2" />
+                        <NavLink to="/register-user">Registration</NavLink>
+                        <NavLink to="/login">Login</NavLink>
+                        </>    
+                    }
+                    />
+
                 </UserFunctionsContainer>
             </NavRoutes>
         </NavContainer>

@@ -113,6 +113,7 @@ export const NavContainer = styled.header`
 `;
 export const NavRoutes = styled.div`
     display:flex;
+    align-items: center;
     width: 100%;
 `;
 export const UserFunctionsContainer = styled.div`

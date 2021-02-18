@@ -9,6 +9,8 @@ import { UserInfoContext } from '../user/UserInfoContext';
 const Navbar = () => {
     const {isLoggedIn} = useContext(UserInfoContext);
 
+
+
     return (
         <NavContainer>
             <Link to="/"><SiteLogo src={logo} alt="Art-E" /></Link>

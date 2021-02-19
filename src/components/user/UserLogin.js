@@ -7,7 +7,7 @@ import { UserInfoContext } from '../user/UserInfoContext';
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {isLoggedIn, setIsloggedIn} = useContext(UserInfoContext);
+    const {isLoggedIn, setIsLoggedIn} = useContext(UserInfoContext);
 
 
 
@@ -29,7 +29,7 @@ const UserLogin = () => {
             console.log(res);
             if(res.data.loginSuccessful) {
                 alert('login successful');
-                setIsloggedIn(true);
+                setIsLoggedIn(true);
             } else {
                 alert('invalid credentials');
             }

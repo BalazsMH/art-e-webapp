@@ -3,98 +3,42 @@ import { QuizH1, QuizzesContainer, QuizSelector, QuizH2, QuizDetails, NextButton
 import styled from 'styled-components';
 
 const LandingPage = () => {
-
     
     return (
-        <MainDiv>
-        <PerspectiveText>
-            <PerspectiveLine>
-                <Text></Text>
-                <Text>Welcome</Text>
-            </PerspectiveLine>
-            <PerspectiveLine>
-                <Text>Welcome</Text>
-                <Text>TO</Text>
-            </PerspectiveLine>
-            <PerspectiveLine>
-                <Text>TO</Text>
-                <Text>art-e</Text>
-            </PerspectiveLine>
-            <PerspectiveLine>
-                <Text>art-e</Text>
-                <Text>Application!</Text>
-            </PerspectiveLine>
-            <PerspectiveLine>
-                <Text>Application!</Text>
-                <Text></Text>
-            </PerspectiveLine>
-        </PerspectiveText>
-        </MainDiv>
+        <BackGroundImg>
+        <Layer>
+        <ArtOfTheDay>
+        </ArtOfTheDay>
+        </Layer>
+        </BackGroundImg>
         )
 }
 
-const MainDiv = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: 34%;
-    margin-bottom: auto;
-    margin-top: auto;
-    padding: 10rem;
+const BackGroundImg = styled.div`
+    position: relative;
+    background-image: url("https://img.theculturetrip.com/wp-content/uploads/2016/08/anton_mauve_-_morgenrit_langs_het_strand.jpg");
+    background-size: cover;
+    background-position: bottom;
 `;
 
-const Text = styled.p`
-    margin: 0;
-    height: 3.1rem;
-    line-height: 3.1rem;
-    color: black;
-    transition: all 0.5s ease-in-out; 
-`
+const Layer = styled.div`
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5));
+`;
 
-const PerspectiveText = styled.div`
-    color: white;
-    font-family: Arial;
-    font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: -2px;
-    text-transform: uppercase;
-    &:hover ${Text}{
-        transform: translate(0, -3rem);
-    }
-`
-
-const PerspectiveLine = styled.div`
-    height: 3rem;
-    overflow: hidden;
+const ArtOfTheDay = styled.div`
     position: relative;
-    &:nth-child(odd) {
-        transform: skew(60deg, -30deg) scaleY(0.667);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1rem solid black;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/20/Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg");
+    background-size: cover;
+    height: 30rem;
+    width: 30rem;
+    &:hover {
+        filter: brightness(30%);
     }
-    &:nth-child(even) {
-        transform: skew(0deg, -30deg) scaleY(1.337);
-    }
-    &:nth-child(1) {
-        left: 1%;
-    }
-    &:nth-child(2) {
-        left: 8%;
-        background: #f07e6e;
-    }
-    &:nth-child(3) {
-        left: 17%;
-        background: #84cdfa;
-    }
-    &:nth-child(4) {
-        left: 25.8%;
-        background: #5ad1cd;
-    }
-    &:nth-child(5) {
-        left: 34%;
-    }
-`
-
-
+    
+`;
 
 export default LandingPage;

@@ -15,13 +15,15 @@ import AboutComponent from './components/about/AboutComponent';
 import FavoritesBrowser from './components/favorites/FavoritesBrowser';
 import QuizPage from './components/quiz/QuizPage';
 import LandingPage from './components/landingpage/LandingPage'
+import { UserInfoProvider } from './components/user/UserInfoContext';
 
 
 function App() {
   return (
     <>
       <Router>
-      <Navbar />
+        <UserInfoProvider>
+          <Navbar />
         <Switch>
           <Route exact path="/">
             <LandingPage/>
@@ -71,6 +73,7 @@ function App() {
           </Route>
           <Route component={PageNotFound}/>
         </Switch>
+        </UserInfoProvider>
       </Router>
     </>
   );

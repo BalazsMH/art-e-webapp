@@ -27,7 +27,7 @@ const UserLogin = () => {
                     }
         }).then(res => {
             console.log(res);
-            if(res.data.loginSuccessful) {
+            if(res.data.email) {
                 alert('login successful');
                 setIsLoggedIn(true);
             } else {

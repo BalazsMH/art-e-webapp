@@ -36,6 +36,7 @@ const Navbar = () => {
                         {isLoggedIn ?
                         <>
                             <NavLink to="/user">My Account</NavLink>
+                            <NavLink to="/logout">Logout</NavLink>
                         </> : 
                         <>
                             <NavLink to="/register-user">Registration</NavLink>

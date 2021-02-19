@@ -3,11 +3,13 @@ import { LoginContainer, LoginCard, LoginForm, LoginInput, LoginButton } from '.
 import axios from 'axios';
 import { UserInfoContext } from '../user/UserInfoContext';
 import cookie from 'react-cookies';
+import { Redirect } from 'react-router-dom';
 
 
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginSuccess, setloginSuccess] = useState(false);
     const {setLoginOrLogoutTriggered} = useContext(UserInfoContext);
 
 
@@ -28,9 +30,9 @@ const UserLogin = () => {
         }).then(res => {
             console.log(res);
             if(res.data.email) {
-                alert('login successful');
                 cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
                 setLoginOrLogoutTriggered(true);
+                setloginSuccess(true);
             } else {
                 alert('invalid credentials');
             }
@@ -40,6 +42,7 @@ const UserLogin = () => {
         })
     }
 
+    if (loginSuccess) {return <Redirect to="/"/>};
     return (
         <LoginContainer>
         <LoginCard>

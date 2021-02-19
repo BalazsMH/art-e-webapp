@@ -23,7 +23,6 @@ function App() {
       <Router>
         <UserInfoProvider>
           <Navbar />
-        </UserInfoProvider>
         <Switch>
           <Route exact path="/">
             <h1>Landing page</h1>
@@ -73,6 +72,7 @@ function App() {
           </Route>
           <Route component={PageNotFound}/>
         </Switch>
+        </UserInfoProvider>
       </Router>
     </>
   );

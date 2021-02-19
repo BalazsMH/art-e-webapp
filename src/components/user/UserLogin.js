@@ -2,12 +2,13 @@ import React, {useState, useContext} from 'react';
 import { LoginContainer, LoginCard, LoginForm, LoginInput, LoginButton } from '../Styles.js';
 import axios from 'axios';
 import { UserInfoContext } from '../user/UserInfoContext';
+import cookie from 'react-cookies';
 
 
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {isLoggedIn, setIsLoggedIn} = useContext(UserInfoContext);
+    const {setLoginTriggered} = useContext(UserInfoContext);
 
 
 
@@ -29,7 +30,8 @@ const UserLogin = () => {
             console.log(res);
             if(res.data.email) {
                 alert('login successful');
-                setIsLoggedIn(true);
+                cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
+                setLoginTriggered(true);
             } else {
                 alert('invalid credentials');
             }

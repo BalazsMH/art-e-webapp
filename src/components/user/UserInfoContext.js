@@ -4,7 +4,7 @@ export const UserInfoContext = createContext();
 
 export const UserInfoProvider = (props) => {
 
-    const [isLoggedIn, setIsloggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const [avatarLocation, setAvatarLocation] = useState();
 
@@ -15,7 +15,7 @@ export const UserInfoProvider = (props) => {
     // };
     
     return (
-        <UserInfoContext.Provider value={{isLoggedIn, setIsloggedIn, avatarLocation}}>
+        <UserInfoContext.Provider value={{isLoggedIn, setIsLoggedIn, avatarLocation}}>
             {props.children}
         </UserInfoContext.Provider>
     );

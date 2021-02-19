@@ -15,6 +15,7 @@ import AboutComponent from './components/about/AboutComponent';
 import FavoritesBrowser from './components/favorites/FavoritesBrowser';
 import QuizPage from './components/quiz/QuizPage';
 import { UserInfoProvider } from './components/user/UserInfoContext';
+import UserLogout from './components/user/UserLogout';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
             <UserLogin />
           </Route>
           <Route exact path="/logout">
-            <h1>Logout</h1>
+            <UserLogout/>
           </Route>
           <Route exact path="/about">
             <AboutComponent />

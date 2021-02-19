@@ -8,7 +8,7 @@ import cookie from 'react-cookies';
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {setLoginTriggered} = useContext(UserInfoContext);
+    const {setLoginOrLogoutTriggered} = useContext(UserInfoContext);
 
 
 
@@ -31,7 +31,7 @@ const UserLogin = () => {
             if(res.data.email) {
                 alert('login successful');
                 cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
-                setLoginTriggered(true);
+                setLoginOrLogoutTriggered(true);
             } else {
                 alert('invalid credentials');
             }

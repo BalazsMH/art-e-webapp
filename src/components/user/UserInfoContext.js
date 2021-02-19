@@ -15,7 +15,7 @@ export const UserInfoProvider = (props) => {
     // };
     
     return (
-        <UserInfoContext.Provider value={{isLoggedIn, avatarLocation}}>
+        <UserInfoContext.Provider value={{isLoggedIn, setIsloggedIn, avatarLocation}}>
             {props.children}
         </UserInfoContext.Provider>
     );

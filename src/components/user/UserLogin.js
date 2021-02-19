@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { LoginContainer, LoginCard, LoginForm, LoginInput, LoginButton } from '../Styles.js';
 import axios from 'axios';
+import { UserInfoContext } from '../user/UserInfoContext';
+
 
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const {isLoggedIn, setIsloggedIn} = useContext(UserInfoContext);
+
 
 
     const handleLoginSubmit = (e) => {
@@ -25,6 +29,7 @@ const UserLogin = () => {
             console.log(res);
             if(res.data.loginSuccessful) {
                 alert('login successful');
+                setIsloggedIn(true);
             } else {
                 alert('invalid credentials');
             }

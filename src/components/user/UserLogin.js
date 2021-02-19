@@ -15,7 +15,6 @@ const UserLogin = () => {
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         sendUserCredentials();
-        console.log("Logged in!");
     }
 
     const sendUserCredentials = () => {

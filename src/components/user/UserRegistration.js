@@ -31,6 +31,7 @@ const UserRegistration = () => {
                 }
         }).then(res => {
             console.log(res);
+            alert("Registration succesful!");
         })
         .catch(e => {
             if (e.response.data.emailNotAvailable) {alert("Email address already in use!")};

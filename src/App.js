@@ -14,6 +14,7 @@ import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 import AboutComponent from './components/about/AboutComponent';
 import FavoritesBrowser from './components/favorites/FavoritesBrowser';
 import QuizPage from './components/quiz/QuizPage';
+import LandingPage from './components/landingpage/LandingPage'
 import { UserInfoProvider } from './components/user/UserInfoContext';
 import UserLogout from './components/user/UserLogout';
 
@@ -26,7 +27,7 @@ function App() {
           <Navbar />
         <Switch>
           <Route exact path="/">
-            <h1>Landing page</h1>
+            <LandingPage/>
           </Route>
           <Route exact path="/browse">
             <ArtDataProvider>

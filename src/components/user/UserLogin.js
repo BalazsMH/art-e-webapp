@@ -10,7 +10,7 @@ const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginSuccess, setloginSuccess] = useState(false);
-    const {setLoginOrLogoutTriggered} = useContext(UserInfoContext);
+    const {setLoginOrLogoutTriggered, setUserName} = useContext(UserInfoContext);
 
 
 
@@ -31,6 +31,7 @@ const UserLogin = () => {
             console.log(res);
             if(res.data.email) {
                 cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
+                setUserName(res.data.username);
                 setLoginOrLogoutTriggered(true);
                 setloginSuccess(true);
             } else {

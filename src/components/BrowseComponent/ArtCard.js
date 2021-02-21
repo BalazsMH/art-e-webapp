@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {Card, CardHeader, CardBody, CardFooter, Button} from 'grommet';
 import {ShareOption} from 'grommet-icons';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import FavoriteButton from '../favorites/FavoriteButton';
 import { DetailsLink, ArtPicture } from '../Styles.js';
 
 
 export default function ArtCard(props) {
-    let { userId } = useParams();
-    userId = userId === undefined ? 0 : userId;
+    let userName = props.userName;
     const artDetails = props.data;
     const imageUrl = props.data.headerImage.url;
     const [isLoading, setIsLoading] = useState(true);
@@ -19,10 +17,9 @@ export default function ArtCard(props) {
         setIsLoading(true);
         axios({
             method: 'GET',
-            url:`http://localhost:8080/api/favorites/${userId}/${artDetails.objectNumber}`
+            url:`http://localhost:8080/api/favorites/${userName}/${artDetails.objectNumber}`
         })
         .then(res => {
-            // TODO: set the color of the favorite symbol
             setIsFavorite(res.data);
             setIsLoading(false);
         })
@@ -30,7 +27,7 @@ export default function ArtCard(props) {
             setIsLoading(false);
             console.log(e);
         });
-    }, [artDetails.objectNumber, userId]);
+    }, [artDetails.objectNumber, userName]);
 
     if (isLoading) {
         return (<div>Loading..</div>);
@@ -38,7 +35,7 @@ export default function ArtCard(props) {
 
     const favoriteProps = {
         isFavorite: isFavorite,
-        userId: userId === undefined ? 0 : userId,
+        userNameProp: userName,
         objectNumber: artDetails.objectNumber
     }
 

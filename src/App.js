@@ -10,21 +10,24 @@ import ArtBrowser from './components/BrowseComponent/ArtBrowser';
 import ArtDetails from './components/BrowseComponent/ArtDetails';
 import {ArtDataProvider} from './components/BrowseComponent/ArtBrowserContext';
 import Scoreboard from './components/quiz/Scoreboard';
-import Quiz from './components/quiz/Quiz';
 import PageNotFound from './components/PageNotFoundComponent/PageNotFound';
 import AboutComponent from './components/about/AboutComponent';
 import FavoritesBrowser from './components/favorites/FavoritesBrowser';
 import QuizPage from './components/quiz/QuizPage';
+import LandingPage from './components/landingpage/LandingPage'
+import { UserInfoProvider } from './components/user/UserInfoContext';
+import UserLogout from './components/user/UserLogout';
 
 
 function App() {
   return (
     <>
       <Router>
-      <Navbar />
+        <UserInfoProvider>
+          <Navbar />
         <Switch>
           <Route exact path="/">
-            <h1>Landing page</h1>
+            <LandingPage/>
           </Route>
           <Route exact path="/browse">
             <ArtDataProvider>
@@ -37,7 +40,6 @@ function App() {
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">
-            {/* <Quiz /> */}
             <QuizPage />
           </Route>
           <Route exact path="/register-user">
@@ -47,7 +49,7 @@ function App() {
             <UserLogin />
           </Route>
           <Route exact path="/logout">
-            <h1>Logout</h1>
+            <UserLogout/>
           </Route>
           <Route exact path="/about">
             <AboutComponent />
@@ -72,6 +74,7 @@ function App() {
           </Route>
           <Route component={PageNotFound}/>
         </Switch>
+        </UserInfoProvider>
       </Router>
     </>
   );

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ArtCard from '../BrowseComponent/ArtCard';
-import styled from 'styled-components';
 import axios from 'axios';
+import { GridContainer } from '../Styles.js';
 
 const FavoritesBrowser = () => {
     let { userId } = useParams();
@@ -16,7 +16,6 @@ const FavoritesBrowser = () => {
         }).then(res => {
             setArtData(res.data);
             setIsLoading(false);
-            console.log("Load complete..");
         })
         .catch(e => {
             setIsLoading(false);
@@ -29,7 +28,7 @@ const FavoritesBrowser = () => {
     }
     
     return (
-        <BrowserDiv>
+        <div>
             <GridContainer>   
             {artData.length !== 0 ? artData
                 .map((artPiece, index) => {
@@ -37,18 +36,8 @@ const FavoritesBrowser = () => {
                 })
             : <div>No favorites found.</div>}
             </GridContainer>
-        </BrowserDiv>
+        </div>
     )
 }
-
-const GridContainer = styled.div`
-    display: grid;
-    padding: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 1rem;
-`;
-
-const BrowserDiv = styled.div`
-`;
 
 export default FavoritesBrowser;

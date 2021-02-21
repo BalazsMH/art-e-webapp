@@ -1,69 +1,62 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, {useState, useContext} from 'react';
+import { LoginContainer, LoginCard, LoginForm, LoginInput, LoginButton } from '../Styles.js';
+import axios from 'axios';
+import { UserInfoContext } from '../user/UserInfoContext';
+import cookie from 'react-cookies';
+import { Redirect } from 'react-router-dom';
 
 
 const UserLogin = () => {
-    let userName, password;
-    
-    const handleChange = (e, targetVar) => {
-        targetVar = e.target.value;
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loginSuccess, setloginSuccess] = useState(false);
+    const {setLoginOrLogoutTriggered, setUserName} = useContext(UserInfoContext);
+
+
+
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        sendUserCredentials();
     }
 
-    const handleLoginSubmit = () => {
-        console.log("Logged in!");
+    const sendUserCredentials = () => {
+        axios({
+            method: 'POST',
+            url:'http://localhost:8080/api/auth/login',
+            params: {
+                    email: email,
+                    password: password
+                    }
+        }).then(res => {
+            console.log(res);
+            if(res.data.email) {
+                cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
+                setUserName(res.data.username);
+                setLoginOrLogoutTriggered(true);
+                setloginSuccess(true);
+            } else {
+                alert('invalid credentials');
+            }
+        })
+        .catch(e => {
+            console.log(e);
+        })
     }
 
+    if (loginSuccess) {return <Redirect to="/"/>};
     return (
         <LoginContainer>
         <LoginCard>
-            <LoginForm>
-                <label>Username </label>
-                <Input onChange={(e) => handleChange(e, userName)} type="text" name="userName" placeholder="Enter your username here" />
+            <LoginForm onSubmit={(e)=>handleLoginSubmit(e)}>
+                <label>Email </label>
+                <LoginInput onChange={(e) => setEmail(e.target.value)} value={email}  type="text" name="email" placeholder="Enter your email here" required />
                 <label>Password </label>
-                <Input onChange={(e) => handleChange(e, password)} type="password" name="pwd" placeholder="Enter your password here" />
-                <Button onClick={() => handleLoginSubmit}>Login</Button>
+                <LoginInput onChange={(e) => setPassword(e.target.value)} value={password} type="password" name="pwd" placeholder="Enter your password here" required />
+                <LoginButton type="submit">Login</LoginButton>
             </LoginForm>
         </LoginCard>
         </LoginContainer>
     )
 }
-
-const LoginContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5rem;
-`;
-
-const Input = styled.input`
-    padding: 1rem;
-`;
-
-const Button = styled.button`
-    font-size: 1rem;
-    padding: 0.5rem;
-    margin: 1rem;
-`;
-
-const LoginCard = styled.div`
-    display: flex;
-    /* height: 100%; */
-    width: fit-content;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    line-height: 5rem;
-    box-shadow: 6px 6px 24px 0px rgba(50, 50, 50, 0.7);
-`;
-
-const LoginForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    font-size: 2 rem;
-`;
 
 export default UserLogin;

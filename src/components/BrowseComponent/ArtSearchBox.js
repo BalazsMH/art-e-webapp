@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react';
-import styled from 'styled-components';
 import {ArtBrowserContext} from './ArtBrowserContext';
-
+import { SearchBox, SearchTitle, SearchInput, SearchSelect, SearchButton } from '../Styles.js';
 
 export default function ArtSearchBox() {
     const {setQueryParam} = useContext(ArtBrowserContext);
@@ -60,31 +59,4 @@ export default function ArtSearchBox() {
     )
 }
 
-const SearchTitle = styled.h2`
-    padding-bottom:0.7rem;
-    
-`;
 
-const SearchBox = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const SearchInput = styled.input`
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0.2rem;
-
-`;
-
-const SearchSelect = styled.select `
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0.2rem;
-`;
-
-const SearchButton = styled.button`
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.2rem;
-`;

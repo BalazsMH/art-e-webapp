@@ -1,9 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/arte.png';
+import {Avatar, Box, DropButton} from 'grommet';
+import {UserFemale} from 'grommet-icons';
+import { NavContainer, SiteLogo, NavRoutes, NavLink, UserFunctionsContainer } from '../Styles.js';
+import { UserInfoContext } from '../user/UserInfoContext';
 
 const Navbar = () => {
+    const {isLoggedIn} = useContext(UserInfoContext);
+
+
+
     return (
         <NavContainer>
             <Link to="/"><SiteLogo src={logo} alt="Art-E" /></Link>
@@ -11,55 +18,40 @@ const Navbar = () => {
                 <NavLink to="/browse">Browse</NavLink>
                 <NavLink to="/quiz">Quiz</NavLink>
                 <NavLink to="/about">About</NavLink>
-                <NavLink to="/favorites/0">Favorites</NavLink>
+                {isLoggedIn ? <NavLink to="/favorites/0">Favorites</NavLink>
+                            : <></>}
+                
                 <UserFunctionsContainer>
-                    <NavLink to="/register-user">Registration</NavLink>
-                    <NavLink to="/login">Login</NavLink>
+                <DropButton
+                    label={
+                    <>
+                        <Box direction="row"  gap="small">
+                            {isLoggedIn ? <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />
+                                        : <Avatar background="accent-2"><UserFemale color="accent-1" /></Avatar>}
+                        </Box>
+                    </>
+                        }
+                    dropAlign={{ top: 'bottom', right: 'right' }}
+                    dropContent={
+                        <>
+                        <Box pad="large" background="light-2" />
+                        {isLoggedIn ?
+                        <>
+                            <NavLink to="/user">My Account</NavLink>
+                            <NavLink to="/logout">Logout</NavLink>
+                        </> : 
+                        <>
+                            <NavLink to="/register-user">Registration</NavLink>
+                            <NavLink to="/login">Login</NavLink>
+                        </>
+                        }
+                        </>    
+                    }
+                    />
                 </UserFunctionsContainer>
             </NavRoutes>
         </NavContainer>
     );
 }
-
-const NavContainer = styled.header`
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    z-index: 100;
-    background-color: #231F20;
-    color: #ffffff;
-    padding:0.2rem;
-`;
-
-const NavRoutes = styled.div`
-    display:flex;
-    width: 100%;
-`;
-
-const UserFunctionsContainer = styled.div`
-    display: flex;
-    margin-left: auto;
-`;
-
-const NavLink = styled(Link)`
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem;
-    margin: 0 0.5rem 0 0.5rem;
-    color:inherit;
-    &:hover{
-        text-decoration: underline;
-    }
-`;
-
-
-const SiteLogo = styled.img`
-    max-width: 6rem;
-    margin-right: 1.5rem;
-`;
 
 export default Navbar;

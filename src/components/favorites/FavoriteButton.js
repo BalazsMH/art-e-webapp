@@ -1,25 +1,29 @@
-import React, {useState} from 'react';
-import {Button} from 'grommet';
-import {Favorite} from 'grommet-icons';
+import React, {useState, useContext} from 'react';
 import interactFavorites from '../../util/InteractFavorites';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UserInfoContext } from '../user/UserInfoContext';
+import '../IconSet';
 
 export default function FavoriteButton(props) {   
     let {userId, objectNumber} = props.props;
     const [isFavorite, setIsFavorite] = useState(props.props.isFavorite)
-    const [color, setColor] = useState(isFavorite ? "red" : "none");
-    
-    const favoriteOnClick = (e) => {
-        let icon = e.target.querySelector('path');
+    const {isLoggedIn} = useContext(UserInfoContext);
+
+    const favoriteOnClick = () => {
         interactFavorites(isFavorite, userId, objectNumber);
         setIsFavorite(!isFavorite);
-        icon.style.fill = color;
-        setColor(isFavorite ? "red" : "none");
     }
     
     return (
-        <Button icon={<Favorite color="red" />}
-                hoverIndicator
-                onClick = {(e) => favoriteOnClick(e)}
+        <>
+            {isLoggedIn ?
+                <FontAwesomeIcon 
+                    icon={[isFavorite ? 'fas' : 'far', 'heart']} // fas = font awesome solid, far = font awesome regular 
+                    size='lg' 
+                    color='red'
+                    onClick = {() => favoriteOnClick()}
                 />
+            : <></>}
+        </>
     )
 }

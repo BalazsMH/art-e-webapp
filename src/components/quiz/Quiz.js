@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import {Question} from './Question';
-
+import { QuizContainer } from '../Styles.js';
 
 const API_URL = 'http://localhost:8080/api/quiz'; 
 
@@ -35,7 +34,7 @@ const Quiz = ({type}) => {
         .catch(e => {
             console.log(e);
         })
-    }, [])
+    }, [type.showGivenQuiz])
 
     const handleAnswer = (answer) => {
         if(!showAnswers) {
@@ -69,16 +68,5 @@ const Quiz = ({type}) => {
         ) : (<h1>Loading...</h1>)
         )
 }
-
-const QuizContainer = styled.div`
-    position: relative !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    display: block;
-    margin-left: auto;
-    margin-right: 60%;
-    width: 40%;
-`;
 
 export default Quiz;

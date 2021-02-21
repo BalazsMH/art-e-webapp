@@ -28,7 +28,6 @@ const UserLogin = () => {
                     password: password
                     }
         }).then(res => {
-            console.log(res);
             if(res.data.email) {
                 cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
                 setUserName(res.data.username);

@@ -3,10 +3,9 @@ import axios from 'axios';
 import {Question} from './Question';
 import { QuizContainer } from '../Styles.js';
 
-const API_URL = 'http://localhost:8080/api/quiz'; 
+const API_URL = 'http://localhost:8080/api/quiz';
 
 const Quiz = ({type}) => {
-    
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);

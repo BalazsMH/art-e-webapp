@@ -5,8 +5,8 @@ import UserSidebar from '../layout/UserSidebar';
 
 const UserStats = () => {
     let { userName } = useParams();
-    const [userData, setUserData] = useState({});
     const API_URL = `http://localhost:8080/api/user/${userName}/statistics`;
+    const [userData, setUserData] = useState({});
     
     useEffect(() => {
         axios({
@@ -37,7 +37,6 @@ const UserStats = () => {
         <div>
             <UserSidebar />
             <p>Highscores rank: { userData.rank }</p>
-            
             <p>XP earned: { userData.actualXp }</p>
             <p>Daily remaining XP: { userData.dailyRemainingXp }</p>
             <p>Correct answers: { userData.correctAnswers }</p>

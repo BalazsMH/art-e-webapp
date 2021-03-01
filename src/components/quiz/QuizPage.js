@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Quiz from './Quiz'
 import { QuizH1, QuizzesContainer, QuizSelector, QuizH2, QuizDetails, NextButtonPage, BackButton } from '../Styles.js';
+import { UserInfoContext } from '../user/UserInfoContext';
 
 const QuizPage = () => {
-
+    const userInfo = useContext(UserInfoContext);
     const [showGivenQuiz, setShowGivenQuiz] = useState('');
 
     const showQuiz = (type) => {
@@ -12,6 +13,7 @@ const QuizPage = () => {
     
     return (
             <div>
+                {console.log(userInfo)}
                 {showGivenQuiz === '' && ( <QuizH1>Welcome to the Art-e Quizzes!</QuizH1>)}
                 {showGivenQuiz === '' && (
                 <QuizzesContainer>

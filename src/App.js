@@ -63,7 +63,7 @@ function App() {
           <Route exact path="/user/general">
             <UserGeneral />
           </Route>
-          <Route exact path="/user/game">
+          <Route exact path="/user/:userName/statistics">
             <UserStats />
           </Route>
           <Route exact path="/user/security">

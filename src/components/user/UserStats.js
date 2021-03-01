@@ -1,21 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import UserSidebar from '../layout/UserSidebar';
 
 const UserStats = () => {
+    let { userName } = useParams();
     const [userData, setUserData] = useState({});
+    const API_URL = `http://localhost:8080/api/user/${userName}/statistics`;
     
     useEffect(() => {
-        // Dummy data now, axios call later from backend
-        let prepUserData = { 
-            rank: "1",
-            actualXp: "100",
-            quizFinished: "1",
-            goodAnswerCount: "4",
-            totalAnswerCount: "5"
-        };
-        prepUserData.answerRatio = (parseInt(prepUserData.goodAnswerCount) / parseInt(prepUserData.totalAnswerCount)).toFixed(2)
-        
-        setUserData(prepUserData);
+        axios({
+            method: 'POST',
+            url: API_URL,
+            data: {
+                userName: userName
+                }
+        }).then(res => {
+            let prepUserData = { 
+                rank: res.data.rank.name,
+                actualXp: res.data.actualXp,
+                allAnswers: res.data.allAnswers,
+                correctAnswers: res.data.correctAnswers,
+                dailyRemainingXp: res.data.dailyRemainingXp,
+                dailyStreak: res.data.dailyStreak,
+                winStreak: res.data.winStreak
+            };
+            prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
+            setUserData(prepUserData);
+        })
+        .catch(e => {
+            console.log(e);
+        })
     }, []);
 
     return (
@@ -24,10 +39,12 @@ const UserStats = () => {
             <p>Highscores rank: { userData.rank }</p>
             
             <p>XP earned: { userData.actualXp }</p>
-            <p>Finished quiz count: { userData.quizFinished }</p>
-            <p>Correct answers: { userData.goodAnswerCount }</p>
-            <p>Total answers: { userData.totalAnswerCount }</p>
+            <p>Daily remaining XP: { userData.dailyRemainingXp }</p>
+            <p>Correct answers: { userData.correctAnswers }</p>
+            <p>Total answers: { userData.allAnswers }</p>
             <p>Correct answer ratio: { userData.answerRatio }</p>
+            <p>Daily streak: { userData.dailyStreak }</p>
+            <p>Win streak: { userData.winStreak }</p>
             
         </div>
     )

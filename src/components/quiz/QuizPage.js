@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react';
 import Quiz from './Quiz'
 import { QuizH1, QuizzesContainer, QuizSelector, QuizH2, QuizDetails, NextButtonPage, BackButton } from '../Styles.js';
 import { UserInfoContext } from '../user/UserInfoContext';
+import UserStats from '../user/UserStats';
+import cookie from 'react-cookies';
+
 
 const QuizPage = () => {
     const userInfo = useContext(UserInfoContext);
@@ -13,7 +16,6 @@ const QuizPage = () => {
     
     return (
             <div>
-                {console.log(userInfo)}
                 {showGivenQuiz === '' && ( <QuizH1>Welcome to the Art-e Quizzes!</QuizH1>)}
                 {showGivenQuiz === '' && (
                 <QuizzesContainer>
@@ -40,6 +42,8 @@ const QuizPage = () => {
                 {showGivenQuiz === 'detail' && (
                 <Quiz type={{showGivenQuiz}}/>)}
                 {showGivenQuiz !== '' && (  <BackButton onClick={() => showQuiz('')}>Back</BackButton>)}
+                <UserStats></UserStats>
+                {console.log(cookie.load("stats"))}
             </div>
         )
 }

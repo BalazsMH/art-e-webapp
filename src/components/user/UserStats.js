@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import UserSidebar from '../layout/UserSidebar';
+import { UserInfoContext } from '../user/UserInfoContext';
+import cookie from 'react-cookies';
 
 const UserStats = () => {
-    let { userName } = useParams();
+    const userName = cookie.load('username');
     const API_URL = `http://localhost:8080/api/user/${userName}/statistics`;
     const [userData, setUserData] = useState({});
-    
+
     useEffect(() => {
         axios({
             method: 'POST',
@@ -27,6 +28,7 @@ const UserStats = () => {
             };
             prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
             setUserData(prepUserData);
+            cookie.save('stats', prepUserData, { path: '/', maxAge: 259200 });
         })
         .catch(e => {
             console.log(e);
@@ -35,7 +37,7 @@ const UserStats = () => {
 
     return (
         <div>
-            <UserSidebar />
+            {/* <UserSidebar /> */}
             <p>Highscores rank: { userData.rank }</p>
             <p>XP earned: { userData.actualXp }</p>
             <p>Daily remaining XP: { userData.dailyRemainingXp }</p>

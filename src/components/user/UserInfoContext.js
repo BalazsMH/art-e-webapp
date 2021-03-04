@@ -8,7 +8,8 @@ export const UserInfoProvider = (props) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginOrLogoutTriggered, setLoginOrLogoutTriggered] = useState(false);
-    const [userName, setUserName] = useState("");
+    const [userName, setUserName] = useState();
+
 
     const [avatarLocation, setAvatarLocation] = useState();
 
@@ -22,7 +23,7 @@ export const UserInfoProvider = (props) => {
     }, [loginOrLogoutTriggered])
     
     return (
-        <UserInfoContext.Provider value={{isLoggedIn, setLoginOrLogoutTriggered, userName, setUserName, avatarLocation}}>
+        <UserInfoContext.Provider value={{isLoggedIn, setLoginOrLogoutTriggered, avatarLocation, userName, setUserName}}>
             {props.children}
         </UserInfoContext.Provider>
     );

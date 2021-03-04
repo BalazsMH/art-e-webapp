@@ -13,6 +13,7 @@ const UserLogin = () => {
     const {setUserName } = useContext(UserInfoContext);
     const {setLoginOrLogoutTriggered} = useContext(UserInfoContext);
 
+
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         sendUserCredentials();
@@ -29,7 +30,8 @@ const UserLogin = () => {
         }).then(res => {
             console.log();
             if(res.data.email) {
-                cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge: 259200 });
+                cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
+                setUserName(res.data.username);
                 setLoginOrLogoutTriggered(true);
                 setloginSuccess(true);
                 setUserName(res.data.username);
@@ -45,7 +47,7 @@ const UserLogin = () => {
     if (loginSuccess) {return <Redirect to="/"/>};
     return (
         <LoginContainer>
-        <LoginCard>
+        <LoginCard height="auto">
             <LoginForm onSubmit={(e)=>handleLoginSubmit(e)}>
                 <label>Email </label>
                 <LoginInput onChange={(e) => setEmail(e.target.value)} value={email}  type="text" name="email" placeholder="Enter your email here" required />

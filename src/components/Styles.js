@@ -358,3 +358,8 @@ export const RegistrationContainer = styled.div`
     padding: 5rem;
     line-height: 3rem;
 `;
+
+/* ArtDetails styles */
+export const AboutConmponentContainer = styled.div`
+    margin: 2rem;
+`;

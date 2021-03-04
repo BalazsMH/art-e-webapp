@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import {Box, Drop, DropButton, Text} from 'grommet';
-import { Dropbox } from 'grommet-icons';
-
+import {Box, DropButton, Text, Accordion} from 'grommet';
 
 
 /* ArtBrowser styles */
@@ -14,6 +12,9 @@ export const ArtBrowserSidebar = styled.div`
     float:left;
     padding: 0.5rem;
     margin-top: 1rem;
+`;
+export const MobileSearchButton = styled(Accordion)`
+    padding: 0.7rem 1rem 0.7rem 1rem;
 `;
 
 
@@ -110,9 +111,9 @@ export const NavContainer = styled.header`
     z-index: 0;
     background-color: #231F20;
     color: #ffffff;
-    padding:0.2rem;
+    padding:0.2rem 0.7rem 0.2rem 0.7rem;
 `;
-export const MobileNav = styled.div`
+export const MobileNav = styled.header`
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -120,11 +121,12 @@ export const MobileNav = styled.div`
     justify-content: space-between;
     position: sticky;
     position: -webkit-sticky;
+    height: auto;
     top: 0;
     z-index: 0;
     background-color: #231F20;
     color: #ffffff;
-    padding:0.2rem;
+    padding:0.2rem 0.7rem 0.2rem 0.7rem;
 `;
 export const NavRoutes = styled.div`
     display:flex;
@@ -352,7 +354,7 @@ export const LoginContainer = styled.div`
     margin: 5rem;
 `;
 export const LoginInput = styled.input`
-    padding: 1rem;
+    padding: 0.5rem;
 `;
 export const LoginButton = styled.button`
     font-size: 1rem;
@@ -366,9 +368,9 @@ export const LoginCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
     line-height: 5rem;
-    box-shadow: 6px 6px 24px 0px rgba(50, 50, 50, 0.7);
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.20);
 `;
 export const LoginForm = styled.form`
     display: flex;
@@ -377,13 +379,14 @@ export const LoginForm = styled.form`
     justify-content: center;
     padding: 1rem;
     font-size: 2 rem;
+    width:max-content;
 `;
 
 
 /*  UserRegistration styles */
 export const RegistrationContainer = styled.div`
     display: flex;
-    padding: 5rem;
+    padding: 3rem;
     line-height: 3rem;
 `;
 

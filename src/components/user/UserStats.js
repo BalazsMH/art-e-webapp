@@ -9,35 +9,34 @@ const UserStats = () => {
     const API_URL = `http://localhost:8080/api/user/${userName}/statistics`;
     const [userData, setUserData] = useState({});
 
-    useEffect(() => {
-        axios({
-            method: 'POST',
-            url: API_URL,
-            data: {
-                userName: userName
-                }
-        }).then(res => {
-            let prepUserData = { 
-                rank: res.data.rank.name,
-                actualXp: res.data.actualXp,
-                allAnswers: res.data.allAnswers,
-                correctAnswers: res.data.correctAnswers,
-                dailyRemainingXp: res.data.dailyRemainingXp,
-                dailyStreak: res.data.dailyStreak,
-                winStreak: res.data.winStreak
-            };
-            prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
-            setUserData(prepUserData);
-            cookie.save('stats', prepUserData, { path: '/', maxAge: 259200 });
-        })
-        .catch(e => {
-            console.log(e);
-        })
-    }, []);
+    // useEffect(() => {
+    //     axios({
+    //         method: 'POST',
+    //         url: API_URL,
+    //         data: {
+    //             userName: userName
+    //             }
+    //     }).then(res => {
+    //         let prepUserData = { 
+    //             rank: res.data.rank.name,
+    //             actualXp: res.data.actualXp,
+    //             allAnswers: res.data.allAnswers,
+    //             correctAnswers: res.data.correctAnswers,
+    //             dailyRemainingXp: res.data.dailyRemainingXp,
+    //             dailyStreak: res.data.dailyStreak,
+    //             winStreak: res.data.winStreak
+    //         };
+    //         prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
+    //         setUserData(prepUserData);
+    //     })
+    //     .catch(e => {
+    //         console.log(e);
+    //     })
+    // }, []);
 
     return (
         <div>
-            {/* <UserSidebar /> */}
+            <UserSidebar />
             <p>Highscores rank: { userData.rank }</p>
             <p>XP earned: { userData.actualXp }</p>
             <p>Daily remaining XP: { userData.dailyRemainingXp }</p>

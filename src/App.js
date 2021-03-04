@@ -17,6 +17,7 @@ import QuizPage from './components/quiz/QuizPage';
 import LandingPage from './components/landingpage/LandingPage'
 import { UserInfoProvider } from './components/user/UserInfoContext';
 import UserLogout from './components/user/UserLogout';
+import { UserStatsProvider } from './components/user/UserStatsContext';
 
 
 function App() {
@@ -40,7 +41,9 @@ function App() {
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">
+            <UserStatsProvider>
             <QuizPage />
+            </UserStatsProvider>
           </Route>
           <Route exact path="/register-user">
             <UserRegistration />

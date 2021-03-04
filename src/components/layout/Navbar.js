@@ -2,12 +2,14 @@ import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/arte.png';
 import {Avatar, Box, DropButton} from 'grommet';
-import {UserFemale} from 'grommet-icons';
+import {UserFemale, Menu} from 'grommet-icons';
 import { NavContainer, SiteLogo, NavRoutes, NavLink, UserFunctionsContainer } from '../Styles.js';
 import { UserInfoContext } from '../user/UserInfoContext';
+import { MediaInfoContext } from '../mediaInfo/MediaInfoContext';
 
 const Navbar = () => {
     const {isLoggedIn} = useContext(UserInfoContext);
+    const {isSmallScreen} = useContext(MediaInfoContext);
 
 
 
@@ -23,6 +25,7 @@ const Navbar = () => {
                 
                 <UserFunctionsContainer>
                 <DropButton
+                    color="plain"
                     label={
                     <>
                         <Box direction="row"  gap="small">

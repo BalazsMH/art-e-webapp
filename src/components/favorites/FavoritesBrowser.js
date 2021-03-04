@@ -4,6 +4,7 @@ import ArtCard from '../BrowseComponent/ArtCard';
 import axios from 'axios';
 import { GridContainer } from '../Styles.js';
 import { UserInfoContext } from '../user/UserInfoContext';
+import FavoriteFolders from '../favorites/FavoriteFolders';
 
 const FavoritesBrowser = () => {
     const { userName: userNameParam } = useParams();
@@ -34,6 +35,7 @@ const FavoritesBrowser = () => {
     
     return (
         <div>
+            <FavoriteFolders />
             <GridContainer>   
             {
                 artData.length !== 0 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import {Box, Text} from 'grommet';
+import {Box, Drop, DropButton, Text} from 'grommet';
+import { Dropbox } from 'grommet-icons';
 
 
 
@@ -106,7 +107,21 @@ export const NavContainer = styled.header`
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    z-index: 100;
+    z-index: 0;
+    background-color: #231F20;
+    color: #ffffff;
+    padding:0.2rem;
+`;
+export const MobileNav = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 0;
     background-color: #231F20;
     color: #ffffff;
     padding:0.2rem;
@@ -115,6 +130,8 @@ export const NavRoutes = styled.div`
     display:flex;
     align-items: center;
     width: 100%;
+    margin-left: 1.5rem;
+
 `;
 export const UserFunctionsContainer = styled.div`
     display: flex;
@@ -132,7 +149,18 @@ export const NavLink = styled(Link)`
 `;
 export const SiteLogo = styled.img`
     max-width: 6rem;
-    margin-right: 1.5rem;
+`;
+export const UserDropButton = styled(DropButton)`
+    padding: 0;
+    border: none;
+`;
+export const MenuDropButton = styled(DropButton)`
+    padding: 0;
+    border: none;
+`;
+
+export const DropButtonContent = styled(Box)`
+    z-index:500;
 `;
 
 

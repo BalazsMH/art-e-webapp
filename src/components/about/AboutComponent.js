@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { AboutConmponentContainer } from '../Styles.js';
 
 const AboutComponent = () => {
     const [aboutContent, setAboutContent] = useState({});
@@ -26,7 +27,7 @@ const AboutComponent = () => {
     }
     
     return (
-        <div>
+        <AboutConmponentContainer>
             <h1>{aboutContent.title} by {aboutContent.teamName}</h1>
             <br />
             <h2>Team members:</h2>
@@ -39,9 +40,11 @@ const AboutComponent = () => {
             {Object.keys(aboutContent.licenses).map((component, key) => (
                 <p key={key}>{component}: <a href={aboutContent.licenses[component]}>{aboutContent.licenses[component]}</a></p>
             ))}
-        </div>
+        </AboutConmponentContainer>
     );
 }
+
+
 
 
 

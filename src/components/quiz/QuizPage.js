@@ -41,8 +41,6 @@ const QuizPage = () => {
                 {showGivenQuiz === 'detail' && (
                 <Quiz type={{showGivenQuiz}}/>)}
                 {showGivenQuiz !== '' && (  <BackButton onClick={() => showQuiz('')}>Back</BackButton>)}
-                {/* <UserStats></UserStats> */}
-                {console.log(cookie.load("stats"))}
             </div>
         )
 }

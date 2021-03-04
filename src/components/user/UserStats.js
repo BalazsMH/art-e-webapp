@@ -1,41 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import UserSidebar from '../layout/UserSidebar';
-import { UserInfoContext } from '../user/UserInfoContext';
-import cookie from 'react-cookies';
+import { UserStatsContext } from '../user/UserStatsContext';
 
 const UserStats = () => {
-    const userName = cookie.load('username');
-    const API_URL = `http://localhost:8080/api/user/${userName}/statistics`;
-    const [userData, setUserData] = useState({});
-
-    // useEffect(() => {
-    //     axios({
-    //         method: 'POST',
-    //         url: API_URL,
-    //         data: {
-    //             userName: userName
-    //             }
-    //     }).then(res => {
-    //         let prepUserData = { 
-    //             rank: res.data.rank.name,
-    //             actualXp: res.data.actualXp,
-    //             allAnswers: res.data.allAnswers,
-    //             correctAnswers: res.data.correctAnswers,
-    //             dailyRemainingXp: res.data.dailyRemainingXp,
-    //             dailyStreak: res.data.dailyStreak,
-    //             winStreak: res.data.winStreak
-    //         };
-    //         prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
-    //         setUserData(prepUserData);
-    //     })
-    //     .catch(e => {
-    //         console.log(e);
-    //     })
-    // }, []);
+    const {userData, isLoaded} = useContext(UserStatsContext);
 
     return (
-        <div>
+        isLoaded ? (<div>
             <UserSidebar />
             <p>Highscores rank: { userData.rank }</p>
             <p>XP earned: { userData.actualXp }</p>
@@ -46,7 +17,10 @@ const UserStats = () => {
             <p>Daily streak: { userData.dailyStreak }</p>
             <p>Win streak: { userData.winStreak }</p>
             
-        </div>
+        </div>) :
+
+        (<h1>Loading...</h1>)
+
     )
 }
 

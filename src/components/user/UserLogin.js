@@ -31,10 +31,11 @@ const UserLogin = () => {
             console.log();
             if(res.data.email) {
                 cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
-                setUserName(res.data.username);
                 setLoginOrLogoutTriggered(true);
                 setloginSuccess(true);
                 setUserName(res.data.username);
+                cookie.save("username", res.data.username,{ path: '/', maxAge:259200  });
+
             } else {
                 alert('invalid credentials');
             }

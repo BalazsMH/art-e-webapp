@@ -68,7 +68,9 @@ function App() {
             <UserGeneral />
           </Route>
           <Route exact path="/user/:userName/statistics">
+          <UserStatsProvider>
             <UserStats />
+          </UserStatsProvider>
           </Route>
           <Route exact path="/user/security">
             <UserSecurity />

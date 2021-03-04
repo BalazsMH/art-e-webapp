@@ -73,8 +73,7 @@ const Quiz = ({type}) => {
             winStreak: winStreak
         };
         prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
-        console.log("xxxx")
-        console.log(prepUserData)
+        
         // axios({
         //     method: 'POST',
         //     url: API_URL,

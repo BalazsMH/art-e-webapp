@@ -7,12 +7,11 @@ import { UserStatsContext } from '../user/UserStatsContext';
 
 
 const API_URL = 'http://localhost:8080/api/quiz';
+const API_URL_UPDATE = `http://localhost:8080/api/user/update-statistics`;
 
 const Quiz = ({type}) => {
 
     const {userData, isLoaded} = useContext(UserStatsContext);
-
-    const userStats = cookie.load("stats");
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -23,13 +22,10 @@ const Quiz = ({type}) => {
     const [showAnswers, setShowAnswers] = useState(false);
     const [dailyRemainingXp, setDailyRemainingXp] = useState();
     const [actualXp, setActualXp] = useState();
-
-    // let dailyRemainingXp = 
-    // let actualXp = userStats.actualXp;
+    const userName = cookie.load('username');
     
     useEffect(() => {
         if(isLoaded) {
-            console.log("LOADED")
             setCorrectAnswers(userData.correctAnswers);
             setAllAnswers(userData.allAnswers);
             setWinStreak(userData.winStreak);
@@ -66,26 +62,26 @@ const Quiz = ({type}) => {
     useEffect(() => {
         if (gameEnded) {
             let prepUserData = { 
+            userName: userName,
             actualXp: actualXp,
             allAnswers: allAnswers,
             correctAnswers: correctAnswers,
             dailyRemainingXp: dailyRemainingXp,
             winStreak: winStreak
         };
-        prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
         
-        // axios({
-        //     method: 'POST',
-        //     url: API_URL,
-        //     data: {
-        //         stats: prepUserData
-        //         }
-        // }).then(res => {
-        //     console.log("data saved")
-        // })
-        // .catch(e => {
-        //     console.log(e);
-        // })
+        axios({
+            method: 'POST',
+            url: API_URL_UPDATE,
+            data: {
+                stats: prepUserData
+                }
+        }).then(res => {
+            console.log("data saved")
+        })
+        .catch(e => {
+            console.log(e);
+        })
 
         }
     }, [gameEnded])

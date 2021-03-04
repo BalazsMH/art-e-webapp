@@ -1,19 +1,38 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ArtSearchBox from './ArtSearchBox';
 import QueryTagContainer from './QueryTagContainer';
 import PictureBrowser from './PictureBrowser';
-import { BrowserContainer, ArtBrowserSidebar } from '../Styles.js';
+import {AccordionPanel} from 'grommet';
+import {Search} from 'grommet-icons';
+import { BrowserContainer, ArtBrowserSidebar, MobileSearchButton } from '../Styles.js';
+import { MediaInfoContext } from '../mediaInfo/MediaInfoContext';
 
 
 export default function ArtBrowser() {
+    const {isSmallScreen} = useContext(MediaInfoContext);
 
     return (
         <BrowserContainer>
-            <ArtBrowserSidebar>
+        {isSmallScreen ?
+        <>
+        <MobileSearchButton>
+            <AccordionPanel label={<><Search/>Search</>}>
                 <ArtSearchBox></ArtSearchBox>
                 <QueryTagContainer></QueryTagContainer>
-            </ArtBrowserSidebar>
-            <PictureBrowser />
+            </AccordionPanel>
+        </MobileSearchButton> 
+        <PictureBrowser />
+        </>
+        :
+        <>
+        <ArtBrowserSidebar>
+            <ArtSearchBox></ArtSearchBox>
+            <QueryTagContainer></QueryTagContainer>
+        </ArtBrowserSidebar>
+        <PictureBrowser />
+        </>
+        }
+
         </BrowserContainer>
     )
 }

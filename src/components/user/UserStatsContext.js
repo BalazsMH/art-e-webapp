@@ -1,6 +1,7 @@
 import React, {useState, useEffect, createContext} from 'react';
 import cookie from 'react-cookies';
 import axios from 'axios';
+import { useContext } from 'react';
 
 export const UserStatsContext = createContext();
 
@@ -38,7 +39,7 @@ export const UserStatsProvider = (props) => {
     }, []);
     
     return (
-        <UserStatsContext.Provider value={{userData, isLoaded}}>
+        <UserStatsContext.Provider value={{userData, isLoaded, setUserData}}>
             {props.children}
         </UserStatsContext.Provider>
     );

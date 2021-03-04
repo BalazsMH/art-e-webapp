@@ -11,7 +11,7 @@ const API_URL_UPDATE = `http://localhost:8080/api/user/update-statistics`;
 
 const Quiz = ({type}) => {
 
-    const {userData, isLoaded} = useContext(UserStatsContext);
+    const {userData, isLoaded, setUserData} = useContext(UserStatsContext);
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -31,6 +31,7 @@ const Quiz = ({type}) => {
             setWinStreak(userData.winStreak);
             setDailyRemainingXp(userData.dailyRemainingXp);
             setActualXp(userData.actualXp);
+            console.log(userData)
         }
         
     }, [isLoaded])

@@ -11,7 +11,7 @@ export const MediaInfoProvider = (props) => {
     // const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
     // const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
-    const isSmallScreen = useMediaQuery({ query: '(max-widt: 768px' });
+    const isSmallScreen = useMediaQuery({ query: '(max-width: 768px' });
 
     
     return (

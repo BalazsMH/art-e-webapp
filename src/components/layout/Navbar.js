@@ -34,7 +34,6 @@ const Navbar = () => {
                     dropAlign={{ top: 'bottom', right: 'right' }}
                     dropContent={
                         <>
-                        {/* <Box pad="large" background="light-2" /> */}
                         {isLoggedIn ?
                         <>
                             <NavLink to="/user">My Account</NavLink>

@@ -45,7 +45,7 @@ const UserLogin = () => {
     if (loginSuccess) {return <Redirect to="/"/>};
     return (
         <LoginContainer>
-        <LoginCard>
+        <LoginCard height="auto">
             <LoginForm onSubmit={(e)=>handleLoginSubmit(e)}>
                 <label>Email </label>
                 <LoginInput onChange={(e) => setEmail(e.target.value)} value={email}  type="text" name="email" placeholder="Enter your email here" required />

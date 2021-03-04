@@ -17,12 +17,14 @@ import QuizPage from './components/quiz/QuizPage';
 import LandingPage from './components/landingpage/LandingPage'
 import { UserInfoProvider } from './components/user/UserInfoContext';
 import UserLogout from './components/user/UserLogout';
+import { MediaInfoProvider } from './components/mediaInfo/MediaInfoContext';
 
 
 function App() {
   return (
     <>
       <Router>
+        <MediaInfoProvider>
         <UserInfoProvider>
           <Navbar />
         <Switch>
@@ -75,6 +77,7 @@ function App() {
           <Route component={PageNotFound}/>
         </Switch>
         </UserInfoProvider>
+        </MediaInfoProvider>
       </Router>
     </>
   );

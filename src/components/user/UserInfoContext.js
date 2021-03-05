@@ -10,6 +10,7 @@ export const UserInfoProvider = (props) => {
     const [loginOrLogoutTriggered, setLoginOrLogoutTriggered] = useState(false);
     const [userName, setUserName] = useState();
 
+
     const [avatarLocation, setAvatarLocation] = useState();
 
     useEffect(() => {

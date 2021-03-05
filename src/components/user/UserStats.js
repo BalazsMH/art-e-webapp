@@ -1,35 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import UserSidebar from '../layout/UserSidebar';
+import { UserStatsContext } from '../user/UserStatsContext';
 
 const UserStats = () => {
-    const [userData, setUserData] = useState({});
-    
-    useEffect(() => {
-        // Dummy data now, axios call later from backend
-        let prepUserData = { 
-            rank: "1",
-            actualXp: "100",
-            quizFinished: "1",
-            goodAnswerCount: "4",
-            totalAnswerCount: "5"
-        };
-        prepUserData.answerRatio = (parseInt(prepUserData.goodAnswerCount) / parseInt(prepUserData.totalAnswerCount)).toFixed(2)
-        
-        setUserData(prepUserData);
-    }, []);
+    const {userData, isLoaded} = useContext(UserStatsContext);
 
     return (
-        <div>
+        isLoaded ? (<div>
             <UserSidebar />
             <p>Highscores rank: { userData.rank }</p>
-            
             <p>XP earned: { userData.actualXp }</p>
-            <p>Finished quiz count: { userData.quizFinished }</p>
-            <p>Correct answers: { userData.goodAnswerCount }</p>
-            <p>Total answers: { userData.totalAnswerCount }</p>
+            <p>Daily remaining XP: { userData.dailyRemainingXp }</p>
+            <p>Correct answers: { userData.correctAnswers }</p>
+            <p>Total answers: { userData.allAnswers }</p>
             <p>Correct answer ratio: { userData.answerRatio }</p>
+            <p>Daily streak: { userData.dailyStreak }</p>
+            <p>Win streak: { userData.winStreak }</p>
             
-        </div>
+        </div>) :
+
+        (<h1>Loading...</h1>)
+
     )
 }
 

@@ -8,15 +8,20 @@ import FavoriteFolders from '../favorites/FavoriteFolders';
 
 const FavoritesBrowser = () => {
     const { userName: userNameParam } = useParams();
-    const { userName, isLoggedIn } = useContext(UserInfoContext);
+    const { userName, isLoggedIn, allFavFolderName } = useContext(UserInfoContext);
     const [isLoading, setIsLoading] = useState(true)
     const [artData, setArtData] = useState([]);
-    
+    const [folderName, setFolderName] = useState(allFavFolderName);
+
     useEffect(() => {
         if (isLoggedIn && (userNameParam === userName)) {
+            let folderUrl = `http://localhost:8080/api/favorites/byFolder/${userName}/${folderName}`
+            if (folderName === allFavFolderName || folderName === undefined) {
+                folderUrl = `http://localhost:8080/api/favorites/${userName}`
+            }
             axios({
                 method: 'GET',
-                url:`http://localhost:8080/api/favorites/${userName}`
+                url:folderUrl
             }).then(res => {
                 setArtData(res.data);
                 setIsLoading(false);
@@ -27,7 +32,7 @@ const FavoritesBrowser = () => {
             });
         }
         else { setIsLoading(false); }
-    }, [userName, userNameParam, isLoggedIn])
+    }, [userName, userNameParam, isLoggedIn, folderName, allFavFolderName])
 
     if (isLoading) {
         return (<div>Favorites loading..</div>);
@@ -35,7 +40,7 @@ const FavoritesBrowser = () => {
     
     return (
         <div>
-            <FavoriteFolders />
+            <FavoriteFolders setFolderName={setFolderName}/>
             <GridContainer>   
             {
                 artData.length !== 0 

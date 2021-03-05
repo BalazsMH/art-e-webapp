@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../IconSet';
 import { Layer, Button } from 'grommet';
 
-const AddFavoriteFolder = () => {
+const AddFavoriteFolder = (props) => {
     const [show, setShow] = useState();
     const [folderName, setFolderName] = useState("");
     const [folderColor, setFolderColor] = useState("");
@@ -25,6 +25,9 @@ const AddFavoriteFolder = () => {
             axios({
                 method: 'POST',
                 url:`http://localhost:8080/api/favorites/addFolder/${userName}/${folderName}/${folderColor}`
+            })
+            .then(() => {
+                props.setRefreshTrigger((prevState) => !prevState);
             })
             .catch(e => {
                 console.log(e);

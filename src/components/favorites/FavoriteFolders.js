@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import '../IconSet';
 import AddFavoriteFolder from "./AddFavoriteFolder";
 
-const FavoriteFolders = () => {
-    const { userName, isLoggedIn } = useContext(UserInfoContext);
+const FavoriteFolders = (props) => {
+    const { userName, isLoggedIn, allFavFolderName } = useContext(UserInfoContext);
     const [favFolders, setFavFolders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
+    const [refreshTrigger, setRefreshTrigger] = useState(true);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -25,7 +25,11 @@ const FavoriteFolders = () => {
                 console.log(e);
             })
         }
-    }, [userName, isLoggedIn]);
+    }, [userName, isLoggedIn, refreshTrigger]);
+
+    const showFavorites = (e) => {
+        props.setFolderName(e.target.textContent)
+    }
 
     if (isLoading) {
         return <div>Please wait</div>
@@ -33,9 +37,9 @@ const FavoriteFolders = () => {
 
     return (
         <FolderSidebarDiv>
-            <FolderDiv colorHex="#ffffff">All</FolderDiv>
-            {favFolders.map((f, key) => <FolderDiv colorHex={f.colorHex} key={key}>{f.name}</FolderDiv>)}
-            <AddFavoriteFolder/>
+            <FolderDiv colorHex="#ffffff" onClick={showFavorites}>{allFavFolderName}</FolderDiv>
+            {favFolders.map((f, key) => <FolderDiv colorHex={f.colorHex} key={key} onClick={showFavorites}>{f.name}</FolderDiv>)}
+            <AddFavoriteFolder setRefreshTrigger={setRefreshTrigger}/>
         </FolderSidebarDiv>
     )
 }

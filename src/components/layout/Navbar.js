@@ -8,10 +8,8 @@ import { UserInfoContext } from '../user/UserInfoContext';
 import { MediaInfoContext } from '../mediaInfo/MediaInfoContext';
 
 const Navbar = () => {
-    const {isLoggedIn} = useContext(UserInfoContext);
+    const {isLoggedIn, userName} = useContext(UserInfoContext);    
     const {isSmallScreen} = useContext(MediaInfoContext);
-
-
 
     return (
         <>
@@ -68,7 +66,7 @@ const Navbar = () => {
                 <NavLink to="/browse">Browse</NavLink>
                 <NavLink to="/quiz">Quiz</NavLink>
                 <NavLink to="/about">About</NavLink>
-                {isLoggedIn ? <NavLink to="/favorites/0">Favorites</NavLink>
+                {isLoggedIn ? <NavLink to={"/favorites/" + userName}>Favorites</NavLink>
                             : <></>}
                 <UserFunctionsContainer>
                 <UserDropButton

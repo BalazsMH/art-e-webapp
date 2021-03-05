@@ -75,7 +75,7 @@ function App() {
           <Route exact path="/user/security">
             <UserSecurity />
           </Route>
-          <Route exact path="/favorites/:userId">
+          <Route exact path="/favorites/:userName">
             <FavoritesBrowser />
           </Route>
           <Route component={PageNotFound}/>

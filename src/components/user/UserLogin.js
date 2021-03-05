@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loginSuccess, setloginSuccess] = useState(false);
+    const [loginSuccess, setLoginSuccess] = useState(false);
     const {setUserName } = useContext(UserInfoContext);
     const {setLoginOrLogoutTriggered} = useContext(UserInfoContext);
 
@@ -28,11 +28,10 @@ const UserLogin = () => {
                     password: password
                     }
         }).then(res => {
-            console.log();
             if(res.data.email) {
                 cookie.save("Authorization", "Bearer " + res.data.token, { path: '/', maxAge:259200  });
                 setLoginOrLogoutTriggered(true);
-                setloginSuccess(true);
+                setLoginSuccess(true);
                 setUserName(res.data.username);
                 cookie.save("username", res.data.username,{ path: '/', maxAge:259200  });
 

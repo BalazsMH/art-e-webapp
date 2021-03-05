@@ -4,9 +4,11 @@ import ArtCard from './ArtCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
 import { GridContainer } from '../Styles.js';
+import { UserInfoContext } from '../user/UserInfoContext';
 
 const PictureBrowser = () => {
     const {query, pageNumber, setPageNumber} = useContext(ArtBrowserContext);
+    let {userName} = useContext(UserInfoContext);
     const [artData, setArtData] = useState([]);
     const [hasMore, setHasMore] = useState(true);
     const resultsPerPage = 20;
@@ -58,7 +60,7 @@ const PictureBrowser = () => {
                     <GridContainer>   
                     {artData.length !== 0 ? artData
                         .filter((artPiece) => artPiece.hasImage)
-                        .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} key={index}></ArtCard>)
+                        .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} userName={userName} key={index}></ArtCard>)
                     : <div>No results found for the term.</div>}
                     </GridContainer>
             </InfiniteScroll>

@@ -5,12 +5,10 @@ import cookie from 'react-cookies';
 export const UserInfoContext = createContext();
 
 export const UserInfoProvider = (props) => {
-
+    const allFavFolderName = "All";
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginOrLogoutTriggered, setLoginOrLogoutTriggered] = useState(false);
     const [userName, setUserName] = useState();
-
-
     const [avatarLocation, setAvatarLocation] = useState();
 
     useEffect(() => {
@@ -23,7 +21,7 @@ export const UserInfoProvider = (props) => {
     }, [loginOrLogoutTriggered])
     
     return (
-        <UserInfoContext.Provider value={{isLoggedIn, setLoginOrLogoutTriggered, avatarLocation, userName, setUserName}}>
+        <UserInfoContext.Provider value={{isLoggedIn, setLoginOrLogoutTriggered, avatarLocation, userName, setUserName, allFavFolderName}}>
             {props.children}
         </UserInfoContext.Provider>
     );

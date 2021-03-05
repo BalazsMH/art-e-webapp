@@ -5,7 +5,6 @@ import cookie from 'react-cookies';
 export const UserInfoContext = createContext();
 
 export const UserInfoProvider = (props) => {
-
     const allFavFolderName = "All";
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginOrLogoutTriggered, setLoginOrLogoutTriggered] = useState(false);

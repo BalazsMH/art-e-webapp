@@ -8,8 +8,8 @@ const UserLogout = () => {
     const {setLoginOrLogoutTriggered} = useContext(UserInfoContext);    
     
     cookie.remove('Authorization', { path: '/' });
-
-    setLoginOrLogoutTriggered(true);    
+    cookie.remove('username', { path: '/' });  
+    setLoginOrLogoutTriggered(true);
 
     return(
         <Redirect to="/" />

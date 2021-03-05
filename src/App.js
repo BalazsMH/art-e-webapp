@@ -17,8 +17,8 @@ import QuizPage from './components/quiz/QuizPage';
 import LandingPage from './components/landingpage/LandingPage'
 import { UserInfoProvider } from './components/user/UserInfoContext';
 import UserLogout from './components/user/UserLogout';
+import { UserStatsProvider } from './components/user/UserStatsContext';
 import { MediaInfoProvider } from './components/mediaInfo/MediaInfoContext';
-
 
 function App() {
   return (
@@ -42,7 +42,9 @@ function App() {
             </ArtDataProvider>
           </Route>
           <Route exact path="/quiz">
+            <UserStatsProvider>
             <QuizPage />
+            </UserStatsProvider>
           </Route>
           <Route exact path="/register-user">
             <UserRegistration />
@@ -65,8 +67,10 @@ function App() {
           <Route exact path="/user/general">
             <UserGeneral />
           </Route>
-          <Route exact path="/user/game">
+          <Route exact path="/user/:userName/statistics">
+          <UserStatsProvider>
             <UserStats />
+          </UserStatsProvider>
           </Route>
           <Route exact path="/user/security">
             <UserSecurity />

@@ -15,7 +15,7 @@ const FavoritesBrowser = () => {
 
     useEffect(() => {
         if (isLoggedIn && (userNameParam === userName)) {
-            let folderUrl = `http://localhost:8080/api/favorites/byFolder/${userName}/${folderName}`
+            let folderUrl = `http://localhost:8080/api/favorites/getByFolder/${userName}/${folderName}`
             if (folderName === allFavFolderName || folderName === undefined) {
                 folderUrl = `http://localhost:8080/api/favorites/${userName}`
             }

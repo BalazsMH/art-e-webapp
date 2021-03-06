@@ -24,7 +24,7 @@ const AddFavoriteFolder = (props) => {
         if (isLoggedIn) {
             axios({
                 method: 'POST',
-                url:`http://localhost:8080/api/favorites/addFolder/${userName}/${folderName}/${folderColor}`
+                url:`http://localhost:8080/api/favoriteFolder/addFolder/${userName}/${folderName}/${folderColor}`
             })
             .then(() => {
                 props.setRefreshTrigger((prevState) => !prevState);

@@ -15,7 +15,7 @@ const FavoriteFolders = (props) => {
         if (isLoggedIn) {
             axios({
                 method: 'GET',
-                url:`http://localhost:8080/api/favorites/getFolders/${userName}`,
+                url:`http://localhost:8080/api/favoriteFolder/getFolders/${userName}`,
             }).then(res => {
                 setFavFolders(res.data);
                 setIsLoading(false);

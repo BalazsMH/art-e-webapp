@@ -17,7 +17,7 @@ export default function ArtCard(props) {
         setIsLoading(true);
         axios({
             method: 'GET',
-            url:`http://localhost:8080/api/favorites/${userName}/${artDetails.objectNumber}`
+            url:`http://localhost:8080/api/favorites/isFavorite/${userName}/${artDetails.objectNumber}`
         })
         .then(res => {
             setIsFavorite(res.data);

@@ -17,7 +17,7 @@ const FavoritesBrowser = () => {
         if (isLoggedIn && (userNameParam === userName)) {
             let folderUrl = `http://localhost:8080/api/favorites/getByFolder/${userName}/${folderName}`
             if (folderName === allFavFolderName || folderName === undefined) {
-                folderUrl = `http://localhost:8080/api/favorites/${userName}`
+                folderUrl = `http://localhost:8080/api/favorites`
             }
             axios({
                 method: 'GET',
@@ -49,9 +49,7 @@ const FavoritesBrowser = () => {
                     })
                     : !isLoggedIn 
                         ? <div>Please login to use this feature!</div>
-                        : userName === userNameParam 
-                            ? <div>No favorites found.</div>
-                            : <div>You cannot see other user's favorites!</div> 
+                        : <div>No favorites found.</div>
             }
             </GridContainer>
         </div>

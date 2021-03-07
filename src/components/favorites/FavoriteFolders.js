@@ -4,9 +4,10 @@ import { UserInfoContext } from '../user/UserInfoContext';
 import styled from 'styled-components';
 import '../IconSet';
 import AddFavoriteFolder from "./AddFavoriteFolder";
+import cookie from 'react-cookies';
 
 const FavoriteFolders = (props) => {
-    const { userName, isLoggedIn, allFavFolderName } = useContext(UserInfoContext);
+    const { isLoggedIn, allFavFolderName } = useContext(UserInfoContext);
     const [favFolders, setFavFolders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [refreshTrigger, setRefreshTrigger] = useState(true);
@@ -15,7 +16,10 @@ const FavoriteFolders = (props) => {
         if (isLoggedIn) {
             axios({
                 method: 'GET',
-                url:`http://localhost:8080/api/favoriteFolder/getFolders/${userName}`,
+                url:`http://localhost:8080/api/favoriteFolder/getFolders`,
+                headers: {
+                    'Authorization': cookie.load("Authorization")
+                }
             }).then(res => {
                 setFavFolders(res.data);
                 setIsLoading(false);
@@ -25,7 +29,7 @@ const FavoriteFolders = (props) => {
                 console.log(e);
             })
         }
-    }, [userName, isLoggedIn, refreshTrigger]);
+    }, [isLoggedIn, refreshTrigger]);
 
     const showFavorites = (e) => {
         props.setFolderName(e.target.textContent)

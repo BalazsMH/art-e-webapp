@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import {Question} from './Question';
-import { QuizContainer } from '../Styles.js';
+import { QuizContainer, QuizzesContainer } from '../Styles.js';
 import cookie from 'react-cookies';
 import { UserStatsContext } from '../user/UserStatsContext';
 

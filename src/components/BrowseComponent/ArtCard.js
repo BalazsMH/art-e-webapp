@@ -4,10 +4,9 @@ import {ShareOption} from 'grommet-icons';
 import axios from 'axios';
 import FavoriteButton from '../favorites/FavoriteButton';
 import { DetailsLink, ArtPicture } from '../Styles.js';
-
+import cookie from 'react-cookies';
 
 export default function ArtCard(props) {
-    let userName = props.userName;
     const artDetails = props.data;
     const imageUrl = props.data.headerImage.url;
     const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +16,10 @@ export default function ArtCard(props) {
         setIsLoading(true);
         axios({
             method: 'GET',
-            url:`http://localhost:8080/api/favorites/isFavorite/${userName}/${artDetails.objectNumber}`
+            url:`http://localhost:8080/api/favorites/isFavorite/${artDetails.objectNumber}`,
+            headers: {
+                'Authorization': cookie.load("Authorization")
+            }
         })
         .then(res => {
             setIsFavorite(res.data);
@@ -27,7 +29,7 @@ export default function ArtCard(props) {
             setIsLoading(false);
             console.log(e);
         });
-    }, [artDetails.objectNumber, userName]);
+    }, [artDetails.objectNumber]);
 
     if (isLoading) {
         return (<div>Loading..</div>);
@@ -35,7 +37,6 @@ export default function ArtCard(props) {
 
     const favoriteProps = {
         isFavorite: isFavorite,
-        userNameProp: userName,
         objectNumber: artDetails.objectNumber
     }
 

@@ -5,12 +5,12 @@ import { UserInfoContext } from '../user/UserInfoContext';
 import '../IconSet';
 
 export default function FavoriteButton(props) {   
-    let {userNameProp, objectNumber} = props.props;
+    let {objectNumber} = props.props;
     const [isFavorite, setIsFavorite] = useState(props.props.isFavorite)
     const {isLoggedIn} = useContext(UserInfoContext);
 
     const favoriteOnClick = () => {
-        interactFavorites(isFavorite, userNameProp, objectNumber);
+        interactFavorites(isFavorite, objectNumber);
         setIsFavorite(!isFavorite);
     }
     

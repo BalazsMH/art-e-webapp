@@ -108,7 +108,7 @@ export const NavContainer = styled.header`
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    z-index: 0;
+    z-index: 100;
     background-color: #231F20;
     color: #ffffff;
     padding:0.2rem 0.7rem 0.2rem 0.7rem;
@@ -123,7 +123,7 @@ export const MobileNav = styled.header`
     position: -webkit-sticky;
     height: auto;
     top: 0;
-    z-index: 0;
+    z-index: 100;
     background-color: #231F20;
     color: #ffffff;
     padding:0.2rem 0.7rem 0.2rem 0.7rem;
@@ -192,6 +192,7 @@ export const AnsButton = styled.button`
 
 /*  Question styles */
 export const QuestionContainer = styled.div`
+    position: relative !important;
     background: #DAD299;
     background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
     background: linear-gradient(to right, #B0DAB9, #DAD299);
@@ -241,12 +242,11 @@ export const NextButton = styled.button`
 /*  Quiz styles */
 export const QuizContainer = styled.div`
     position: relative !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    display: flex;
+    margin-top: 0.5rem;
     display: block;
-    margin-left: auto;
-    margin-right: 60%;
+    margin-left: 30% !important;
+    margin-right: auto;
     width: 40%;
 `;
 
@@ -391,6 +391,6 @@ export const RegistrationContainer = styled.div`
 `;
 
 /* ArtDetails styles */
-export const AboutConmponentContainer = styled.div`
+export const AboutComponentContainer = styled.div`
     margin: 2rem;
 `;

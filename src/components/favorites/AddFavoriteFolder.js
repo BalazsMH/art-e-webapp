@@ -4,12 +4,13 @@ import { UserInfoContext } from '../user/UserInfoContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../IconSet';
 import { Layer, Button } from 'grommet';
+import cookie from 'react-cookies';
 
 const AddFavoriteFolder = (props) => {
     const [show, setShow] = useState();
     const [folderName, setFolderName] = useState("");
     const [folderColor, setFolderColor] = useState("");
-    const { userName, isLoggedIn } = useContext(UserInfoContext);
+    const { isLoggedIn } = useContext(UserInfoContext);
     
     const handleFolderName = (e) => {
         setFolderName(e.target.value);
@@ -24,7 +25,10 @@ const AddFavoriteFolder = (props) => {
         if (isLoggedIn) {
             axios({
                 method: 'POST',
-                url:`http://localhost:8080/api/favorites/addFolder/${userName}/${folderName}/${folderColor}`
+                url:`http://localhost:8080/api/favoriteFolder/addFolder/${folderName}/${folderColor}`,
+                headers: {
+                    'Authorization': cookie.load("Authorization")
+                }
             })
             .then(() => {
                 props.setRefreshTrigger((prevState) => !prevState);

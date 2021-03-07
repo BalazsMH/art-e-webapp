@@ -1,51 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { AboutConmponentContainer } from '../Styles.js';
+import React from 'react';
+import { AboutComponentContainer } from '../Styles.js';
 
 const AboutComponent = () => {
-    const [aboutContent, setAboutContent] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        setIsLoading(true);
-        axios({
-            method: 'GET',
-            url: 'http://localhost:8080/api/about'
-        })
-        .then(res => {
-            setAboutContent(res.data);
-            setIsLoading(false);
-        })
-        .catch(e => {
-            setIsLoading(false);
-            console.log(e);
-        })
-    }, []);
-
-    if (isLoading) {
-        return (<div>Loading..</div>);
-    }
-    
     return (
-        <AboutConmponentContainer>
-            <h1>{aboutContent.title} by {aboutContent.teamName}</h1>
+        <AboutComponentContainer>
+            <h1>Art-E Web Application by Team Art-E</h1>
             <br />
             <h2>Team members:</h2>
-            {aboutContent.teamMembers.length !== 0 ? aboutContent.teamMembers.map((member, key) => <p key={key}>{member}</p>) : <p>No entry found</p>}            
+            <p>Balázs Márton Horváth</p>
+            <p>Dániel Méry</p>
+            <p>László Miklós Vajay</p>
             <br />
             <h2>Description:</h2>
-            <p>{aboutContent.description}</p>
+            <p>This page was created as a team project for Codecool Advanced module.
+                The main functionality is to get familiar with artworks of the Rijksmuseum. This is
+                possible by browsing in the gallery and by taking several types of quiz. Answering correctly
+                will earn experience to the actually logged in user. According to the earned experience, the user
+                can check the actual position in the global scoreboard.
+            </p>
             <br />
             <h2>Licenses:</h2>
-            {Object.keys(aboutContent.licenses).map((component, key) => (
-                <p key={key}>{component}: <a href={aboutContent.licenses[component]}>{aboutContent.licenses[component]}</a></p>
-            ))}
-        </AboutConmponentContainer>
+            <a href="https://www.rijksmuseum.nl/en/research/conduct-research/data/policy">Rijksmuseum API</a><br />
+            <a href="https://github.com/ankeetmaini/react-infinite-scroll-component/blob/master/license">React infinite scroll component</a><br />
+            <a href="https://fontawesome.com/license/free">Font Awesome icon set</a><br />
+            <a href="https://github.com/grommet/grommet/blob/master/LICENSE">Grommet</a><br />
+            <a href="https://github.com/contra/react-responsive/blob/master/LICENSE">React-responsive</a>
+            
+        </AboutComponentContainer>
     );
 }
-
-
-
-
 
 export default AboutComponent;

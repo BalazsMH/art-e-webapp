@@ -391,6 +391,6 @@ export const RegistrationContainer = styled.div`
 `;
 
 /* ArtDetails styles */
-export const AboutConmponentContainer = styled.div`
+export const AboutComponentContainer = styled.div`
     margin: 2rem;
 `;

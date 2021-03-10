@@ -394,3 +394,15 @@ export const RegistrationContainer = styled.div`
 export const AboutComponentContainer = styled.div`
     margin: 2rem;
 `;
+
+/*Favorite Folders*/
+export const FolderDiv = styled.div`
+    background-color: ${props=> "#" + props.colorHex};
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+`;
+
+export const FolderSidebarDiv = styled.div`
+    float: left;
+`;

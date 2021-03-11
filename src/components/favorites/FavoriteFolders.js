@@ -102,7 +102,7 @@ const FavoriteFolders = (props) => {
                     <input value={folderName} placeholder={oldFolderName === "" ? "New favorite folder name" : ""} onChange={handleFolderName}></input>
                     <label>Folder color:</label>
                     <input type="color" onChange={handleFolderColor} value={"#" + folderColor}/>
-                    <Button label="Create" onClick={handleFolder} />
+                    <Button label={oldFolderName === "" ? "Create" : "Modify"} onClick={handleFolder} />
                 </Layer>
             )}
         </FolderSidebarDiv>

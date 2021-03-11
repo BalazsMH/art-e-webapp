@@ -344,6 +344,26 @@ export const BackButton = styled.button`
         }
 `;
 
+export const NoMoreXp = styled.p`
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    background: #ffffff;
+    color: black;
+    border: 1px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #000000;
+    width: 50%;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    left: 25%;
+    margin-right: auto;
+    margin-top: 2rem;
+    padding: 0.25rem;
+    text-align: center;
+`;
+
 
 
 /*  UserLogin styles */

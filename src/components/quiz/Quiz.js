@@ -113,8 +113,8 @@ const Quiz = ({type}) => {
         if(currentIndex + 1 >= questions.length) {
             const dailyXpSubScore = (dailyRemainingXp - score);
             const actuaXplPlusScore = (actualXp + score);
-            (dailyXpSubScore > 0) ? setActualXp(actuaXplPlusScore) : setActualXp(dailyRemainingXp);
-            (dailyXpSubScore > 0) ? setDailyRemainingXp(dailyXpSubScore) : setDailyRemainingXp(dailyRemainingXp);
+            (dailyXpSubScore > 0) ? setActualXp(actuaXplPlusScore) : setActualXp(actualXp + dailyRemainingXp);
+            (dailyXpSubScore > 0) ? setDailyRemainingXp(dailyXpSubScore) : setDailyRemainingXp(0);
 
             setGameEnded(true);        
         }

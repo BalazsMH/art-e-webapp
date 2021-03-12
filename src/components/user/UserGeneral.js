@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UserSidebar from '../layout/UserSidebar';
+import { UserInformationContainer} from '../Styles.js';
 
 const UserGeneral = () => {
     const [userData, setUserData] = useState({});
@@ -14,12 +15,12 @@ const UserGeneral = () => {
     }, []);
 
     return (
-        <div>
+        <UserInformationContainer>
             <UserSidebar />
             <p>Username: { userData.userName }</p>
             <p>Registration date: { userData.registrationDate }</p>
             <p>E-mail: { userData.email }</p>
-        </div>
+        </UserInformationContainer>
     )
 }
 

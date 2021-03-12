@@ -20,7 +20,7 @@ const UserStats = () => {
                 <p>Correct answer ratio: { userData.answerRatio }</p>
                 <p>Daily streak: { userData.dailyStreak }</p>
                 <p>Win streak: { userData.winStreak }</p>
-                <RankStepper/>
+                <RankStepper activeRank={userData.rankId}/>
             </StatsContainer>
 
             

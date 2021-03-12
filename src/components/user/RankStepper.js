@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 import clsx from 'clsx';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -159,21 +160,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
-}
+
 
 
 const RankStepper = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(1);
-  const steps = getSteps();
+  const [activeStep, setActiveStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [ranks, setRanks] = useState([]);
 
   
+  useEffect(() => {
+      getRanks();
+            
+  }, [])
+
+  const getRanks = () => {
+    axios
+    .get("http://localhost:8080/api/user/get-available-ranks")
+    .then(res => {
+        setRanks(res);
+        setIsLoading(false);        
+    })
+    .catch(e => {
+        console.log(e);
+    })
+  }
+
+
+
+  if (isLoading) return (<div>Loading..</div>)
   return (
     <div className={classes.root}>
       <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
-        {steps.map((label) => (
+        {ranks.map((label) => (
           <Step key={label}>
             <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>

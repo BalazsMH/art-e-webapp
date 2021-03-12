@@ -436,6 +436,13 @@ export const StatsContainer = styled.div`
     margin-top: 1rem; */
 `;
 
+/*  UserGeneral styles */
+export const BasicDataContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+
+`;
+
 /* ArtDetails styles */
 export const AboutComponentContainer = styled.div`
     margin: 2rem;

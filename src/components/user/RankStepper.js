@@ -165,21 +165,23 @@ const useStyles = makeStyles((theme) => ({
 
 const RankStepper = () => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [ranks, setRanks] = useState([]);
 
   
-  useEffect(() => {
-      getRanks();
+  useEffect( () => {
+    getRanks();
             
   }, [])
 
   const getRanks = () => {
+    console.log("doing axios")
     axios
     .get("http://localhost:8080/api/user/get-available-ranks")
     .then(res => {
-        setRanks(res);
+        setRanks(res.data);
+        console.log(res.data)
         setIsLoading(false);        
     })
     .catch(e => {

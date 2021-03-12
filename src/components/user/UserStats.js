@@ -3,6 +3,7 @@ import UserSidebar from '../layout/UserSidebar';
 import { UserStatsContext } from '../user/UserStatsContext';
 import { StatsContainer} from '../Styles.js';
 import { UserInformationContainer} from '../Styles.js';
+import RankStepper from './RankStepper';
 
 const UserStats = () => {
     const {userData, isLoaded} = useContext(UserStatsContext);
@@ -19,6 +20,7 @@ const UserStats = () => {
                 <p>Correct answer ratio: { userData.answerRatio }</p>
                 <p>Daily streak: { userData.dailyStreak }</p>
                 <p>Win streak: { userData.winStreak }</p>
+                <RankStepper/>
             </StatsContainer>
 
             

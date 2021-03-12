@@ -424,8 +424,17 @@ export const SidebarContainer = styled.div`
     height: 100%;
     padding: 0.5rem;
     margin-top: 1rem;
+    line-height: 3rem;
 `;
 
+/*  UserStats styles */
+export const StatsContainer = styled.div`
+    /* display:flex;
+    flex-direction:column;
+    height: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem; */
+`;
 
 /* ArtDetails styles */
 export const AboutComponentContainer = styled.div`

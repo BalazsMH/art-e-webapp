@@ -67,6 +67,15 @@ function ColorlibStepIcon(props) {
     1: <SettingsIcon />,
     2: <GroupAddIcon />,
     3: <VideoLabelIcon />,
+    4: "4",
+    5: "5",
+    6: "6",
+    7: "7",
+    8: "8",
+    9: "9",
+    10: "10",
+
+
   };
 
   return (

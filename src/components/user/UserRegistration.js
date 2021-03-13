@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
+import {Redirect} from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { RegistrationContainer } from '../Styles.js';
 import axios from 'axios';
+import { dom } from '@fortawesome/fontawesome-svg-core';
 
 
 const UserRegistration = () => {
@@ -12,11 +14,13 @@ const UserRegistration = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [sendRedirect, setSendRedirect] = useState(false);
     
     const handleRegistrationSubmit = (e) => {
         e.preventDefault();
         sendNewUserData();
     }
+    
 
     const sendNewUserData = () => {
         axios({
@@ -32,12 +36,20 @@ const UserRegistration = () => {
         }).then(res => {
             console.log(res);
             alert("Registration succesful!");
+            setSendRedirect(true);            
         })
         .catch(e => {
-            if (e.response.data.emailNotAvailable) {alert("Email address already in use!")};
+            if (e.response.data.emailNotAvailable && e.response.data.usernameNotAvailable) {
+                alert("Email address and Username already in use!")
+            } else if (e.response.data.emailNotAvailable) {
+                alert("Email address already in use!")
+            } else if (e.response.data.usernameNotAvailable) {
+                alert("Username already in use!")
+            };
         })
     }
 
+    if (sendRedirect) return <Redirect to='/login'/>;
     return (
         <RegistrationContainer>
             <form onSubmit={(e)=> handleRegistrationSubmit(e)}>

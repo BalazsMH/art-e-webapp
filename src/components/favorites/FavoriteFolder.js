@@ -19,7 +19,7 @@ const FavoriteFolder = (props) => {
         }),
     }));
     const isActive = canDrop && isOver;
-    let opacity = isActive ? 0.7 : canDrop ? 0.4 : 1;
+    let opacity = isActive ? 0.8 : canDrop ? 0.4 : 1;
     
     const showFavorites = (e) => {
         props.setFolderName(e.target.textContent)

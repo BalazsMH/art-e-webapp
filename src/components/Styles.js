@@ -410,6 +410,39 @@ export const RegistrationContainer = styled.div`
     line-height: 3rem;
 `;
 
+/*  UserRegistration styles */
+export const UserInformationContainer = styled.div`
+    width:auto;
+    max-width: 100%;
+    display:flex;
+    flex-direction:row;
+`;
+/*  UserSidebar styles */
+export const SidebarContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    height: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    line-height: 3rem;
+`;
+
+/*  UserStats styles */
+export const StatsContainer = styled.div`
+    /* display:flex;
+    flex-direction:column;
+    height: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem; */
+`;
+
+/*  UserGeneral styles */
+export const BasicDataContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+
+`;
+
 /* ArtDetails styles */
 export const AboutComponentContainer = styled.div`
     margin: 2rem;

@@ -429,11 +429,13 @@ export const SidebarContainer = styled.div`
 
 /*  UserStats styles */
 export const StatsContainer = styled.div`
-    /* display:flex;
+    display:flex;
     flex-direction:column;
+    align-items: center;
+    line-height: 3rem;
     height: 100%;
     padding: 0.5rem;
-    margin-top: 1rem; */
+    margin-top: 1rem;
 `;
 
 /*  UserGeneral styles */

@@ -434,6 +434,8 @@ export const StatsContainer = styled.div`
     align-items: center;
     line-height: 3rem;
     height: 100%;
+    width:100%;
+    max-width: 100%;
     padding: 0.5rem;
     margin-top: 1rem;
 `;

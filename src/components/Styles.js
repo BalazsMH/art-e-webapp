@@ -344,6 +344,26 @@ export const BackButton = styled.button`
         }
 `;
 
+export const NoMoreXp = styled.p`
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    background: #ffffff;
+    color: black;
+    border: 1px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #000000;
+    width: 50%;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    left: 25%;
+    margin-right: auto;
+    margin-top: 2rem;
+    padding: 0.25rem;
+    text-align: center;
+`;
+
 
 
 /*  UserLogin styles */
@@ -388,6 +408,39 @@ export const RegistrationContainer = styled.div`
     display: flex;
     padding: 3rem;
     line-height: 3rem;
+`;
+
+/*  UserRegistration styles */
+export const UserInformationContainer = styled.div`
+    width:auto;
+    max-width: 100%;
+    display:flex;
+    flex-direction:row;
+`;
+/*  UserSidebar styles */
+export const SidebarContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    height: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    line-height: 3rem;
+`;
+
+/*  UserStats styles */
+export const StatsContainer = styled.div`
+    /* display:flex;
+    flex-direction:column;
+    height: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem; */
+`;
+
+/*  UserGeneral styles */
+export const BasicDataContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+
 `;
 
 /* ArtDetails styles */

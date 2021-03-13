@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const API_URL = `http://localhost:8080/api/user/scoreboard`;
 
 const Scoreboard = () => {
     const [users, setUsers] = useState([])
     
     useEffect(() => {
-        // Dummy data now, axios call later from backend
-        setUsers([{ 
-                userName: "Balazs.Horvath",
-                actualXp: 200
-            },
-            {
-                userName: "Daniel.Mery",
-                actualXp: 150
-            },
-            {
-                userName: "Laszlo.Vajay",
-                actualXp: 100
-            }
-        ]);
-    }, []);
+        axios({
+            method: 'GET',
+            url: API_URL,
+        }).then(res => {
+            setUsers(res.data.data)
+        })
+        .catch(e => {
+            console.log(e);
+        })
+    }, [])
 
     return (
         <div>
@@ -33,7 +31,7 @@ const Scoreboard = () => {
                         <tr>
                             <td>{ key + 1 }.</td>
                             <td>{ user.userName }</td>
-                            <td>{ user.actualXp }</td>
+                            <td>{ user.userXp }</td>
                         </tr>)
                 })}
             </table>

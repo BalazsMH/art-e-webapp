@@ -26,6 +26,7 @@ export const UserStatsProvider = (props) => {
         }).then(res => {
             let prepUserData = { 
                 rank: res.data.rank.name,
+                rankId: res.data.rank.id,
                 actualXp: res.data.actualXp,
                 allAnswers: res.data.allAnswers,
                 correctAnswers: res.data.correctAnswers,

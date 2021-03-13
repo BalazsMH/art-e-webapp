@@ -7,6 +7,7 @@ import { DetailsLink, ArtPicture } from '../Styles.js';
 import cookie from 'react-cookies';
 import { DragPreviewImage, useDrag } from 'react-dnd'
 import { ItemTypes } from '../../util/ItemTypes.js';
+import logo from '../../images/artednd.png';
 
 export default function ArtCard(props) {
     const artDetails = props.data;
@@ -62,7 +63,7 @@ export default function ArtCard(props) {
 
     return (
         <>
-            {/* <DragPreviewImage connect={preview} src={paletteIcon}/> */}
+            <DragPreviewImage connect={preview} src={logo} />
             <Card height="large" width="large" background="light-1" 
                 focusIndicator={true}
                 hoverIndicator={true}

@@ -3,7 +3,7 @@ import ArtCard from '../BrowseComponent/ArtCard';
 import axios from 'axios';
 import { GridContainer } from '../Styles.js';
 import { UserInfoContext } from '../user/UserInfoContext';
-import FavoriteFolders from '../favorites/FavoriteFolders';
+import FavoriteSidebar from './FavoriteSidebar';
 import cookie from 'react-cookies';
 
 const FavoritesBrowser = () => {
@@ -42,12 +42,12 @@ const FavoritesBrowser = () => {
     
     return (
         <div>
-            <FavoriteFolders setFolderName={setFolderName}/>
+            <FavoriteSidebar setFolderName={setFolderName}/>
             <GridContainer>   
             {
                 artData.length !== 0 
                     ? artData.map((artPiece, index) => {
-                        return <ArtCard data={artPiece} key={index}></ArtCard>
+                        return <ArtCard data={artPiece} key={index} folderName={folderName}></ArtCard>
                     })
                     : !isLoggedIn 
                         ? <div>Please login to use this feature!</div>

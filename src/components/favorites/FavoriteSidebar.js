@@ -1,17 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { UserInfoContext } from '../user/UserInfoContext';
-import styled from 'styled-components';
-import '../IconSet';
-import AddFavoriteFolder from "./AddFavoriteFolder";
 import cookie from 'react-cookies';
+import { FolderSidebarDiv } from '../Styles.js';
+import FavoriteFolder from './FavoriteFolder';
+import AddFolderButton from './AddFolderButton';
 
-const FavoriteFolders = (props) => {
+const FavoriteSidebar = (props) => {
     const { isLoggedIn, allFavFolderName } = useContext(UserInfoContext);
     const [favFolders, setFavFolders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [refreshTrigger, setRefreshTrigger] = useState(true);
-
+    
     useEffect(() => {
         if (isLoggedIn) {
             axios({
@@ -31,32 +31,17 @@ const FavoriteFolders = (props) => {
         }
     }, [isLoggedIn, refreshTrigger]);
 
-    const showFavorites = (e) => {
-        props.setFolderName(e.target.textContent)
-    }
-
     if (isLoading) {
         return <div>Please wait</div>
     }
 
     return (
         <FolderSidebarDiv>
-            <FolderDiv colorHex="#ffffff" onClick={showFavorites}>{allFavFolderName}</FolderDiv>
-            {favFolders.map((f, key) => <FolderDiv colorHex={f.colorHex} key={key} onClick={showFavorites}>{f.name}</FolderDiv>)}
-            <AddFavoriteFolder setRefreshTrigger={setRefreshTrigger}/>
+            <FavoriteFolder folderColor="ffffff" folderName={allFavFolderName} setFolderName={props.setFolderName}></FavoriteFolder>
+            {favFolders.map((f, key) => <FavoriteFolder folderColor={f.colorHex} folderName={f.name} key={key} setFolderName={props.setFolderName} setRefreshTrigger={setRefreshTrigger}></FavoriteFolder>)}
+            <AddFolderButton setRefreshTrigger={setRefreshTrigger}/>
         </FolderSidebarDiv>
     )
 }
 
-export default FavoriteFolders;
-
-const FolderDiv = styled.div`
-    background-color: ${props=> "#" + props.colorHex};
-    padding: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-`;
-
-const FolderSidebarDiv = styled.div`
-    float: left;
-`;
+export default FavoriteSidebar;

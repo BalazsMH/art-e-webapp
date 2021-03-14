@@ -8,6 +8,7 @@ import cookie from 'react-cookies';
 import { DragPreviewImage, useDrag } from 'react-dnd'
 import { ItemTypes } from '../../util/ItemTypes.js';
 import logo from '../../images/artednd.png';
+import { MoveToFavoriteFolder } from '../../util/InteractFavoriteFolder';
 
 export default function ArtCard(props) {
     const artDetails = props.data;
@@ -35,13 +36,16 @@ export default function ArtCard(props) {
     }, [artDetails.objectNumber]);
 
     const cardName = artDetails.longTitle;
+    const objectName = artDetails.objectNumber;
+    let folderName = props.folderName
     const [{ isDragging }, drag, preview] = useDrag(() => ({
         type: ItemTypes.CARD,
-        item: { cardName },
+        item: { cardName, objectName, folderName },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {
                 alert(`You dropped '${item.cardName}' into '${dropResult.name}' folder!`);
+                MoveToFavoriteFolder(item.folderName, dropResult.name, item.objectName);
             }
         },
         collect: (monitor) => ({

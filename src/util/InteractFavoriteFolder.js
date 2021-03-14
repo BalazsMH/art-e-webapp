@@ -1,6 +1,5 @@
 import axios from 'axios';
 import cookie from 'react-cookies';
-import { UserInfoContext } from '../components/user/UserInfoContext';
 
 const InteractFavoriteFolder = async (folderName, folderColor, nextFolderName) => {
     let folderUrl = `http://localhost:8080/api/favoriteFolder/addFolder/${folderName}/${folderColor}`;

@@ -5,6 +5,7 @@ import { UserInfoContext } from '../user/UserInfoContext';
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from '../../util/ItemTypes.js';
 import { RemoveButton } from '../Styles.js';
+import {FormClose} from 'grommet-icons';
 import axios from 'axios';
 import cookie from 'react-cookies';
 
@@ -61,7 +62,7 @@ const FavoriteFolder = (props) => {
                 style={{ opacity }}
             >
                 {folderName}
-                {folderName !== allFavFolderName ? <RemoveButton onClick={(e)=> {removeFolder(e, folderName)}}>X</RemoveButton> : <></>}
+                {folderName !== allFavFolderName ? <RemoveButton onClick={(e)=> {removeFolder(e, folderName)}}><FormClose/></RemoveButton> : <></>}
             </FolderDiv>
             {show && (
                 <FavoriteFolderModal 

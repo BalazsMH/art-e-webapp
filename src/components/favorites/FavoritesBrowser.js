@@ -47,7 +47,7 @@ const FavoritesBrowser = () => {
             {
                 artData.length !== 0 
                     ? artData.map((artPiece, index) => {
-                        return <ArtCard data={artPiece} key={index}></ArtCard>
+                        return <ArtCard data={artPiece} key={index} folderName={folderName}></ArtCard>
                     })
                     : !isLoggedIn 
                         ? <div>Please login to use this feature!</div>

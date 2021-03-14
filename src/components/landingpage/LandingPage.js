@@ -4,24 +4,31 @@ import styled from 'styled-components';
 const LandingPage = () => {
     
     return (
-        <BackGroundImg>
-        <Layer>
-        <ArtOfTheDay>
-            <ArtImg src="https://upload.wikimedia.org/wikipedia/commons/2/20/Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg" />
-            <TextConatainer>
-            <ImgText>ART OF THE DAY<br></br>Maker:<br></br>Johannes Vermeer<br></br>Title:<br></br>The Milkmaid</ImgText>
-            </TextConatainer>
-        </ArtOfTheDay>
-        </Layer>
-        </BackGroundImg>
+            <BackGroundImg>
+            <Layer>
+            <ArtOfTheDay>
+                <ArtImg src="https://upload.wikimedia.org/wikipedia/commons/2/20/Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg" />
+                <TextConatainer>
+                <ImgText>ART OF THE DAY<br></br>Maker:<br></br>Johannes Vermeer<br></br>Title:<br></br>The Milkmaid</ImgText>
+                </TextConatainer>
+            </ArtOfTheDay>
+            </Layer>
+            </BackGroundImg>
         )
 }
+
 
 const BackGroundImg = styled.div`
     position: relative;
     background-image: url("https://img.theculturetrip.com/wp-content/uploads/2016/08/anton_mauve_-_morgenrit_langs_het_strand.jpg");
     background-size: cover;
     background-position: bottom;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items:center;
+    flex: 1 1 auto;
+    overflow-y: auto;
 `;
 
 const Layer = styled.div`

@@ -166,8 +166,8 @@ export const DropButtonContent = styled(Box)`
 `;
 
 
-/*  PageNotFoundComponent styles */
-export const NotFoundContainer = styled.div`
+/*  ErrorMessageContainer styles */
+export const ErrorMessageContainer = styled.div`
     display: flex;
     flex-flow: column;
     justify-content: center;

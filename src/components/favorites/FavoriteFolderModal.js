@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layer, Button } from 'grommet';
-import InteractFavoriteFolder from '../../util/InteractFavoriteFolder';
+import {InteractFavoriteFolder} from '../../util/InteractFavoriteFolder';
 
 const FavoriteFolderModal = (props) => {    
     const defaultColor = "0A0A0A";

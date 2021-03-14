@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {ArtBrowserContext} from './ArtBrowserContext';
 import { Tag, RemoveButton } from '../Styles.js';
+import {FormClose} from 'grommet-icons';
 
 export default function QueryTag(props) {
 
@@ -15,7 +16,7 @@ export default function QueryTag(props) {
     return (
         <Tag key={key}>
             {value}
-            <RemoveButton onClick={(e)=> {removeTag(e, key)}}>X</RemoveButton>
+            <RemoveButton onClick={(e)=> {removeTag(e, key)}}><FormClose/></RemoveButton>
         </Tag>
     )
 }

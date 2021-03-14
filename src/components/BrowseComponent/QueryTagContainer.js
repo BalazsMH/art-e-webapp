@@ -1,12 +1,13 @@
 import React, {useContext} from 'react';
 import QueryTag from './QueryTag';
 import {ArtBrowserContext} from './ArtBrowserContext';
+import {QueryTagBox} from '../Styles';
 
 export default function QueryTagContainer() {
     const {query} = useContext(ArtBrowserContext);
 
     return (
-        <div>
+        <QueryTagBox>
             {
                 Object.entries(query)
                 .map(([key, value]) => {
@@ -14,6 +15,6 @@ export default function QueryTagContainer() {
                     else return null;
                 })
             }
-        </div>
+        </QueryTagBox>
     )
 }

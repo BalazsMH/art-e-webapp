@@ -10,7 +10,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import VideoLabelIcon from '@material-ui/icons/VideoLabel';
 import StepConnector from '@material-ui/core/StepConnector';
-
+import {Rank1, Rank2, Rank3, Rank4, Rank5, Rank6, Rank7, Rank8, Rank9, Rank10} from '../../images/ranks/Ranks';
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -19,13 +19,13 @@ const ColorlibConnector = withStyles({
   active: {
     '& $line': {
       backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+        'linear-gradient(95deg, rgba(54,53,153,1) 0%, rgba(165,63,117,1) 50%, rgba(210,161,55,1) 100%)',
     },
   },
   completed: {
     '& $line': {
       backgroundImage:
-        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+      'linear-gradient(95deg, rgba(54,53,153,1) 0%, rgba(165,63,117,1) 50%, rgba(210,161,55,1) 100%)',
     },
   },
   line: {
@@ -50,12 +50,12 @@ const useColorlibStepIconStyles = makeStyles({
   },
   active: {
     backgroundImage:
-      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+    'linear-gradient(95deg, rgba(54,53,153,1) 0%, rgba(165,63,117,1) 50%, rgba(210,161,55,1) 100%)',
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
     backgroundImage:
-      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+    'linear-gradient(95deg, rgba(54,53,153,1) 0%, rgba(165,63,117,1) 50%, rgba(210,161,55,1) 100%)',
   },
 });
 
@@ -64,22 +64,20 @@ function ColorlibStepIcon(props) {
   const { active, completed } = props;
 
   const icons = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
-    4: "4",
-    5: "5",
-    6: "6",
-    7: "7",
-    8: "8",
-    9: "9",
-    10: "10",
-
-
+    1: <Rank1/>,
+    2: <Rank2/>,
+    3: <Rank3/>,
+    4: <Rank4/>,
+    5: <Rank5/>,
+    6: <Rank6/>,
+    7: <Rank7/>,
+    8: <Rank8/>,
+    9: <Rank9/>,
+    10: <Rank10/>,
   };
 
   return (
-    <div
+    <div style={{padding: '0.5rem', fill: '#ffffff'}}
       className={clsx(classes.root, {
         [classes.active]: active,
         [classes.completed]: completed,
@@ -108,7 +106,7 @@ ColorlibStepIcon.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-  },
+      },
   button: {
     marginRight: theme.spacing(1),
   },

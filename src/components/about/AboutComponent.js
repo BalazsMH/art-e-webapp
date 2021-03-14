@@ -25,6 +25,7 @@ const AboutComponent = () => {
             <a href="https://fontawesome.com/license/free">Font Awesome icon set</a><br />
             <a href="https://github.com/grommet/grommet/blob/master/LICENSE">Grommet</a><br />
             <a href="https://github.com/contra/react-responsive/blob/master/LICENSE">React-responsive</a>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/retinaicons" title="Retinaicons">Retinaicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             
         </AboutComponentContainer>
     );

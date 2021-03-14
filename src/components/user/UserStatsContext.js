@@ -7,21 +7,26 @@ export const UserStatsContext = createContext();
 
 export const UserStatsProvider = (props) => {
 
-    const userName = cookie.load('username');
-    const API_URL = `http://localhost:8080/api/user/${userName}/statistics`;
+    const API_URL = `http://localhost:8080/api/user/statistics`;
     const [userData, setUserData] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
+        setIsLoaded(false);
+        refreshUserData();
+    }, []);
+
+    const refreshUserData = ()=> {
         axios({
             method: 'POST',
             url: API_URL,
-            data: {
-                userName: userName
-                }
+            headers: {
+                'Authorization': cookie.load("Authorization")
+            }
         }).then(res => {
             let prepUserData = { 
                 rank: res.data.rank.name,
+                rankId: res.data.rank.id,
                 actualXp: res.data.actualXp,
                 allAnswers: res.data.allAnswers,
                 correctAnswers: res.data.correctAnswers,
@@ -36,10 +41,10 @@ export const UserStatsProvider = (props) => {
         .catch(e => {
             console.log(e);
         })
-    }, []);
+    }
     
     return (
-        <UserStatsContext.Provider value={{userData, isLoaded, setUserData}}>
+        <UserStatsContext.Provider value={{userData, isLoaded, refreshUserData}}>
             {props.children}
         </UserStatsContext.Provider>
     );

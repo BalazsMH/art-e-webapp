@@ -2,13 +2,13 @@ import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/arte.png';
 import {Avatar, Box} from 'grommet';
-import {User, Menu} from 'grommet-icons';
+import {User, UserExpert, Menu} from 'grommet-icons';
 import { NavContainer, SiteLogo, NavRoutes, NavLink, UserFunctionsContainer, MobileNav, UserDropButton, MenuDropButton, DropButtonContent } from '../Styles.js';
 import { UserInfoContext } from '../user/UserInfoContext';
 import { MediaInfoContext } from '../mediaInfo/MediaInfoContext';
 
 const Navbar = () => {
-    const {isLoggedIn, userName} = useContext(UserInfoContext);    
+    const {isLoggedIn} = useContext(UserInfoContext);    
     const {isSmallScreen} = useContext(MediaInfoContext);
 
     return (
@@ -20,7 +20,7 @@ const Navbar = () => {
                     label={
                     <>
                         <Box direction="row"  gap="small">
-                            {isLoggedIn ? <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />
+                            {isLoggedIn ? <Avatar background="dark-4"><UserExpert color="light-1" /></Avatar>
                                         : <Avatar background="dark-4"><User color="light-1" /></Avatar>}
                         </Box>
                     </>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 <NavLink to="/browse">Browse</NavLink>
                 <NavLink to="/quiz">Quiz</NavLink>
                 <NavLink to="/about">About</NavLink>
-                {isLoggedIn ? <NavLink to="/favorites/0">Favorites</NavLink>
+                {isLoggedIn ? <NavLink to="/favorites">Favorites</NavLink>
                             : <></>}
                 </DropButtonContent>
             }
@@ -66,7 +66,7 @@ const Navbar = () => {
                 <NavLink to="/browse">Browse</NavLink>
                 <NavLink to="/quiz">Quiz</NavLink>
                 <NavLink to="/about">About</NavLink>
-                {isLoggedIn ? <NavLink to={"/favorites/" + userName}>Favorites</NavLink>
+                {isLoggedIn ? <NavLink to={"/favorites"}>Favorites</NavLink>
                             : <></>}
                 <UserFunctionsContainer>
                 <UserDropButton
@@ -74,7 +74,7 @@ const Navbar = () => {
                     label={
                     <>
                         <Box direction="row"  gap="small">
-                            {isLoggedIn ? <Avatar src="//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80" />
+                            {isLoggedIn ? <Avatar background="dark-4"><UserExpert color="light-1" /></Avatar>
                                         : <Avatar background="dark-4"><User color="light-1" /></Avatar>}
                                         </Box>
                     </>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import {Question} from './Question';
-import { QuizContainer } from '../Styles.js';
+import { QuizContainer, QuizzesContainer } from '../Styles.js';
 import cookie from 'react-cookies';
 import { UserStatsContext } from '../user/UserStatsContext';
 
@@ -10,8 +10,7 @@ const API_URL = 'http://localhost:8080/api/quiz';
 const API_URL_UPDATE = `http://localhost:8080/api/user/update-statistics`;
 
 const Quiz = ({type}) => {
-
-    const {userData, isLoaded, setUserData} = useContext(UserStatsContext);
+    const {userData, isLoaded, refreshUserData} = useContext(UserStatsContext);
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -63,7 +62,6 @@ const Quiz = ({type}) => {
     useEffect(() => {
         if (gameEnded) {
             let prepUserData = { 
-            userName: userName,
             actualXp: actualXp,
             allAnswers: allAnswers,
             correctAnswers: correctAnswers,
@@ -74,11 +72,15 @@ const Quiz = ({type}) => {
         axios({
             method: 'POST',
             url: API_URL_UPDATE,
+            headers: {
+                'Authorization': cookie.load("Authorization")
+            },
             data: {
                 stats: prepUserData
                 }
         }).then(res => {
             console.log("data saved")
+            refreshUserData();
         })
         .catch(e => {
             console.log(e);
@@ -111,8 +113,8 @@ const Quiz = ({type}) => {
         if(currentIndex + 1 >= questions.length) {
             const dailyXpSubScore = (dailyRemainingXp - score);
             const actuaXplPlusScore = (actualXp + score);
-            (dailyXpSubScore > 0) ? setActualXp(actuaXplPlusScore) : setActualXp(dailyRemainingXp);
-            (dailyXpSubScore > 0) ? setDailyRemainingXp(dailyXpSubScore) : setDailyRemainingXp(dailyRemainingXp);
+            (dailyXpSubScore > 0) ? setActualXp(actuaXplPlusScore) : setActualXp(actualXp + dailyRemainingXp);
+            (dailyXpSubScore > 0) ? setDailyRemainingXp(dailyXpSubScore) : setDailyRemainingXp(0);
 
             setGameEnded(true);        
         }

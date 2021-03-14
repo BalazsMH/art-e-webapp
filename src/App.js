@@ -19,6 +19,8 @@ import { UserInfoProvider } from './components/user/UserInfoContext';
 import UserLogout from './components/user/UserLogout';
 import { UserStatsProvider } from './components/user/UserStatsContext';
 import { MediaInfoProvider } from './components/mediaInfo/MediaInfoContext';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
       <Router>
         <MediaInfoProvider>
         <UserInfoProvider>
+        <DndProvider backend={HTML5Backend}>
           <Navbar />
         <Switch>
           <Route exact path="/">
@@ -67,7 +70,7 @@ function App() {
           <Route exact path="/user/general">
             <UserGeneral />
           </Route>
-          <Route exact path="/user/:userName/statistics">
+          <Route exact path="/user/statistics">
           <UserStatsProvider>
             <UserStats />
           </UserStatsProvider>
@@ -75,11 +78,12 @@ function App() {
           <Route exact path="/user/security">
             <UserSecurity />
           </Route>
-          <Route exact path="/favorites/:userName">
+          <Route exact path="/favorites">
             <FavoritesBrowser />
           </Route>
           <Route component={PageNotFound}/>
         </Switch>
+        </DndProvider>
         </UserInfoProvider>
         </MediaInfoProvider>
       </Router>

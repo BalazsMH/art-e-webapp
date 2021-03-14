@@ -1,9 +1,13 @@
 import axios from 'axios';
+import cookie from 'react-cookies';
 
-const interactFavorites = (isFavorite, userName, objectNumber) => {
+const interactFavorites = (isFavorite, objectNumber) => {
     axios({
         method: isFavorite ? 'DELETE' : 'POST',
-        url:`http://localhost:8080/api/favorites/${userName}/${objectNumber}`
+        url:`http://localhost:8080/api/favorites/${objectNumber}`,
+        headers: {
+            'Authorization': cookie.load("Authorization")
+        }
     })
     .catch(e => {
         console.log(e);

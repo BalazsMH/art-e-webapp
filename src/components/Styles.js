@@ -113,7 +113,7 @@ export const NavContainer = styled.header`
     position: sticky;
     position: -webkit-sticky;
     top: 0;
-    z-index: 0;
+    z-index: 100;
     background-color: #231F20;
     color: #ffffff;
     padding:0.2rem 0.7rem 0.2rem 0.7rem;
@@ -128,7 +128,7 @@ export const MobileNav = styled.header`
     position: -webkit-sticky;
     height: auto;
     top: 0;
-    z-index: 0;
+    z-index: 100;
     background-color: #231F20;
     color: #ffffff;
     padding:0.2rem 0.7rem 0.2rem 0.7rem;
@@ -197,6 +197,7 @@ export const AnsButton = styled.button`
 
 /*  Question styles */
 export const QuestionContainer = styled.div`
+    position: relative !important;
     background: #DAD299;
     background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
     background: linear-gradient(to right, #B0DAB9, #DAD299);
@@ -246,12 +247,11 @@ export const NextButton = styled.button`
 /*  Quiz styles */
 export const QuizContainer = styled.div`
     position: relative !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    display: flex;
+    margin-top: 0.5rem;
     display: block;
-    margin-left: auto;
-    margin-right: 60%;
+    margin-left: 30% !important;
+    margin-right: auto;
     width: 40%;
 `;
 
@@ -349,6 +349,26 @@ export const BackButton = styled.button`
         }
 `;
 
+export const NoMoreXp = styled.p`
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    background: #ffffff;
+    color: black;
+    border: 1px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #000000;
+    width: 50%;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    left: 25%;
+    margin-right: auto;
+    margin-top: 2rem;
+    padding: 0.25rem;
+    text-align: center;
+`;
+
 
 
 /*  UserLogin styles */
@@ -395,7 +415,56 @@ export const RegistrationContainer = styled.div`
     line-height: 3rem;
 `;
 
+/*  UserRegistration styles */
+export const UserInformationContainer = styled.div`
+    width:auto;
+    max-width: 100%;
+    display:flex;
+    flex-direction:row;
+`;
+/*  UserSidebar styles */
+export const SidebarContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    height: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    line-height: 3rem;
+`;
+
+/*  UserStats styles */
+export const StatsContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    line-height: 3rem;
+    height: 100%;
+    width:100%;
+    max-width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+`;
+
+/*  UserGeneral styles */
+export const BasicDataContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+
+`;
+
 /* ArtDetails styles */
 export const AboutComponentContainer = styled.div`
     margin: 2rem;
+`;
+
+/*Favorite Folders*/
+export const FolderDiv = styled.div`
+    background-color: ${props=> "#" + props.colorHex};
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+`;
+
+export const FolderSidebarDiv = styled.div`
+    float: left;
 `;

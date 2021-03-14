@@ -4,6 +4,9 @@ import FavoriteFolderModal from './FavoriteFolderModal';
 import { UserInfoContext } from '../user/UserInfoContext';
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from '../../util/ItemTypes.js';
+import { RemoveButton } from '../Styles.js';
+import axios from 'axios';
+import cookie from 'react-cookies';
 
 const FavoriteFolder = (props) => {
     const { allFavFolderName } = useContext(UserInfoContext);
@@ -21,8 +24,8 @@ const FavoriteFolder = (props) => {
     const isActive = canDrop && isOver;
     let opacity = isActive ? 0.8 : canDrop ? 0.4 : 1;
     
-    const showFavorites = (e) => {
-        props.setFolderName(e.target.textContent)
+    const showFavorites = (e, folderName) => {
+        props.setFolderName(folderName)
     }
 
     const showFolderModal = (folderName) => {
@@ -31,17 +34,34 @@ const FavoriteFolder = (props) => {
         }
     }
 
+    const removeFolder = (e, folderName) => {
+        axios({
+            method: 'DELETE',
+            url: `http://localhost:8080/api/favoriteFolder/deleteFolder/${folderName}`,
+            headers: {
+                'Authorization': cookie.load("Authorization")
+            }
+        })
+        .then(() => {
+            props.setRefreshTrigger(prev => !prev);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+
     return (
         <>
             <FolderDiv 
                 colorHex={folderColor} 
-                onClick={showFavorites} 
+                onClick={(e) => {showFavorites(e, folderName)}} 
                 onDoubleClick={() => showFolderModal(folderName)}
                 ref={drop}
                 role={folderName}
                 style={{ opacity }}
             >
                 {folderName}
+                {folderName !== allFavFolderName ? <RemoveButton onClick={(e)=> {removeFolder(e, folderName)}}>X</RemoveButton> : <></>}
             </FolderDiv>
             {show && (
                 <FavoriteFolderModal 

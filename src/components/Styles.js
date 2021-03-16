@@ -89,6 +89,9 @@ export const GridContainer = styled.div`
 export const Tag = styled.div`
     border-radius: 20px;
     border:solid;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    margin-bottom: 0.5rem;
 `;
 export const RemoveButton = styled.span`
     cursor: pointer;
@@ -96,7 +99,9 @@ export const RemoveButton = styled.span`
 
 
 /*  QueryTagContainer styles */
-
+export const QueryTagBox = styled.div`
+    
+`;
 
 
 /*  Navbar styles */
@@ -166,8 +171,8 @@ export const DropButtonContent = styled(Box)`
 `;
 
 
-/*  PageNotFoundComponent styles */
-export const NotFoundContainer = styled.div`
+/*  ErrorMessageContainer styles */
+export const ErrorMessageContainer = styled.div`
     display: flex;
     flex-flow: column;
     justify-content: center;

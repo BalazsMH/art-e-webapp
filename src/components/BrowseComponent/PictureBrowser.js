@@ -35,9 +35,9 @@ const PictureBrowser = () => {
                 }
         }).then(res => {
             setArtData( () => {
-                return [...artData, ...res.data.artObjects];
+                return [...artData, ...res.data];
             });
-            setHasMore(res.data.artObjects.length > 0);
+            setHasMore(res.data.length > 0);
             setPageNumber(pageNumber + 1);
         })
         .catch(e => {
@@ -59,7 +59,7 @@ const PictureBrowser = () => {
                 }>
                     <GridContainer>   
                     {artData.length !== 0 ? artData
-                        .filter((artPiece) => artPiece.hasImage)
+                        .filter((artPiece) => artPiece.webImage.url)
                         .map((artPiece, index) => <ArtCard hasMore={hasMore} lastItem={artData.length === index + 1} data={artPiece} userName={userName} key={index}></ArtCard>)
                     : <div>No results found for the term.</div>}
                     </GridContainer>

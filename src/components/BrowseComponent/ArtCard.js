@@ -12,7 +12,7 @@ import { MoveToFavoriteFolder } from '../../util/InteractFavoriteFolder';
 
 export default function ArtCard(props) {
     const artDetails = props.data;
-    const imageUrl = props.data.headerImage.url;
+    const imageUrl = props.data.webImage.url;
     const [isLoading, setIsLoading] = useState(true);
     const [isFavorite, setIsFavorite] = useState(false);
     

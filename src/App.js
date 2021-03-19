@@ -65,7 +65,7 @@ function App() {
             <Scoreboard />
           </Route>
           <Route exact path="/user">
-            <Redirect to="/user/general" />
+            <Redirect to="/user/statistics" />
           </Route>
           <Route exact path="/user/general">
             <UserGeneral />

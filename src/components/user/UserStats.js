@@ -12,7 +12,6 @@ const UserStats = () => {
         isLoaded ? (<UserInformationContainer>
             <UserSidebar />
             <StatsContainer>
-                <p>Highscores rank: { userData.rank }</p>
                 <p>XP earned: { userData.actualXp }</p>
                 <p>Daily remaining XP: { userData.dailyRemainingXp }</p>
                 <p>Correct answers: { userData.correctAnswers }</p>

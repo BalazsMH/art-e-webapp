@@ -34,7 +34,7 @@ export const UserStatsProvider = (props) => {
                 dailyStreak: res.data.dailyStreak,
                 winStreak: res.data.winStreak
             };
-            prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? (prepUserData.correctAnswers) / (prepUserData.allAnswers) : 0
+            prepUserData.answerRatio = prepUserData.allAnswers !== 0 ? ((prepUserData.correctAnswers) / (prepUserData.allAnswers)).toFixed(2) : 0
             setUserData(prepUserData);
             setIsLoaded(true);
         })

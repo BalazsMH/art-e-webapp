@@ -56,6 +56,7 @@ const Navbar = () => {
                         <NavLink to="/favorites">Favorites</NavLink>
                     </>
                         : <></>}
+                <NavLink to="/scoreboard">Score board</NavLink>
                 <NavLink to="/about">About</NavLink>
                 </DropButtonContent>
             }
@@ -73,6 +74,7 @@ const Navbar = () => {
                         <NavLink to="/favorites">Favorites</NavLink>
                     </>
                         : <></>}
+                <NavLink to="/scoreboard">Score board</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <UserFunctionsContainer>
                 <UserDropButton

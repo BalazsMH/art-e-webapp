@@ -50,10 +50,13 @@ const Navbar = () => {
             dropContent={
                 <DropButtonContent>
                 <NavLink to="/browse">Browse</NavLink>
-                <NavLink to="/quiz">Quiz</NavLink>
+                {isLoggedIn ? 
+                    <>
+                        <NavLink to="/quiz">Quiz</NavLink>
+                        <NavLink to="/favorites">Favorites</NavLink>
+                    </>
+                        : <></>}
                 <NavLink to="/about">About</NavLink>
-                {isLoggedIn ? <NavLink to="/favorites">Favorites</NavLink>
-                            : <></>}
                 </DropButtonContent>
             }
             />
@@ -63,11 +66,14 @@ const Navbar = () => {
         <NavContainer>
             <Link to="/"><SiteLogo src={logo} alt="Art-E" /></Link>
             <NavRoutes>
-                <NavLink to="/browse">Browse</NavLink>
-                <NavLink to="/quiz">Quiz</NavLink>
+            <NavLink to="/browse">Browse</NavLink>
+                {isLoggedIn ? 
+                    <>
+                        <NavLink to="/quiz">Quiz</NavLink>
+                        <NavLink to="/favorites">Favorites</NavLink>
+                    </>
+                        : <></>}
                 <NavLink to="/about">About</NavLink>
-                {isLoggedIn ? <NavLink to={"/favorites"}>Favorites</NavLink>
-                            : <></>}
                 <UserFunctionsContainer>
                 <UserDropButton
                     color="plain"
